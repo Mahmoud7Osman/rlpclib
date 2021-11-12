@@ -6,6 +6,8 @@
 
 FILE* fpr;
 
+// Keyboard Class, For Making Keyloggers.
+
 class KeyboardTools{
     private:
 	FILE* outputfd;

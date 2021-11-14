@@ -1,9 +1,3 @@
-#include <cstring>
-#include <fstream>
-#include <fcntl.h>
-#include <unistd.h>
-#include <linux/input.h>
-
 FILE* fpr;
 
 // Keyboard Class, For Making Keyloggers.

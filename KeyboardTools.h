@@ -1,5 +1,5 @@
 FILE* fpr;
- 
+
 // Keyboard Class, For Making Keyloggers.
 
 class KeyboardTools{

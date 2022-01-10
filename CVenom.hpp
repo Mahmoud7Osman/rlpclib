@@ -1,20 +1,17 @@
-#ifdef C_DD_FORMAT             // Custom Data Dump Format Enabler For Some Classes
-	#define RAW 0
-	#define HEX 1
-	#define DEC 2
-	#define BIN 3
-#endif
+// Some Macros
+#define RAW 0
+#define HEX 1
+#define DEC 2
+#define BIN 3
+#define TCP 4
+#define UDP 5
 
-
-#ifdef MALICIOUS_PREPROCESSING // Malicious PreProcessing For The Source Code Like Turning private member into public
-	#define public: int s=2;
-	#define private: int t=2;
-	#define const static;
-#endif
-
-
+// Headers To Include
 #include <cstring>
+#include <string>
 #include <fstream>
+#include <thread>
+
 #include <fcntl.h>
 #include <unistd.h>
 #include <linux/input.h>
@@ -25,3 +22,8 @@
 #include <netdb.h>
 #include <cstdlib>
 #include <unistd.h>
+#include <errno.h>
+
+// Accessing Namespaces
+using std::thread;
+using std::string;

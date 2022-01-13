@@ -1,3 +1,5 @@
 class DataTools{
-
+	private:
+		
+	public:
 }

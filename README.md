@@ -1,2 +1,2 @@
 # CVenom
-Where The Simplicity Meets The Native.
+Where The Simplicity Meets The Souls..., A Strong Malware Development Kit For Everyone.

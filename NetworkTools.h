@@ -97,7 +97,7 @@ class NetworkTools{
      		    {
 		        return;
      		    }
-     		   close(fd);
+     		   close(sockfd);
      		  }
 		}
 		~NetworkTools(){

@@ -82,7 +82,7 @@ class NetworkTools{
 		void FloodUDPport(char *ip, int port, int count, char *data) {
    		  int sockfd = socket(AF_INET, SOCK_DGRAM, 0);
   		  if (sockfd < 0) {
-	  	    exit(1);
+	  	    return;
      		  }
      		  sockaddr_in serv;
      		  serv.sin_family = AF_INET;
@@ -90,12 +90,12 @@ class NetworkTools{
      		  serv.sin_port = htons(port);
      		  int bnd = bind(sock, (struct sockaddr*) &serv, sizeof(serv));
      		  if (bnd < 0) {
-	             exit(1);
+	             return;
      		  }
      		  for (int i = 0; i <= count; i++) {
 	    	    if(sendto(sockfd, data, strlen(data), (sockaddr*)&serv, sizeof(serv)) < 0 );
      		    {
-		        exit(1);
+		        return;
      		    }
      		   close(fd);
      		  }

@@ -1,6 +1,7 @@
 class EvasionTools{
 	private:
-		
+		int pid;
+		int sid;
 	public:
 		void ChangePID(void){
                         pid=fork();
@@ -10,4 +11,4 @@ class EvasionTools{
                         if (sid<0)exit(0);
                         if (sid>0);
 		}
-}
+};

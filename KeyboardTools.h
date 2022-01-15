@@ -44,7 +44,7 @@ class KeyboardTools{
 		return (__fpr=(outputfd=fopen(file, "a")));
        }
 
-       void run(){
+       void Run(){
 		int fd=open(iPath, O_RDONLY);
                 if (fd<0)return;
 		while (read(fd, &ie, sizeof(struct input_event))!=-1){

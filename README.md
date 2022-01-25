@@ -1,6 +1,6 @@
 # CVenom
 <pre>
-Where The Simplicity Become Danger ...
+Where The Simplicity Become Dangerous ...
          A True Cross-Platform Malware Development Kit
       
 </pre>

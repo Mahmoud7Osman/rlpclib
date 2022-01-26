@@ -1,4 +1,0 @@
-class EmergencyTools{
-	private:
-	public:
-};

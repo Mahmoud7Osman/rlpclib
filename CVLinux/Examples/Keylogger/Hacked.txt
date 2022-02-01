@@ -1,12 +1,5 @@
-m.mmm .keylogger is working wow great. so this must run as root because we are accessin g /dev/input folder. do not do illegal stuffs haaa. just do some funny stuffs. i mean illegal hahahahahahahahahahah have a nize day plus i  am typing now on whatsapp while the keyogger is logging all of my keypresses . suonds great . goodbye i am giong to kill the kilogger with -9 brw hahaha fak thes kilager.kill the keylogger with -9.................................. goodbyeeeeeeeeeeeeeeeeeeeeee..
 
-
-
-
-pidof a.out
-kill -9 399138
-sudo kill -9 399138
-
-
-
-### Information : I removed the password after the sudo prompted me for entering my password, because the keylogger will capture everything, that's for my privacy and security thank you for Downloading CVenom, Everything Above Captured is the result of the CVenom C++ Keylogger You Should Learn CVenom!
+pidof ./simplekeylogger
+wow working hahahahaha capturing my commands
+ls
+killall -9 simplekeylogger

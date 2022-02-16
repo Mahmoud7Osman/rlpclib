@@ -18,7 +18,6 @@ We've All Heard About, Or Even Used Software Development Kits, Like JDK (Java De
 
 int main(int argc, char** argv){
          cvinit(argc, argv);                                   // Initializing CVenom, Should Be Always Inserted in The Start of the Main Function With Argc and Argv
-              
          RuntimeTools      Runner;
          EvasionTools      Evador;
            

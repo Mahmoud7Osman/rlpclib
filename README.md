@@ -19,6 +19,8 @@ We've All Heard About, Or Even Used Software Development Kits, Like JDK (Java De
 #include <EvasionTools.h>
 
 int main(int argc, char** argv){
+
+
          cvinit(argc, argv);                                   // Initializing CVenom, Should Be Always Inserted in The Start of the Main Function With Argc and Argv
 
          RuntimeTools      Runner;
@@ -28,15 +30,10 @@ int main(int argc, char** argv){
          Evador.HandleAllSignals( Evador.ChangePID );          // Used To Change Current Procces PID If Any Signal Was Invoked By The User Or The Kernel
          Evador.MoveIntoMemory();                              // Used To Move The Malware From The Hard Disk To The RAM (Used To Create Fileless Malwares).
          Runner.Sleep(5);                                      // Pause The Malware For 5 Seconds
-         Evador.MoveBackToDisk();                              // Move The Malware From Memory Back To Disk (Not Required Because The cvexit() Function is going to                                                                 Check if the malware is On the disk Or Not, Then Move It Back From Memory Into Disk.)
-         /*
-         ...
-         Some Codes ...
-         Some Other Codes...
-         ...
-         */
-
+         Evador.MoveBackToDisk();                              // Move The Malware From Memory Back To Disk (Not Required Because The cvexit() Function is going to                                                                 Check if the malware is On the disk Or Not, Then Move It Back From Memory Into Disk.
          cvexit(0);                                            // Freeing CVenom's Memory, Should Be Always Inserted in the end of the main function with the exit code.
+
+
 }
 ````
 <br><br>

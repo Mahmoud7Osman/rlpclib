@@ -39,4 +39,6 @@ int main(int argc, char** argv){
 ````
 <br><br>
 <p>C/C++ Are Absolutely The Best Languages To Develop Malwares, Advanced, And Undetectable, Scary Hardware And L2 I/O Access, As You Know, C/C++ Codes, API Calls, Library Calls, System Calls Differ Between Linux And Windows, So, <strong>Welcome To CVenom</strong>.</p>
-<h2>Cross-Platform OOP Based Malware Development</h2>
+<h1>Introducing, CVenom</h1>
+<h3>Cross-Platform OOP Based Malware Development</h3>
+System Resources, Hardware Devices, Files, Processes,... Are All Controlled And Manipulated By Objects. EX: KeyboardTools.h is An Object Used To Control The Keyboard.

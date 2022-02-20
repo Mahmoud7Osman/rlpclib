@@ -41,6 +41,18 @@ class DataTools{
 			CloseHandle(fh);
 			return data;
 		}
+		int FileWrite(const char* path, char* buffer){
+			fh=CreateFile(path, GENERIC_WRITE, 0x00, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
+			if (fh == INVALID_HANDLE_VALUE)
+				return 1;
+			tmp=WriteFile(fh, buffer, strlen(buffer), NULL, NULL);
+			CloseHandle(fh);
+			
+			if (tmp==0x00)
+				return 1;
+			
+			return 0;
+		}
 		~DataTools(){
 			if (data != 0x00)
 				free(data);

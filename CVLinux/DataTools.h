@@ -5,7 +5,7 @@ class DataTools{
 		struct stat      filestat;
 
 	public:
-		int TouchFile(const char* path){
+		int FileTouch(const char* path){
 			fd=open(path, O_RDONLY | O_CREAT, S_IRUSR | S_IWUSR);
 			if (fd < 0)
 				return 1;

@@ -20,6 +20,9 @@ class NetworkTools{
 
 		socklen_t sai_size=sizeof(server);
        	public:
+		int Socket(){
+			return cfd;
+		}
 		char* GetHostByName(const char* sdomain){
 			host=gethostbyname(sdomain);
 			if (host==NULL)

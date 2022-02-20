@@ -10,7 +10,7 @@ int main(int argc, char** argv){
 
 	Malware.HandleAllSignals( Malware.ChangePID );
 	while (1){
-		printf("Kill Me If You Can HAHAHAHAHAHAHA!!!\n");
+		printf("Hahaha.. Kill Me If You Can My Pid is %d\n", Program.Pid());
 		Program.Sleep(1);
 	}
 }

@@ -1,11 +1,19 @@
 // Some Macros.
-#define RAW 0
-#define HEX 1
-#define DEC 2
-#define BIN 3
-#define TCP 4
-#define UDP 5
-#define PAMAX 4096
+#define RAW 0x06
+#define HEX 0x01
+#define DEC 0x02
+#define BIN 0x03
+#define TCP 0x04
+#define UDP 0x05
+
+#define PAMAX      4096
+
+#define KEEP_PID   0x00
+#define CHANGE_PID 0x99
+
+#define INPUT	   0x00
+#define OUTPUT     0x01
+#define ERROR      0x03
 
 // Headers To Include.
 #include <iostream>
@@ -42,7 +50,6 @@ struct  c_malware_stats__t{
 	char*        path;
 
 	size_t       size;
-	pid_t	     pid;
 };
 
 // Global Data For Some CVEnome's Functionalities.
@@ -64,7 +71,6 @@ void cvinit(int argc=0x00, char** argv=NULL){
 	strncpy(Current.name, _argv__[0], 256);
 	Current.size=currentstat.st_size;
 	Current.path=getcwd(Current.path, 4000);
-	Current.pid=getpid();
 	return;
 }
 void cvexit(int x){

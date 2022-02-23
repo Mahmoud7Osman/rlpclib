@@ -47,7 +47,6 @@ typedef void (*function)(int);
 
 struct  c_malware_stats__t{
 	char   	     name[256];
-	char*        path;
 
 	size_t       size;
 };
@@ -58,6 +57,7 @@ int    			_argc__;
 
 
 struct c_malware_stats__t	Current;
+struct c_malware_stats__t*	MALWARE;
 
 // Some Functions For Initializing The Library.
 void cvinit(int argc=0x00, char** argv=NULL){
@@ -65,16 +65,14 @@ void cvinit(int argc=0x00, char** argv=NULL){
 
 	_argv__=           argv;
 	_argc__=           argc;
-	Current.path=(char*)malloc(PAMAX);
+	MALWARE=&Current;
 
 	stat(_argv__[0], &currentstat);
 	strncpy(Current.name, _argv__[0], 256);
 	Current.size=currentstat.st_size;
-	Current.path=getcwd(Current.path, 4000);
+
 	return;
 }
 void cvexit(int x){
-	if (Current.path)
-		free(Current.path);
 	exit(x);
 }

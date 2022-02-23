@@ -1,0 +1,4 @@
+class RuntimeTools{
+	private:
+	public:
+}

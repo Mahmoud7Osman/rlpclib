@@ -23,11 +23,13 @@ export "$2"
 
 set $1 $3 $4 $5 $6 $7 $8 $9 &> /dev/null
 
-if [ "$target" == "windows" ];then
-	export compiler="x86_64-w64-mingw32-cpp"
+if [ "$target" == "windows" ] || [ "$target" == "win64" ];then
+	export compiler="x86_64-w64-mingw32-g++"
+	CVPath="CVWindows"
 elif [ "$target" == "linux" ];then
 	export compiler="g++"
+	CVPath="CVLinux"
+else fatal "target OS unknown or not supported yet"; echo "compilation terminated."; exit 1;
 fi
-echo "$compiler"
 
-#$compiler -Wall -z execstack -fno-stack-protector $@
+$compiler -Wall -z execstack -fno-stack-protector -I ~/.CVenom/$CVPath/ $@

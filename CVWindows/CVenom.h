@@ -16,8 +16,9 @@
 #include <fstream>
 #include <thread>
 
-#include <windows.h>
 #include <winsock2.h>
+#include <windows.h>
+
 
 // Accessing Some Functions From Different Namespaces.
 using		std::string;

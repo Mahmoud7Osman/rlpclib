@@ -25,7 +25,8 @@ using       	std::remove;
 
 // Custom Data Types And Typedefs
 typedef void (*function)(int, int);
-struct c_malware_stat_t{
+
+struct c_malware_stat__t{
 	char	name[256];
 
 	size_t  size;
@@ -35,15 +36,15 @@ struct c_malware_stat_t{
 char**				_argv__;
 int				_argc__;
 
-struct c_malware_stat_t 	Current;
-struct c_malware_stat_t*	MALWARE;
+struct c_malware_stat__t 	Current;
+struct c_malware_stat__t*	MALWARE;
 
 // Some Functions For Initializing The Library.
 void cvinit(int argc, char** argv){
 	HANDLE fh;
 	_argv__=argv;
 	_argc__=argc;
-	Malware=&Current;
+	MALWARE=&Current;
 
 	fh=CreateFile(argv[0], GENERIC_READ, 0x00, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
 

@@ -29,7 +29,7 @@ class RuntimeTools{
 				return 1;
 			return 0;
 		}
-		void Sleep(int val){
+		void Wait(int val){
 			sleep(val);
 		}
 		void Exit(int v=0){

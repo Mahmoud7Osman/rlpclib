@@ -5,7 +5,7 @@ class DataTools{
 		char*  data   = 0x00;
 		int    tmp    = 0x00;
 	public:
-		int TouchFile(const char* path){
+		int FileTouch(const char* path){
 			fh=CreateFile(path, GENERIC_WRITE | GENERIC_READ, 0x00, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
 			if (fh == INVALID_HANDLE_VALUE){
 				return 1;

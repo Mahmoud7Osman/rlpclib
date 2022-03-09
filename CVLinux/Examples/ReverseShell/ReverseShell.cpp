@@ -10,8 +10,8 @@ int main(int argc, char** argv){
 	NetworkTools	Network;
 	RuntimeTools	Runner;
 
-	if ( Network.Connect("127.0.0.1", 4444) == 1)
-		printf("Error\n");
+	if (Network.Connect("127.0.0.1", 4444) == 1)
+		return printf("Error\n");
 
 	IOController.Close(INPUT);
 	IOController.Close(OUTPUT);

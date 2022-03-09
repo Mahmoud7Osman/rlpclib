@@ -9,8 +9,7 @@ class NetworkTools{
 
 		size_t size;
 
-		char*    txdata;
-		char*    rxdata;
+
 		char ipaddr[16];
 
 		struct sockaddr_in server;
@@ -77,7 +76,7 @@ class NetworkTools{
 		}
 		void RecvTCPdata(char* dest, unsigned int size=0){
 			if (size!=0x00){
-				for(int tmp=0; tmp<size;tmp++){
+				for(unsigned int tmp=0; tmp<size;tmp++){
 					rcv=recv(cfd, dest++, 1, 0);
 
 					if (rcv==-1 || rcv==0){

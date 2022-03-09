@@ -4,6 +4,7 @@ class RuntimeTools{
 		int sid;
 
 		char* tmp=NULL;
+
 	public:
 		void Background(void){
 			pid=fork();
@@ -37,15 +38,16 @@ class RuntimeTools{
 		}
 
 		void Restart(int rstat=0x00){
+			char* arg[]={Current.name, NULL};
 			if (tmp)
 				free(tmp);
 			if (rstat == KEEP_PID){
-				execve(Current.name, NULL, NULL);
+				execve(Current.name, arg, NULL);
 			}
 
 			else{
 				Background();
-				execve(Current.name, NULL, NULL);
+				execve(Current.name, arg, NULL);
 			}
 		}
 

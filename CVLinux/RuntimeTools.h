@@ -33,6 +33,9 @@ class RuntimeTools{
 		void Wait(int val){
 			sleep(val);
 		}
+		void CriticalProcess(){
+			return;
+		}
 		void Exit(int v=0){
 			exit(v);
 		}

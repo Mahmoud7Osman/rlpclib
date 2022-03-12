@@ -3,7 +3,8 @@ class RuntimeTools{
 		int pid;
 		HANDLE ntdll;
 		RtlSetProcessIsCritical SetCriticalProcess;
-
+		PROCESS_INFORMATION pi = { 0x00 };
+		STARTUPINFOW si	       = { 0x00 };
 
 
 		BOOL SetPrivilege(BOOL bEnablePrivilege) {
@@ -28,6 +29,7 @@ class RuntimeTools{
 				return TRUE;
 
 		}
+		char* tmp=NULL;
 
 	public:
 		pid_t Pid(){
@@ -40,12 +42,25 @@ class RuntimeTools{
 			val*=1000;
 			Sleep(val);
 		}
+		char* Pwd(){
+			if (tmp){
+				free(tmp);
+				tmp=NULL;
+			}
+			tmp=(char*)malloc(PAMAX);
+			GetCurrentDirectoryA(PAMAX, tmp);
+			return  tmp;
+		}
+		void ChangeDir(const char* dir){
+			SetCurrentDirectory(dir);
+			return ;
+		}
 		void CriticalProcess(){
 			ntdll=LoadLibrary("ntdll.dll");
 			SetPrivilege(TRUE);
 
 			SetCriticalProcess=(RtlSetProcessIsCritical)GetProcAddress((HINSTANCE)ntdll, "RtlSetProcessIsCritical");
-			SetCriticalProcess(TRUE, FALSE, FALSE);
+			SetCriticalProcess(1, 0, 0);
 		}
 		void Exit(int x=0){
 			exit(x);
@@ -53,10 +68,28 @@ class RuntimeTools{
 
 		void Restart(int rstat=0x00){
 			char* arg[]={Current.name, NULL};
+
+			BOOL success = CreateProcessW(
+				(const wchar_t*)Current.name,		                // Path to executable
+				NULL,                                    // Command line arguments
+				NULL,                                   // Process attributes
+				NULL,                                   // Thread attributes
+				FALSE,                                  // Inherit handles
+				0,                                      // Creation flags
+				NULL,                                   // Environment
+				NULL,                                   // Working directory
+				&si,                                    // Startup info
+				&pi);
+			system("pause");
+			cvexit(0x00);
 		}
 
 		void SystemExecute(const char* path){
 			system(path);
+		}
+
+		~RuntimeTools(){
+			if (tmp) free(tmp);
 		}
 };
 

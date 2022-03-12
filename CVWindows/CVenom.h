@@ -9,6 +9,8 @@
 #define FUNCTION int x, int xx
 #define KEEP_PID	0
 
+#define PAMAX	4000
+
 #define _CRT_SECURE_NO_WARNINGS
 #define _CRT_NONSTDC_NO_DEPRECATE
 #define WIN32_LEAN_AND_MEAN

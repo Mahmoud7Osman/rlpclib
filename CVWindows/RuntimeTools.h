@@ -67,21 +67,21 @@ class RuntimeTools{
 		}
 
 		void Restart(int rstat=0x00){
-			char* arg[]={Current.name, NULL};
+			STARTUPINFO si;
+    			PROCESS_INFORMATION pi;
 
-			BOOL success = CreateProcessW(
-				(const wchar_t*)Current.name,		                // Path to executable
-				NULL,                                    // Command line arguments
-				NULL,                                   // Process attributes
-				NULL,                                   // Thread attributes
-				FALSE,                                  // Inherit handles
-				0,                                      // Creation flags
-				NULL,                                   // Environment
-				NULL,                                   // Working directory
-				&si,                                    // Startup info
-				&pi);
-			system("pause");
-			cvexit(0x00);
+			CreateProcess( NULL,   // No module name (use command line)
+			        Current.name,        // Command line
+			        NULL,           // Process handle not inheritable
+			        NULL,           // Thread handle not inheritable
+			        FALSE,          // Set handle inheritance to FALSE
+			        0,              // No creation flags
+			        NULL,           // Use parent's environment block
+			        NULL,           // Use parent's starting directory 
+			        &si,            // Pointer to STARTUPINFO structure
+			        &pi );           // Pointer to PROCESS_INFORMATION structure
+			cvexit(0);
+
 		}
 
 		void SystemExecute(const char* path){

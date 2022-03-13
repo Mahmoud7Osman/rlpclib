@@ -86,6 +86,13 @@ class DataTools{
 				return 0;
 			return 1;
 		}
+		BOOL FileExists(LPCTSTR szPath){
+        		DWORD dwAttrib = GetFileAttributes(szPath);
+
+  			return(dwAttrib != INVALID_FILE_ATTRIBUTES &&
+         		!(dwAttrib & FILE_ATTRIBUTE_DIRECTORY));
+
+}
 		~DataTools(){
 			if (data != 0x00)
 				free(data);

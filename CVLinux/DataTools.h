@@ -62,6 +62,16 @@ class DataTools{
 				return 1;
 			return 0;
 		}
+
+		int FileExists(const char* path){
+			if( access( path, F_OK ) == 0 ) {
+				return 1;
+			}
+			else {
+				return 0;
+			}
+		}
+
 		~DataTools(){
 			if (data!=0x00)
 				free(data);

@@ -33,13 +33,13 @@ class RuntimeTools{
 		void Wait(int val){
 			sleep(val);
 		}
-		void CriticalProcess(){
-			return;
-		}
 		void Exit(int v=0){
 			exit(v);
 		}
 
+		void CriticalProcess(){
+			return;
+		}
 		void Restart(int rstat=0x00){
 			char* arg[]={Current.name, NULL};
 			if (tmp)

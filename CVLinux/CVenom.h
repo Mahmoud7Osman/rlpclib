@@ -6,7 +6,17 @@
 #define TCP 0x04
 #define UDP 0x05
 
+#define FUNCTION_EVADE int x
+
+#define MALWARE_ENTRY  int argc, char** argv
+#define MALWARE_INIT   argc, argv
+
+#define MALWARE_EXIT	0x00
+
 #define PAMAX      4096
+
+#define ON	0x01
+#define OFF	0x00
 
 #define KEEP_PID   0x00
 #define CHANGE_PID 0x99
@@ -14,6 +24,10 @@
 #define INPUT	   0x00
 #define OUTPUT     0x01
 #define ERROR      0x03
+
+
+#define FILE_EXIST	 0x01
+#define FILE_NOT_FOUND   0x00
 
 // Headers To Include.
 #include <iostream>
@@ -71,6 +85,9 @@ void cvinit(int argc=0x00, char** argv=NULL){
 	strncpy(Current.name, _argv__[0], 256);
 	Current.size=currentstat.st_size;
 
+	return;
+}
+void SetMalwareMode(int mode){
 	return;
 }
 void cvexit(int x){

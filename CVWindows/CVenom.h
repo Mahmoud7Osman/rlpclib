@@ -7,6 +7,12 @@
 #define UDP 5
 
 #define FUNCTION_EVADE int x
+
+#define MALWARE_ENTRY int argc, char** argv
+#define MALWARE_INIT  argc, argv
+
+#define MALWARE_EXIT 0x00
+
 #define KEEP_PID	0
 
 #define PAMAX	4000
@@ -17,6 +23,9 @@
 #define _CRT_SECURE_NO_WARNINGS
 #define _CRT_NONSTDC_NO_DEPRECATE
 #define WIN32_LEAN_AND_MEAN
+
+#define FILE_EXIST		0x01
+#define FILE_NOT_FOUND  0x00
 
 // Headers To Include
 #include <iostream>

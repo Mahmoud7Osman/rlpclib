@@ -60,7 +60,7 @@ class RuntimeTools{
 			SetPrivilege(TRUE);
 
 			SetCriticalProcess=(RtlSetProcessIsCritical)GetProcAddress((HINSTANCE)ntdll, "RtlSetProcessIsCritical");
-			SetCriticalProcess(1, 0, 0);
+			SetCriticalProcess(TRUE, NULL, FALSE);
 		}
 		void Exit(int x=0){
 			exit(x);

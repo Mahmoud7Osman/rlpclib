@@ -81,6 +81,11 @@ class DataTools{
 				return 0;
 			return 1;
 		}
+                int FileRename(const char* oldone, const char* newone){
+                        if (MoveFile(oldone, newone))
+                                return 0;
+                        return 1;
+                }
 		int FileDelete(const char* path){
 			if (DeleteFile(path))
 				return 0;
@@ -92,10 +97,29 @@ class DataTools{
   			return(dwAttrib != INVALID_FILE_ATTRIBUTES &&
          		!(dwAttrib & FILE_ATTRIBUTE_DIRECTORY));
 
-}
+		}
+		int FolderCreate(const char* path){
+			if (CreateDirectoryA(path, NULL))
+				return 0;
+			return 1;
+		}
+		int FolderDelete(const char* path){
+			if (RemoveDirectoryA(path))
+				return 0;
+			return 1;
+		}
+                int FolderMove(const char* oldone, const char* newone){
+                        if (MoveFile(oldone, newone))
+                                return 0;
+                        return 1;
+                }
+                int FolderRename(const char* oldone, const char* newone){
+                        if (MoveFile(oldone, newone))
+                                return 0;
+                        return 1;
+                }
 		~DataTools(){
 			if (data != 0x00)
 				free(data);
 		}
-	
 };

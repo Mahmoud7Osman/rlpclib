@@ -57,6 +57,34 @@ class DataTools{
 				return 1;
 			return 0;
 		}
+
+                int FileRename(const char* Old, const char* New){
+                        if (rename(Old, New))
+                                return 1;
+                        return 0;
+                }
+               	int FolderMove(const char* Old, const char* New){
+                        if (rename(Old, New))
+                                return 1;
+                        return 0;
+                }
+                int FolderRename(const char* Old, const char* New){
+                        if (rename(Old, New))
+                                return 1;
+                        return 0;
+                }
+		int FolderCreate(const char* path){
+			if (mkdir(path, S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH) ==-1)
+				return 1;
+			return 0;
+		}
+
+                int FolderDelete(const char* path){
+                        if (remove(path))
+                                return 1;
+                        return 0;
+                }
+
 		int FileDelete(const char* path){
 			if (remove(path))
 				return 1;

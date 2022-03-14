@@ -6,6 +6,12 @@
 #define TCP 0x04
 #define UDP 0x05
 
+#define SUCCEED  0
+#define PROBLEM  1
+#define OK	 0
+#define DONE     0
+#define FAILED   1
+
 #define FUNCTION_EVADE int x
 
 #define MALWARE_ENTRY  int argc, char** argv

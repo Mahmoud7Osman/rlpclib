@@ -4,6 +4,7 @@ class DataTools{
 		size_t size   = 0x00;
 		char*  data   = 0x00;
 		int    tmp    = 0x00;
+		size_t tmp_st = 0x00;
 	public:
 		int FileTouch(const char* path){
 			fh=CreateFile(path, GENERIC_WRITE | GENERIC_READ, 0x00, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
@@ -66,7 +67,7 @@ class DataTools{
 
 			srand(time(0));
 
-			for (tmp=1; tmp<=size; tmp++){
+			for (tmp_st=1; tmp_st<=size; tmp_st++){
 				char byte = (char)(rand() % 255);
 				WriteFile(fh, &byte, 1, NULL, NULL);
 			}

@@ -34,7 +34,7 @@ class DataTools{
 			close(fd);
 			return 0;
 		}
-		int FileCorrupt(const char* path, size_t size=0){
+		int FileCorrupt(const char* path, long int size=0){
 			fd=open(path, O_WRONLY);
 			if (fd < 0)
 				return 1;

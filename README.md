@@ -18,10 +18,10 @@ We've All Heard About, Or Even Used Software Development Kits, Like JDK (Java De
 #include <RuntimeTools.h>
 #include <EvasionTools.h>
 
-int main(int argc, char** argv){
+int main(MALWARE_ENTRY){
 
 
-         cvinit(argc, argv);                                   // Initializing CVenom, Should Be Always Inserted in The Start of the Main Function With Argc and Argv
+         cvinit(MALWARE_INIT);                                   // Initializing CVenom, Should Be Always Inserted in The Start of the Main Function With MALWARE_INIT
 
          RuntimeTools      Runner;
          EvasionTools      Evador;
@@ -32,7 +32,7 @@ int main(int argc, char** argv){
          Runner.Sleep(5);                                      // Pause The Malware For 5 Seconds
          Evador.MoveBackToDisk();                              // Move The Malware From Memory Back To Disk (Not Required Because The cvexit() Function is going to Check if the malware is On the disk Or Not, Then Move It Back From Memory Into Disk.
          
-         cvexit(0);                                            // Freeing CVenom's Memory, Should Be Always Inserted in the end of the main function with the exit code.
+         cvexit(MALWARE_EXIT);                                            // Freeing CVenom's Memory, Should Be Always Inserted in the end of the main function with the exit code.
 
 
 }

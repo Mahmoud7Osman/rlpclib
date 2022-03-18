@@ -41,6 +41,6 @@ int main(MALWARE_ENTRY){
 <p>C/C++ Are Absolutely The Best Languages To Develop Malwares, Advanced, And Undetectable, Scary Hardware And L2 I/O Access, As You Know, C/C++ Codes, API Calls, Library Calls, System Calls Differ Between Linux And Windows, So, <strong>Welcome To CVenom</strong>.</p>
 <h1>Introducing, CVenom</h1>
 <h3>Cross-Platform OOP Based Malware Development</h3>
-Malware Development Made Easy With CVenom, All Resources Are Objects, You Access The Hard Disk By Using The DiskTools Class, <pre>Disk.FileCorrupt("file.txt")</pre> as an Example will corrupt the file.txt And So On...Read The <a href="#documentation">Documentation</a> To Learn How To Start Developing Malwares With CVenom Or Watch Short Vidoes <a href="https://www.youtube.com/c/TheDoctorMLT">Right There</a>.
+Malware Development Made Easy With CVenom, All Resources Are Objects, You Access The Hard Disk By Using The DiskTools Class, <pre style="display:inline-block;">Disk.FileCorrupt("file.txt")</pre> as an Example will corrupt the file.txt And So On...Read The <a href="#documentation">Documentation</a> To Learn How To Start Developing Malwares With CVenom Or Watch Short Vidoes <a href="https://www.youtube.com/c/TheDoctorMLT">Right There</a>.
 
 <h1>CVenom's Offical Documentation</h1>

@@ -42,5 +42,5 @@ int main(MALWARE_ENTRY){
 <h1>Introducing, CVenom</h1>
 <h3>Cross-Platform OOP Based Malware Development</h3>
 Malware Development Made Easy With CVenom, All Resources Are Objects, You Access The Hard Disk By Using The DiskTools Class, `Disk.FileCorrupt("file.txt")` as an Example will corrupt the file.txt And So On...Read The <a href="#documentation">Documentation</a> To Learn How To Start Developing Malwares With CVenom Or Watch Short Vidoes <a href="https://www.youtube.com/c/TheDoctorMLT">Right There</a>.
-
+<img src="/Images/CVenom.png">
 <h1>CVenom's Offical Documentation</h1>

@@ -42,3 +42,23 @@ int main(MALWARE_ENTRY){
 <h1>Introducing, CVenom</h1>
 <h3>Cross-Platform OOP Based Malware Development</h3>
 System Resources, Hardware Devices, Files, Processes,... Are All Controlled And Manipulated By Objects. EX: The Header KeyboardTools.h Contain The KeyboardTools Object, Used To Control The Keyboard Device, Sniff Bytes From The Keyboard, Decode Bytes To Keystrokes, Analyze It Or Save It...
+<h1>After We Build The Core API, We're Planning To Make CVenom More Easier.</h1>
+<p>By Making An Environment Separated From C++, That Will Make CVenom To Look Like an Independent Programming Language Used Only For Malware Development(Based On C/C++/Assembly).</p>
+<h3>As An Example, This Code Will Demonstrate To You How CVenom Could Look Like If It Is Separated From C++</h3>
+<pre>
+         # This is CVenom Separated From C++
+         # Also, This Programming Language Is Only Used For Malware Development
+         # It is Not a Complete Programming Language, But It is Separated From C++ Stuffs
+         # Using The 'cvm compile malware.mcp' command Will translate the file to a C++ Code then compiling it to Binary format
+         
+         Set MalwareMode ON
+         Set Debugging   OFF
+         
+         Disk.FileCorrupt(Current.name);
+         
+         Evador.MoveIntoMemory();
+         Runner.Sleep(10);
+         Evador.MoveBackToDisk("I_Am_Corrupted.exe");
+         
+         Runner.Exit();
+</pre>

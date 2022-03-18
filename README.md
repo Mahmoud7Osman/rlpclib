@@ -3,6 +3,11 @@
 Where The Simplicity Become Dangerous ...
          A True Cross-Platform Malware Development Kit
 </pre>
+<ul>
+         <li>Documentation</li>
+         <li>Learn CVenom By Watching 4 Minutes Videos</li>
+         <li>Wanna Collaborate To CVenom To Develop The CVenom's Mac API For Malware Development?</li>
+</ul>
 <h4>Right Now Making The Networking And Remote Data Transfer API, After That, The Kit's Core will be ready to develop malwares.</h4>
 <p>C/C++ Are Absolutely The Best Languages To Develop Malwares, Advanced, And Undetectable, Scary Hardware And L2 I/O Access, As You Know, C/C++ Codes, API Calls, Library Calls, System Calls Differ Between Linux And Windows, So, <strong>That's Why We Created CVenom</strong></p>
 

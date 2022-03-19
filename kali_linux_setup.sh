@@ -35,4 +35,4 @@ printf "Warning: Please Do Not Use This MDK For Illegal Actions, We Are Not Resp
 sleep 1
 printf "\nLearn CVenom By Watching 4 Minutes Videos Right There: https://youtube.com/c/TheDoctorMLT\n"
 sleep 1
-printf "Or Access The Full Documentation Right There: https://github.com/Mahmoud7Osman/CVenom#documentation"
+printf "Or Access The Full Documentation Right There: https://github.com/Mahmoud7Osman/CVenom#documentation\n"

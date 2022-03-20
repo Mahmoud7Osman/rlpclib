@@ -1,4 +1,4 @@
-class DataTools{
+class DiskTools{
 	private:
 		int		     fd=0;
 		char* 		data=0x00;

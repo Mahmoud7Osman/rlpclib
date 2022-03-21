@@ -100,6 +100,7 @@ void SetMalwareMode(int mode){
 }
 void SetMalwareFakeService(const char* name){
 	strncpy(Current.fakename, name, 155);
+	strcat(Current.fakename, ".service");
 }
 
 void SetMalwareFakeDescription(const char* desc){

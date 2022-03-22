@@ -9,7 +9,7 @@ Where The Simplicity Become Dangerous ...
          <li><a href="https://t.me/MahmoudOsman0">Wanna Collaborate To CVenom To Create A New API For Malware Development (For MacOS, Android Or IOS)?</li>
 </ul>
 <h4>Right Now I Am Making The Networking And Remote Data Transfer API, After That, The Kit's Core will be ready to develop malwares.</h4>
-<p>C/C++ Are Absolutely The Best Languages To Develop Malwares, Advanced, And Undetectable, Scary Hardware And L2 I/O Access, As You Know, C/C++ Codes, API Calls, Library Calls, System Calls Differ Between Linux And Windows, So, <strong>That's Why We Created CVenom</strong></p>
+<p>C/C++ Are Absolutely The Best Languages To Develop Malwares, Advanced, And Undetectable, Hardware I/O Access, As You Know, C/C++ Codes, API Calls, Library Calls, System Calls Differ Between Linux And Windows, So, <strong>That's Why We Created CVenom</strong></p>
 
 <h1>Before Everything</h1>
 We've All Heard About, Or Even Used Software Development Kits, Like JDK (Java Development Kit), QT (Desktop Apps Development Kit), [...], But, Have You Ever Heard About A Malware Development Kit?! Firstly You Should Understand That You Can't Code a Malware Using Python, Java, Golang, C#, [...], There Is a Huge Amount Of Python Modules Used in Hacking, Like The Keylogger Module, Scapy, [...], But Unfortunately, All Of Those Modules Will Not Help in malware Development, Even if you compiled the python code (Including Java, C#, Go...)

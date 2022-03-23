@@ -23,7 +23,7 @@ Malware Development Made Easy With CVenom, All Resources Are Objects, You Access
 <p>When Malware Development Become Available For Everyone, <em><b>No System Is Secure With The Existence Of CVenom</b></em></p>
 <ul>
          <h2>All CVenom's APIs</h2>
-         <li><a href="#smip">Malware Initialization Before Using APIs</a></li>
+         <li><a href="#smip">Malware Initialization Before Using CVenom's APIs</a></li>
          <li><a href="#disktoolsapi">DiskTools API</a></li>
          <li><a href="#evasiontoolsapi">EvasionTools API</a></li>
          <li><a href="#networktoolsapi">NetworkTools API</a></li>

@@ -20,6 +20,7 @@ Malware Development Made Easy With CVenom, All Resources Are Objects, You Access
 <p>As You See The Difference Is Big, Using CVenom You Write Lesser Code, Cross-Platform, Super Simple And Readable Code, With It's Own Compiler That Compile Your Malware To An Obfuscated And Stripped Binary!, But, Without Using CVenom, You're Forced To Learn The Full System API With Syscalls, For Windows And Linux, Because Every OS Has it's Own System API And Syscalls, Then You're Gonna Write A 300 Lines Of Complicated Code To Make A Simple Malware (Maybe It is Gonna Be Buggy Haha)</p>
 <h3>That's Why CVenom Exists!</h3>
 <h1 id="documentation">CVenom's Offical Documentation</h1>
+<p>When Malware Development Become Available For Everyone, <em><b>No System Is Secure With The Existence Of CVenom</b></em></p>
 <ul>
          <h2>All CVenom's APIs</h2>
          <li><a href="#disktoolsapi">DiskTools API</a></li>

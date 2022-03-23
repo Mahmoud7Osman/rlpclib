@@ -25,4 +25,12 @@ Malware Development Made Easy With CVenom, All Resources Are Objects, You Access
          <h2>All CVenom's APIs</h2>
          <li><a href="#disktoolsapi">DiskTools API</a></li>
          <li><a href="#evasiontoolsapi">EvasionTools API</a></li>
+         <li><a href="#networktoolsapi">NetworkTools API</a></li>
+         <li><a href="#uitoolsapi">UITools API</a></li>
+         <li><a href="#redirectiontoolsapi">RedirectionTools API</a></li>
+         <li><a href="#dominationtoolsapi">DominationTools API</a></li>
+         <li><a href="#keyboardtoolsapi">KeyboardTools API</a></li>
+         <li><a href="#runtimetoolsapi">RuntimeTools API</a></li>
+         <li><a href="#usbtoolsapi">USBTools API</a></li>
+         <li><a href="#infectiontoolsapi">InfectionTools API</a></li>
 </ul>

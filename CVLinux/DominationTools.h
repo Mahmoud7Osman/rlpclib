@@ -58,4 +58,16 @@ class DominationTools{
 			system(cmd);
 			return 0;
 		}
+		int DisableAutoStart(){
+			setuid(0);
+			seteuid(0);
+
+			if (geteuid() != 0)
+				return 1;
+			if (remove(path))
+				return 1;
+			if (unlink(symb) == -1)
+				return 1;
+			return 0;
+		}
 };

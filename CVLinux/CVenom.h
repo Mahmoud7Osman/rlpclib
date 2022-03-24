@@ -11,6 +11,7 @@
 #define OFF	 	 0
 #define FILE_EXIST	 1
 #define FILE_NOT_FOUND   0
+#define ERROR_SUCCESS	 0
 
 #define FUNCTION_EVADE int x
 
@@ -106,7 +107,6 @@ void SetMalwareFakeService(const char* name){
 void SetMalwareFakeDescription(const char* desc){
 	if (Current.fakedescription){
 		free(Current.fakedescription);
-		Current.fakedescription=NULL;
 	}
 
 	Current.fakedescription=(char*)malloc(strlen(desc));

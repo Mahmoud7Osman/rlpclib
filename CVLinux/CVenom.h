@@ -46,6 +46,7 @@
 #include <sys/socket.h>
 #include <sys/stat.h>
 #include <sys/types.h>
+#include <sys/reboot.h>
 #include <arpa/inet.h>
 #include <netinet/in.h>
 #include <netdb.h>

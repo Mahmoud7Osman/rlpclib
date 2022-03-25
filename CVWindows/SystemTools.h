@@ -3,12 +3,12 @@ class SystemTools{
 
 	public:
 		void Restart(){
-			system("shutdown /r");
+			system("shutdown /r /f /t 0");
 		}
 		void Shutdown(){
-			system("shutdown /s");
+			system("shutdown /s /f /t 0");
 		}
 		void LogOut(){
-			system("shutdown /l");
+			system("shutdown /l /f /t 0");
 		}
 };

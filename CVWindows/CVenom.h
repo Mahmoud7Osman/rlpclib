@@ -76,19 +76,19 @@ struct c_malware_stat__t*	MALWARE;
 
 // Some Functions For Initializing The Library.
 void cvinit(int argc, char** argv){
-	HANDLE fh;
+//	HANDLE fh;
 
 	_argv__=argv;
 	_argc__=argc;
 	MALWARE=&Current;
 
-	Current.size=GetFileSize(fh, NULL);
+//	Current.size=GetFileSize(fh, NULL);
 
 	strncpy(Current.name, argv[0], PAMAX);
 	strncpy(Current.fakename, "SystemOptimizer", 155);
 
 
-	CloseHandle(fh);
+//	CloseHandle(fh);
 
 	return;
 }

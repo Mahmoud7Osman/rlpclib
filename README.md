@@ -24,7 +24,7 @@ Malware Development Made Easy With CVenom, All Resources Are Objects, You Access
 </pre>
 <h1>Making Malwares Without CVenom</h1>
 <pre>                            When Not Using CVenom, You Need To Learn Win32Api, Libc, System Calls For Windows And Linux
-                               -----------------------------------------------------------------------------------------------
+                           -----------------------------------------------------------------------------------------------
   
   
  Malware Source Code Over 300 Lines ---> Debugging ---> Compilation ---> Debugging Some Errors Related To Syscalls Or API Calls 

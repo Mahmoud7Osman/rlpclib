@@ -36,7 +36,8 @@ Malware Development Made Easy With CVenom, All Resources Are Objects, You Access
          <li><a href="#usbtoolsapi">USBTools API</a></li>
          <li><a href="#infectiontoolsapi">InfectionTools API</a></li>
 </ul>
-<h1>Initializing Malware</h1>
+<h1 id="smip">Initializing Malware</h1>
+<p>Using ```cvinit(MALWARE_INIT)``` Always To Initialize Malware, Allocate Data For Malware Data Structure (aka <strong>struct c_malware_stat_t</strong>)</p>
 
 <pre>#include &ltCVenom.h&gt
 int main(MALWARE_ENTRY){

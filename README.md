@@ -41,10 +41,11 @@ Malware Development Made Easy With CVenom, All Resources Are Objects, You Access
 #include <CVenom.h>
 
 int main(MALWARE_ENTRY){
+
          cvinit(MALWARE_INIT);
          
          // Your Malware Source Code Goes Here
          
          cvexit(MALWARE_EXIT);
-}
-</pre>
+
+}</pre>

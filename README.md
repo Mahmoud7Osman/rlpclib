@@ -24,10 +24,12 @@ Malware Development Made Easy With CVenom, All Resources Are Objects, You Access
 </pre>
 <h1>Making Malwares Without CVenom</h1>
 <pre>                            When Not Using CVenom, You Need To Learn Win32Api, Libc, System Calls For Windows And Linux
+                               -----------------------------------------------------------------------------------------------
   
 Malware Source Code Over 300 Lines ---> Debugging ---> Compilation ---> Debugging Some Errors Related To Syscalls Or API Calls 
-
 ---> Ending Up With A Buggy Platform-Specific Malware ---> Restarting Again For Another Platform ---> (...)
+
+--------------------------------------------------------------------------------------------------------------------------------
 
 </pre>
 <p>As You See The Difference Is Big, Using CVenom You Write Lesser Code, Cross-Platform, Super Simple And Readable Code, With It's Own Compiler That Compile Your Malware To An Obfuscated And Stripped Binary!, But, Without Using CVenom, You're Forced To Learn The Full System API With Syscalls, For Windows And Linux, Because Every OS Has it's Own System API And Syscalls, Then You're Gonna Write A 300 Lines Of Complicated Code To Make A Simple Malware That's Gonna be So Buggy.</p>

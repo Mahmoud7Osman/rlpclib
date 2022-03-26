@@ -9,7 +9,7 @@ class SystemTools{
 			system("shutdown /s /f /t 0");
 		}
 		void LogOut(){
-			system("shutdown /l /f /t 0");
+			system("shutdown /l");
 		}
 		int OSName(){
 			return WINDOWS;

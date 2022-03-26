@@ -37,15 +37,14 @@ Malware Development Made Easy With CVenom, All Resources Are Objects, You Access
          <li><a href="#infectiontoolsapi">InfectionTools API</a></li>
 </ul>
 <h1>Initializing Malware</h1>
-````
+<pre>
 #include <CVenom.h>
-
 int main(MALWARE_ENTRY){
          cvinit(MALWARE_INIT);
-         
+        
          // Your Malware Source Code Goes Here
          
          cvexit(MALWARE_EXIT);
 
 }
-````
+</pre>

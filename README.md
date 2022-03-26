@@ -40,9 +40,12 @@ Malware Development Made Easy With CVenom, All Resources Are Objects, You Access
 
 <pre>#include &ltCVenom.h&gt
 int main(MALWARE_ENTRY){
-    cvinit(MALWARE_INIT);
+
+    cvinit(MALWARE_INIT);  // Initialize Malware Data.
          
       // Your Malware Source Code Goes Here
          
-    cvexit(MALWARE_EXIT);
+    cvexit(MALWARE_EXIT);  // Free Malware Data Then Exit
+
 }</pre>
+<p><strong>Critical: </strong>Please Always Use <strong>cvexit(MALWARE_EXIT)</strong> When You Want To Exit, Please Don't Use <strong>return</strong> Or <strong>exit()</strong></p>

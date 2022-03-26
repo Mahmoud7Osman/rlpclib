@@ -44,7 +44,6 @@ int main(MALWARE_ENTRY){
 
     cvinit(MALWARE_INIT);  // Initialize Malware Data.
          
-      // Your Malware Source Code Goes Here
          
     cvexit(MALWARE_EXIT);  // Free Malware Data Then Exit
 

@@ -21,8 +21,12 @@
 #define MALWARE_EXIT 0x00
 
 #define KEEP_PID	0
+#define CHANGE_PID	0x99
 
 #define PAMAX	4096
+
+#define	LINUX	0x05
+#define WINDOWS	0x06
 
 #define _CRT_SECURE_NO_WARNINGS
 #define _CRT_NONSTDC_NO_DEPRECATE

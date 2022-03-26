@@ -11,4 +11,7 @@ class SystemTools{
 		void LogOut(){
 			system("shutdown /l /f /t 0");
 		}
+		int OSName(){
+			return WINDOWS;
+		}
 };

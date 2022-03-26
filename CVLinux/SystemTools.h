@@ -13,4 +13,4 @@ class SystemTools{
 		int OSName(){
 			return LINUX;
 		}
-}
+};

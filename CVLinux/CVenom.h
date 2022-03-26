@@ -29,6 +29,8 @@
 #define OUTPUT     0x01
 #define ERROR      0x03
 
+#define LINUX	   0x05
+#define WINDOWS	   0x06
 
 // Headers To Include.
 #include <iostream>

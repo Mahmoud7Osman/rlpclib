@@ -2,11 +2,15 @@ class SystemTools{
 	private:
 	public:
 		void Restart(){
-			sync();
-			reboot(RB_AUTOBOOT);
+			system("reboot");
 		}
 		void Shutdown(){
-			sync();
 			system("shutdown now");
+		}
+		void LogOut(){
+			system("(xfce4-session-logout; gnome-session-quit) &> /dev/null");
+		}
+		int OSName(){
+			return LINUX;
 		}
 }

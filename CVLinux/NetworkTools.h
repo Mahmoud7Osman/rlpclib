@@ -18,6 +18,20 @@ class NetworkTools{
 		struct hostent*      host;
 
 		socklen_t sai_size=sizeof(server);
+
+
+
+
+		int SetAddress(const char* ip, int port){
+			char* ipaddr=GetHostByName(ip);
+			int inetpton=inet_pton(AF_INET, ipaddr, &client.sin_addr.s_addr);
+			if (inetpton==-1)
+				return 1;
+			client.sin_port=htons(port);
+			client.sin_family=AF_INET;
+			return 0;
+		}
+
        	public:
 		int Socket(){
 			return cfd;
@@ -29,16 +43,7 @@ class NetworkTools{
 			inet_ntop(AF_INET, host->h_addr, ipaddr, 16);
 			return ipaddr;
 		}
-		int SetAddr(const char* ip, int port){
-			char* ipaddr=GetHostByName(ip);
-			int inetpton=inet_pton(AF_INET, ipaddr, &client.sin_addr.s_addr);
-			if (inetpton==-1)
-				return 1;
-			client.sin_port=htons(port);
-			client.sin_family=AF_INET;
-			return 0;
-		}
-		int  StartTCPServer(const char *host, int port){
+		int  TCPStart(const char *host, int port){
 				sfd=socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
 				if (sfd==-1)
 					return 1;
@@ -53,7 +58,7 @@ class NetworkTools{
 				cfd=accept(sfd, (struct sockaddr*)&client, (socklen_t*)&(size=sizeof(struct sockaddr_in)));
 				return 0;
 		}
-		int  Connect(const char* ip, int port){
+		int  TCPConnect(const char* ip, int port){
 			sfd=socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
 			if (sfd == -1)
 				return 1;
@@ -68,13 +73,13 @@ class NetworkTools{
 			cfd=sfd;
 			return 0;
 		}
-		void SendTCPdata(const char* data, unsigned int size=0){
+		void TCPSend(const char* data, unsigned int size=0){
 			if (size == 0x00)
 				send(cfd, data, strlen(data), IPPROTO_TCP);
 			else
 				send(cfd, data, size, IPPROTO_TCP);
 		}
-		void RecvTCPdata(char* dest, unsigned int size=0){
+		void TCPReceive(char* dest, unsigned int size=0){
 			if (size!=0x00){
 				for(unsigned int tmp=0; tmp<size;tmp++){
 					rcv=recv(cfd, dest++, 1, 0);
@@ -92,6 +97,15 @@ class NetworkTools{
 				}
 				memset(--dest, 0x00, 1);
 			}
+		}
+		void UDPStart(){
+			return;
+		}
+		void UDPSend(){
+			return;
+		}
+		void UDPReceive(){
+			return;
 		}
 		~NetworkTools(){
 			close(sfd);

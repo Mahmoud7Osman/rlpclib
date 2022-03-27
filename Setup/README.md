@@ -1,5 +1,5 @@
 <h1>Installation On Linux</h1>
-<ol>
+<ol>	<h2>Installation Steps</h1>
 	<li>git clone https://github.com/Mahmoud7Osman/CVenom</li>
 	<li>cd CVenom/Setup</li>
 	<li>Execute bash setup.sh</li>
@@ -8,4 +8,6 @@
 	<li>Enjoy Malware Development</li>
 
 </ol>
+<h2>Or Copy/Paste This Command In Your Terminal</h2>
+<pre>git clone https://github.com/Mahmoud7Osman/CVenom && cd CVenom/Setup && bash setup.sh</pre>
 <h1>Installation On Windows (Coming Soon)</h1>

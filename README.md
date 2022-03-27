@@ -4,7 +4,7 @@ Where The Simplicity Become Dangerous ...
          A True Cross-Platform Malware Development Kit
 </pre>
 <ul>
-         <li><a href="#installation">Installation</a></li>
+         <li><a href="/CVenom/blob/main/Setup/README.md">Installation</a></li>
          <li><a href="#documentation">Documentation</a></li>
          <li><a href="https://www.youtube.com/c/TheDoctorMLT">Learn CVenom By Watching 4 Minutes Videos</a></li>
          <li><a href="https://t.me/MahmoudOsman0">Wanna Collaborate To CVenom ?</li>
@@ -14,7 +14,6 @@ Where The Simplicity Become Dangerous ...
 
 <h3>Cross-Platform OOP Based Malware Development</h3>
 Malware Development Made Easy With CVenom, All Resources Are Objects, You Access The Hard Disk By Using The DiskTools Class, `Disk.FileCorrupt("file.txt")` as an Example will corrupt the file.txt And So On...Read The <a href="#documentation">Documentation</a> To Learn How To Start Developing Malwares With CVenom Or Watch Short Videos <a href="https://www.youtube.com/c/TheDoctorMLT">Right There</a>. (Although, CVenom Don't Needs A Documentation, It's Easier Than Python!.)
-<h1>Installation On Linux (Kali, Ubuntu, ...)</h1>
 
 <h1 id="documentation">CVenom's Official Documentation</h1>
 <p>When Malware Development Become Available For Everyone, <em><b>No System Is Secure With The Existence Of CVenom</b></em></p>

@@ -40,11 +40,6 @@ class RuntimeTools{
 		void CriticalProcess(){
 			return;
 		}
-		int Privileges(){
-			if (geteuid() != 0)
-				return USER;
-			return ADMIN;
-		}
 		void Restart(int rstat=0x00){
 			char* arg[]={Current.name, NULL};
 			if (tmp)

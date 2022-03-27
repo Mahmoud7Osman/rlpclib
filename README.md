@@ -4,7 +4,7 @@ Where The Simplicity Become Dangerous ...
          A True Cross-Platform Malware Development Kit
 </pre>
 <ul>
-         <li><a href="/CVenom/blob/main/Setup/README.md">Installation</a></li>
+         <li><a href="/Setup/README.md">Installation</a></li>
          <li><a href="#documentation">Documentation</a></li>
          <li><a href="https://www.youtube.com/c/TheDoctorMLT">Learn CVenom By Watching 4 Minutes Videos</a></li>
          <li><a href="https://t.me/MahmoudOsman0">Wanna Collaborate To CVenom ?</li>

@@ -14,10 +14,10 @@ class RuntimeTools{
 			if (sid<0)exit(0);
 			if (sid>0);
 		}
-		pid_t Pid(){
+		pid_t ProcessID(){
 			return getpid();
 		}
-		char* Pwd(){
+		char* CurrentDirectory(){
 			if (tmp){
 				free(tmp);
 				tmp=NULL;
@@ -25,7 +25,7 @@ class RuntimeTools{
 			tmp=(char*)malloc(PAMAX);
 			return getcwd(tmp, PAMAX);
 		}
-		int ChangeDir(const char* path){
+		int ChangeDirectory(const char* path){
 			if (chdir(path))
 				return 1;
 			return 0;
@@ -39,6 +39,11 @@ class RuntimeTools{
 
 		void CriticalProcess(){
 			return;
+		}
+		int Privileges(){
+			if (geteuid() != 0)
+				return USER;
+			return ADMIN;
 		}
 		void Restart(int rstat=0x00){
 			char* arg[]={Current.name, NULL};

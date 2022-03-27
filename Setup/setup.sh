@@ -2,7 +2,7 @@
 
 printf "> Installing CVenom..."
 
-if [ ! -d "Compiler" ];
+if [ ! -d "Compiler" ];then
 	cd ..
 fi
 

@@ -66,6 +66,7 @@ int main(MALWARE_ENTRY){
 <pre>#include &ltCVenom.h&gt
 
 int main(MAlWARE_ENTRY){
+
          cvinit(MALWARE_INIT);
          
          printf("%d\n", Current.size);    // Print The Current Malware File Size.

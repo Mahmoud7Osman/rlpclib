@@ -1,5 +1,5 @@
 <h1>Installation On Linux</h1>
-<p>Copy Then Paste This Command On Your Terminal</p>
+<p>Copy Then Paste This Command In Your Terminal</p>
 <pre>git clone https://github.com/Mahmoud7Osman/CVenom && cd CVenom/Setup/ && bash setup.sh</pre>
 
 <h1>Installation On Windows (Coming Soon)</h1>

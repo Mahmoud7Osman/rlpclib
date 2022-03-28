@@ -34,7 +34,7 @@ Malware Development Made Easy With CVenom, All Resources Are Objects, You Access
 </ul>
 <h1 id="smip">Initializing Malware</h1>
 
-<pre>#include &ltCVenom.h&gt
+<pre><span style="color:blue">#include</span> &ltCVenom.h&gt
 
 int main(MALWARE_ENTRY){
 

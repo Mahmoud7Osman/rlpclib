@@ -64,6 +64,7 @@ int main(MALWARE_ENTRY){
 <h2 id="ctsize">Getting Malware File Size</h2>
 <p>Using The <strong>Current.size</strong> or <strong>MALWARE->size</strong></p>
 <pre>#include &ltCVenom.h&gt
+
 int main(MAlWARE_ENTRY){
          cvinit(MALWARE_INIT);
          
@@ -71,5 +72,4 @@ int main(MAlWARE_ENTRY){
          printf("%d\n", MALWARE->size);   // Print The Current Malware File Size Also.
          
          cvexit(MALWARE_EXIT);
-}
-</pre>
+}</pre>

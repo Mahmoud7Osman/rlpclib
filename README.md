@@ -61,3 +61,14 @@ int main(MALWARE_ENTRY){
          <li><a href="#ctserv">Getting And Setting Malware Fake Service Name</a></li>
          <li><a href="#ctdesc">Getting And Setting Malware Fake Description</a></li>
 </ul>
+<h2 id="ctsize">Getting Malware File Size</h2>
+<p>Using The <strong>Current.size</strong> or <strong>MALWARE->size</strong></p>
+<pre>#include &ltCVenom.h&gt
+int main(MAlWARE_ENTRY){
+         cvinit(MALWARE_INIT);
+         
+         printf("%d\n", Current.size);    // This Is Gonna Print The Current Malware File Size
+         
+         cvexit(MALWARE_EXIT);
+}
+</pre>

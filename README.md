@@ -14,7 +14,11 @@ Where The Simplicity Become Dangerous ...
 
 <h3>Cross-Platform OOP Based Malware Development</h3>
 Malware Development Made Easy With CVenom, All Resources Are Objects, You Access The Hard Disk By Using The DiskTools Class, `Disk.FileCorrupt("file.txt")` as an Example will corrupt the file.txt And So On...Read The <a href="#documentation">Documentation</a> To Learn How To Start Developing Malwares With CVenom Or Watch Short Videos <a href="https://www.youtube.com/c/TheDoctorMLT">Right There</a>. (Although, CVenom Don't Needs A Documentation, It's Easier Than Python!.)
-
+<h1>Requirements</h1>
+<ul>
+         <li>Intermediate Skills In C++</li>
+         <li>Some Knowledge About Hacking</li>
+</ul>
 <h1 id="documentation">CVenom's Official Documentation</h1>
 <p>When Malware Development Become Available For Everyone, <em><b>No System Is Secure With The Existence Of CVenom</b></em></p>
 <ul>

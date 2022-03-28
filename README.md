@@ -52,3 +52,12 @@ int main(MALWARE_ENTRY){
 <pre>$ cvg++ malware.cpp target=linux</pre>
 <h5>Compiling Malware For Windows</h5>
 <pre>$ cvg++ malware.cpp target=windows</pre>
+<h1>Using Malware Information In Malware Development</h1>
+<p>Informations Like Malware Path, Size, Privileges, Fake Service And Fake Description About The Malware.</p>
+<ul>
+         <li><a href="#ctsize">Getting Malware File Size</a></li>
+         <li><a href="#ctpath">Getting Malware File Path</a></li>
+         <li><a href="#ctpriv">Getting Malware Current Privileges</a></li>
+         <li><a href="#ctserv">Getting And Setting Malware Fake Service Name</a></li>
+         <li><a href="#ctdesc">Getting And Setting Malware Fake Description</a></li>
+</ul>

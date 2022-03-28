@@ -47,6 +47,8 @@ int main(MALWARE_ENTRY){
 <p>This Is How You Initialize A Malware For Further Malware Development</p>
 <p><strong>Info: </strong>Please Always Use <strong>cvexit(MALWARE_EXIT)</strong> When You Want To Exit, Please Don't Use <strong>return</strong> Or <strong>exit()</strong></p>
 <h3>Compiling Malware</h3>
-<p>Using CVenom's Compiler <strong>cvg++</strong> To Compile Malwares, This Compiler Will Automate Malware Cross-Compilation For You With Binary Strip And The Like, </p>
+<p>Using CVenom's Compiler <strong>cvg++</strong> To Compile Malwares, This Compiler Will Automate Malware Cross-Compilation For You With Binary Strip And The Like </p>
+<h5>Compiling Malware For Linux</h5>
 <pre>$ cvg++ malware.cpp target=linux</pre>
+<h5>Compiling Malware For Windows</h5>
 <pre>$ cvg++ malware.cpp target=windows</pre>

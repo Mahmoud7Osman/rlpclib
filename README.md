@@ -67,7 +67,8 @@ int main(MALWARE_ENTRY){
 int main(MAlWARE_ENTRY){
          cvinit(MALWARE_INIT);
          
-         printf("%d\n", Current.size);    // This Is Gonna Print The Current Malware File Size
+         printf("%d\n", Current.size);    // Print The Current Malware File Size.
+         printf("%d\n", MALWARE->size);   // Print The Current Malware File Size Also.
          
          cvexit(MALWARE_EXIT);
 }

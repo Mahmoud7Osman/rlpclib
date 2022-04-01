@@ -28,9 +28,10 @@
 #define	LINUX	0x05
 #define WINDOWS	0x06
 
-#define _CRT_SECURE_NO_WARNINGS
-#define _CRT_NONSTDC_NO_DEPRECATE
-#define WIN32_LEAN_AND_MEAN
+
+//#define _CRT_SECURE_NO_WARNINGS
+//#define _CRT_NONSTDC_NO_DEPRECATE
+//#define WIN32_LEAN_AND_MEAN
 
 // Headers To Include
 #include <iostream>
@@ -42,6 +43,7 @@
 #include <thread>
 
 #include <winsock2.h>
+#include <ws2tcpip.h>
 #include <psapi.h>
 #include <signal.h>
 #include <shellapi.h>

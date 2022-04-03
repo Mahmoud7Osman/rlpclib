@@ -10,6 +10,7 @@ Where The Simplicity Become Dangerous ...
          <li><a href="https://t.me/MahmoudOsman0">Wanna Collaborate To CVenom ?</li>
 </ul>
 <h4>Right Now I Am Making The Networking And Remote Data Transfer API, After That, The Kit's Core will be ready to develop malwares.</h4>
+<h3>Planning To Turn CVenom Into an Independent Programming Language Designed For Malware Development</h3>
 <p>C/C++ Are Absolutely The Best Languages To Develop Malwares, Advanced, And Undetectable, Hardware I/O Access, As You Know, C/C++ Codes, API Calls, Library Calls, System Calls Differ Between Linux And Windows, So, <strong>That's Why We Created CVenom</strong></p>
 
 <h3>Cross-Platform OOP Based Malware Development</h3>

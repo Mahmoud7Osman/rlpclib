@@ -1,12 +1,11 @@
 #include "../CVenom.h"
-#include "../NetworkTools.h"
+#include "../ObfuscationTools.h"
 
 int main(MALWARE_ENTRY){
 	cvinit(MALWARE_INIT);
 
-	NetworkTools	Router;
-
-	printf("%s\n", Router.GetHostByName("127.0.0.1"));
-
+	ObfuscationTools	Obfuscator;
+	Obfuscator.ObfuscateExecution();
+	printf("%d\n", __DATE__);
 	cvexit(MALWARE_EXIT);
 }

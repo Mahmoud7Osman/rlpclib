@@ -43,10 +43,10 @@ class NetworkTools{
 				return 1;
 			return 0;
 		}
-		int TCPSend(){
+		int TCPSend(const char* data){
 			return 0;
 		}
-		int TCPReceive(){
+		int TCPReceive(char* dest, unsigned int size=0){
 			return 0;
 		}
 

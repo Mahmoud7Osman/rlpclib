@@ -35,10 +35,9 @@ sleep 1
 sudo apt install gcc-mingw-w64-x86-64 g++-mingw-w64-x86-64 gcc-mingw-w64 g++-mingw-w64 clang gcc g++ -y
 printf "> Compilers And Stripers Successfully Installed\n"
 sleep 5
-clear
 printf "PROFESSIONAL MALWARE DEVELOPERS USES CVENOM - WANNA BE A PROFESSIONAL MALWARE DEVELOPER?\n\n"
 
-printf "Warning: Please Do Not Use This MDK For Illegal Actions, We Are Not Responsible\n"
+printf "Warning: Please Do Not Use This MDK For Illegal Actions\n"
 sleep 1
 printf "Learn CVenom By Reading Documentations Right There: https://github.com/Mahmoud7Osman/CVenom#documentation\nLearn CVenom By Watching 4 Minutes Videos Right There: https://youtube.com/c/TheDoctorMLT\n"
 

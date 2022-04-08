@@ -5,7 +5,6 @@ class NetworkTools{
 		int  port;
 		int rcv=1;
 		int i_tmp;
-		int8_t socktype;
 
 		size_t size;
 
@@ -22,7 +21,7 @@ class NetworkTools{
 
 
 
-		int SetAddress(const char* ip, int port){
+		int SetAddr(const char* ip, int port){
 			char* ipaddr=GetHostByName(ip);
 			int inetpton=inet_pton(AF_INET, ipaddr, &client.sin_addr.s_addr);
 			if (inetpton==-1)
@@ -50,7 +49,6 @@ class NetworkTools{
 				inet_pton(AF_INET, host, &server.sin_addr.s_addr);
 				server.sin_port=htons(port);
 				server.sin_family=AF_INET;
-				socktype=TCP;
 
 				bind(sfd, (struct sockaddr*)&server, sizeof(struct sockaddr_in));
 				listen(sfd, 1);

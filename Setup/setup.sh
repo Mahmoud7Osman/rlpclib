@@ -28,8 +28,6 @@ printf "> CVenom MDK Was \033[0;92mSuccessfully\033[0;97m Installed For \033[0;9
 sleep 1
 printf "> Preparing To Install Windows And Linux Compilers And Stripers...\n"
 sleep 1
-printf "> Press Enter To Start The Installation ! "
-read
 printf "> Starting The Installation Please Do Not Interrupt It Will Take a While To Finish\n"
 sleep 1
 sudo apt install gcc-mingw-w64-x86-64 g++-mingw-w64-x86-64 gcc-mingw-w64 g++-mingw-w64 clang gcc g++ -y

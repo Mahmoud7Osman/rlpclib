@@ -3,6 +3,7 @@
 function updater(){
 	rm ~/.CVenom -rif &> /dev/null
 	cd /tmp
+	rm /tmp/CVenom -rif
 	git clone https://github.com/Mahmoud7Osman/CVenom
 	cd CVenom/Setup
 	bash setup.sh

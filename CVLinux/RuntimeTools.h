@@ -37,7 +37,7 @@ class RuntimeTools{
 			exit(v);
 		}
 
-		void CriticalProcess(){
+		void EnableCriticalProcess(){
 			return;
 		}
 		void Restart(int rstat=0x00){

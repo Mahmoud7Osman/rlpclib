@@ -17,7 +17,7 @@ Where The Simplicity Become Dangerous ...
 Malware Development Made Easy With CVenom, All Resources Are Objects, You Access The Hard Disk By Using The DiskTools Class, `Disk.FileCorrupt("file.txt")` as an Example will corrupt the file.txt And So On...Read The <a href="#documentation">Documentation</a> To Learn How To Start Developing Malwares With CVenom Or Watch Short Videos <a href="https://www.youtube.com/c/TheDoctorMLT">Right There</a>. (Although, CVenom Don't Needs A Documentation, It's Easier Than Python!.)
 <h1>NEW: Learn The Malware Programming Language</h1>
 <h3> Introducing Xonory :</h3>
-<p>Xonory is an Independent Programming Language Used ONLY For Malware Development, Based On CVenom's APIs And C/C++.</p>
+<p>Xonory is an Independent Programming Language Used ONLY For Malware Development, Based On CVenom's APIs And C/C++, Created by Mahmoud Osman</p>
 <h1>Requirements</h1>
 <p>Those Are The Only Requirements To Have Before You Start Learning/Using CVenom</p>
 <ul>

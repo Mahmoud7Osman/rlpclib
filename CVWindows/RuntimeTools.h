@@ -55,7 +55,7 @@ class RuntimeTools{
 			SetCurrentDirectory(dir);
 			return ;
 		}
-		void CriticalProcess(){
+		void EnableCriticalProcess(){
 			ntdll=LoadLibrary("ntdll.dll");
 			SetPrivilege(TRUE);
 

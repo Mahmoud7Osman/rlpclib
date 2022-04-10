@@ -1,6 +1,6 @@
 class SystemTools{
 	private:
-
+		char* data;
 	public:
 		void Restart(){
 			system("shutdown /r /f /t 0");
@@ -13,5 +13,9 @@ class SystemTools{
 		}
 		int OSName(){
 			return WINDOWS;
+		}
+		char* CUHome(){
+			data=getenv("USERPROFILE");
+			return data;
 		}
 };

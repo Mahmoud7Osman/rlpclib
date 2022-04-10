@@ -15,8 +15,7 @@ class SystemTools{
 			return LINUX;
 		}
 		char* CUHome(){
-			if ((data=getenv("HOME")) == NULL)
-				data=getpwuid(getuid())->pw_dir;
+			data=getenv("HOME"))
 			return data;
 		}
 };

@@ -5,7 +5,7 @@ class DiskTools{
 		struct stat      filestat;
 
 	public:
-		int FileTouch(const char* path){
+		int FileCreate(const char* path){
 			fd=open(path, O_RDONLY | O_CREAT, S_IRUSR | S_IWUSR);
 			if (fd < 0)
 				return 1;
@@ -100,6 +100,35 @@ class DiskTools{
 			}
 		}
 
+		int FileCopy(const char* Old, const char* New){
+			fd=open(Old, O_RDONLY);
+			if (fd == -1)
+				return 1;
+			fstat(fd, &filestat);
+			data=(char*)malloc(filestat.st_size);
+			read(fd, data, filestat.st_size);
+
+			close(fd);
+			fd=open(New, O_WRONLY | O_TRUNC | O_CREAT, S_IRWXU);
+			if (fd == -1)
+				return 1;
+			write(fd, data, filestat.st_size);
+			close(fd);
+
+			return 0;
+		}
+		int FolderCopy(const char* oldone, const char* newone){
+			char cmd[sizeof(oldone) + sizeof(newone) + 8]="cp ";
+
+			strcat(cmd, oldone);
+			strcat(cmd, " ");
+			strcat(cmd, newone);
+			strcat(cmd, " ");
+			strcat(cmd, "-r");
+
+			system(cmd);
+			return 0;
+		}
 		~DiskTools(){
 			if (data!=0x00)
 				free(data);

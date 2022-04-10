@@ -15,7 +15,7 @@ class SystemTools{
 			return LINUX;
 		}
 		char* CUHome(){
-			data=getenv("HOME"))
+			data=getenv("HOME");
 			return data;
 		}
 };

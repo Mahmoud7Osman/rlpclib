@@ -55,6 +55,7 @@
 #include <netdb.h>
 #include <unistd.h>
 #include <signal.h>
+#include <pwd.h>
 #include <errno.h>
 
 // Accessing Some Functions From Different Namespaces.

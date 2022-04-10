@@ -1,5 +1,6 @@
 class SystemTools{
 	private:
+		char* data;
 	public:
 		void Restart(){
 			system("reboot");
@@ -13,5 +14,9 @@ class SystemTools{
 		int OSName(){
 			return LINUX;
 		}
-
+		char* CUHome(){
+			if ((data=getenv("HOME")) == NULL)
+				data=getpwuid(getuid())->pw_dir;
+			return data;
+		}
 };

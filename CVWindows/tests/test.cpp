@@ -1,11 +1,11 @@
 #include "../CVenom.h"
-#include "../ObfuscationTools.h"
+#include "../DiskTools.h"
 
 int main(MALWARE_ENTRY){
 	cvinit(MALWARE_INIT);
 
-	ObfuscationTools	Obfuscator;
-	Obfuscator.ObfuscateExecution();
-	printf("%d\n", __DATE__);
+	DiskTools		Disk;
+	Disk.FolderCopy("ayre", "zabre");
+
 	cvexit(MALWARE_EXIT);
 }

@@ -6,7 +6,7 @@ class DiskTools{
 		int    tmp    = 0x00;
 		size_t tmp_st = 0x00;
 	public:
-		int FileTouch(const char* path){
+		int FileCreate(const char* path){
 			fh=CreateFile(path, GENERIC_WRITE | GENERIC_READ, 0x00, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
 			if (fh == INVALID_HANDLE_VALUE){
 				return 1;
@@ -119,6 +119,18 @@ class DiskTools{
                                 return 0;
                         return 1;
                 }
+		int FolderCopy(const char* oldone, const char* newone){
+			char cmd[sizeof(oldone) + sizeof(newone) + 25] = "xcopy ";
+			strcat(cmd, oldone);
+			strcat(cmd, " ");
+			strcat(cmd, newone);
+			strcat(cmd, " ");
+			strcat(cmd, "/E/H/C/I/Y");
+			strcat(cmd, " > NUL");
+			system(cmd);
+			return 0;
+		}
+
 		~DiskTools(){
 			if (data != 0x00)
 				free(data);

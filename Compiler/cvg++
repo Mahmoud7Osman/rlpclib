@@ -41,14 +41,17 @@ set $1 $3 $4 $5 $6 $7 $8 $9 &> /dev/null
 if [ "$target" == "windows" ] || [ "$target" == "win64" ];then
 	export compiler="x86_64-w64-mingw32-g++"
 	export striper="x86_64-w64-mingw32-strip"
+	export add_opts="-lpsapi.h"
 	CVPath="CVWindows"
 elif [ "$target" == "win32" ];then
 	export compiler="i686-w64-mingw32-g++"
 	export striper="i686-w64-mingw32-strip"
+	export add_opts="-lpsapi.h"
 	CVPath="CVWindows"
 elif [ "$target" == "linux" ];then
 	export compiler="g++"
 	export striper="strip"
+	export add_opts=""
 	CVPath="CVLinux"
 elif [ "$target" == "mobile" ] || [ "$target" == "ios" ] || [ "$target" == "android" ];then
 	fatal "target OS is currently under preparation (compiling malwares for mobile phones)"; echo "compilation terminated."; exit 1;
@@ -69,5 +72,5 @@ done
 
 # Malware Compilation Section (For Windows And Linux, Android And iOS Aren't Currently Supported)
 
-$compiler -Wall -static -I ~/.CVenom/$CVPath/ -I ~/.CVenom/CTDynamic/ $@
+$compiler -Wall -static -I ~/.CVenom/$CVPath/ -I ~/.CVenom/CTDynamic/ $add_opts $@
 $striper $outputfile

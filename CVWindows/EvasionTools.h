@@ -50,11 +50,17 @@ class EvasionTools{
 			DeviceIoControl(hDevice, IOCTL_DISK_GET_DRIVE_GEOMETRY, NULL, 0, &pDiskGeometry, sizeof(pDiskGeometry), &bytesReturned, (LPOVERLAPPED)NULL);
 			DWORD diskSizeGB;
 			diskSizeGB = pDiskGeometry.Cylinders.QuadPart * (ULONG)pDiskGeometry.TracksPerCylinder * (ULONG)pDiskGeometry.SectorsPerTrack * (ULONG)pDiskGeometry.BytesPerSector / 1024 / 1024 / 1024;
-
+			DWORD runningProcessesIDs[1024];
+			DWORD runningProcessesCountBytes;
+			DWORD runningProcessesCount;
+			EnumProcesses(runningProcessesIDs, sizeof(runningProcessesIDs), &runningProcessesCountBytes);
+			runningProcessesCount = runningProcessesCountBytes / sizeof(DWORD);
 			RiskOfDetection = 0;
 			if ( CStat.dwNumberOfProcessors < 2 )       RiskOfDetection++;
 			if ( (MStat.ullTotalPhys/1024/1024) < 2048) RiskOfDetection++;
 			if ( diskSizeGB < 100 )                     RiskOfDetection++;
+			if (runningProcessesCount < 50)             RiskOfDetection++;
+
 
 			return RiskOfDetection;
 		}

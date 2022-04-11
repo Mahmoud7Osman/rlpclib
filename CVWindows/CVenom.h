@@ -48,7 +48,7 @@
 #include <signal.h>
 #include <shellapi.h>
 #include <windows.h>
-
+#include <winioctl.h>
 // Accessing Some Functions From Different Namespaces.
 using		std::string;
 using       	std::remove;

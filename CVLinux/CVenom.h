@@ -67,6 +67,7 @@ typedef void (*function)(int);
 typedef struct membuf{
         char*  data;
         size_t size;
+	int    location=0;
 }MemoryBuffer;
 struct  c_malware_stats__t{
 	char   	     name[PAMAX];

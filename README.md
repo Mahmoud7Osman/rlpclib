@@ -7,9 +7,8 @@ Where The Simplicity Become Dangerous ...
          <li><a href="/Setup/README.md">Installation</a></li>
          <li><a href="#documentation">Documentation</a></li>
          <li><a href="https://www.youtube.com/c/TheDoctorMLT">Learn CVenom By Watching 4 Minutes Videos</a></li>
-         <li><a href="https://t.me/MahmoudOsman0">Wanna Collaborate To CVenom ?</li>
+         <li><a href="https://t.me/MahmoudOsman0">Wanna Collaborate To CVenom ?</a></li>
 </ul>
-<h4>Right Now I Am Making The Networking And Remote Data Transfer API, After That, The Kit's Core will be ready to develop malwares.</h4>
 <h3>Check The <a href="https://github.com/Mahmoud7Osman/Xonory">Xonory Programming Language</a> A Programming Language Designed For Malware Development, Build Using C++ And CVenom</h3>
 <p>C/C++ Are Absolutely The Best Languages To Develop Malwares, Advanced, And Undetectable, Hardware I/O Access, As You Know, C/C++ Codes, API Calls, Library Calls, System Calls Differ Between Linux And Windows, So, <strong>That's Why We Created CVenom</strong></p>
 

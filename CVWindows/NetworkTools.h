@@ -1,19 +1,21 @@
 class NetworkTools{
 	private:
-		SOCKET 	sock;
+		SOCKET 	sh, ch;
 		SOCKET 	connection;
 		WSADATA	wsadata;
 
 		int  wsv=2;
-		int  tmp_i;
+		int  i_tmp=1;
 
 		char tmp_c;
 		char *ipaddr;
 
 		struct sockaddr_in  address;
-		struct sockaddr_in  tmp_sin;
+		struct sockaddr_in  client;
 		struct hostent*     host;
 		struct in_addr	    inaddr;
+
+		socklen_t sai_size=sizeof(struct sockaddr_in);
 
 		int SetAddr(char* addr, int port){
 			ipaddr=GetHostByName(addr);
@@ -26,7 +28,9 @@ class NetworkTools{
 		NetworkTools(){
 			WSAStartup(MAKEWORD(wsv, 0), &wsadata);
 		}
-
+		SOCKET Socket(){
+			return ch;
+		}
 		char* GetHostByName(const char* addr){
 			host=gethostbyname(addr);
 			memcpy(&inaddr, host->h_addr, sizeof(struct in_addr));
@@ -40,8 +44,21 @@ class NetworkTools{
 		}
 
 		int TCPListen(char* addr, int port){
-			sock=socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
-			if (sock == INVALID_SOCKET)
+			sh=socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+
+			if (sh == INVALID_SOCKET)
+				return 1;
+
+			setsockopt(sh, SOL_SOCKET, SO_REUSEADDR, &i_tmp, sizeof(int));
+
+			address.sin_family=AF_INET;
+			address.sin_port=htons(port);
+			address.sin_addr.s_addr = inet_addr(GetHostByName(addr));
+
+			bind(sh, (struct sockaddr*)&address, sizeof(struct sockaddr_in));
+
+			ch=accept(sh, (struct sockaddr*)&client, &sai_size);
+			if (ch == INVALID_SOCKET)
 				return 1;
 
 			return 0;

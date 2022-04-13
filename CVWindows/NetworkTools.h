@@ -108,7 +108,7 @@ class NetworkTools{
 			if (sh == INVALID_SOCKET)
 				return 1;
 			i_tmp=1;
-			setsockopt(sh, SOL_SOCKET, SO_REUSEADDR, &i_tmp, sizeof(int));
+			setsockopt(sh, SOL_SOCKET, SO_REUSEADDR, (const char*)&i_tmp, sizeof(int));
 
 			memset(&address, 0x00, sizeof(struct sockaddr_in));
 			address.sin_addr.s_addr = inet_addr(GetHostByName(addr));

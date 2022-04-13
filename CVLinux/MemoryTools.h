@@ -22,7 +22,7 @@ class MemoryTools{
 			if (!size)size=dst.size;
 			memcpy(dst.data, src, size);
 		}
-		void ZeroMemory(MemoryBuffer trg){
+		void ZeroOut(MemoryBuffer trg){
 			memset(trg.data, 0x00, trg.size);
 		}
 		char* GetReference(MemoryBuffer trg){

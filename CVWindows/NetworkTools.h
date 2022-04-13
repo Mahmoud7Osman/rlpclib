@@ -93,23 +93,34 @@ class NetworkTools{
 			return;
 		}
 		void TCPReceive(MemoryBuffer dest, unsigned int size=0){
+			memset(dest.data, 0x00, dest.size);
 			if(size==0)
 				size=dest.size;
-			for()
-				if (recv(ch, dest.data, 1, 0) <= 0)
+			for(i_tmp=0; i_tmp<=size; i_tmp++)
+				if (0 >= recv(ch, dest.data++, 1, 0))
+					break;
 
 			return;
 		}
 
 		int UDPStart(const char* addr, int port){
+			sh=socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
+			if (sh == INVALID_SOCKET)
+				return 1;
 
+			memset(&server, 0x00, sizeof(struct sockaddr_in));
+			server.sin_addr.s_addr = inet_addr(GetHostByName(addr));
+			server.sin_port = htons(port);
+			server.sin_family = AF_INET;
+
+			i_tmp=bind(sh, (struct sockaddr*)&server, sizeof(struct sockaddr_in));
+			if (i_tmp)
+				return i_tmp;
 
 			return 0;
 		}
-		void UDPSetEndpoint(const char* addr, int port){
-
-
-			return;
+		int UDPSetEndpoint(const char* addr, int port){
+			return SetAddr(addr, port);
 		}
 
 		~NetworkTools(){

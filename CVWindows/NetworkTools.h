@@ -15,7 +15,7 @@ class NetworkTools{
 
 		socklen_t sai_size=sizeof(struct sockaddr_in);
 
-		int SetAddr(char* addr, int port){
+		int SetAddr(const char* addr, int port){
 			ipaddr=GetHostByName(addr);
 			address.sin_addr.s_addr=inet_addr(ipaddr);
 			address.sin_family=AF_INET;
@@ -34,7 +34,7 @@ class NetworkTools{
 			memcpy(&inaddr, host->h_addr, sizeof(struct in_addr));
 
 			if (host == NULL)
-			return NULL;
+				return NULL;
 
 			ipaddr=inet_ntoa(inaddr);
 			memset(&inaddr, 0x00 ,sizeof(struct in_addr));
@@ -62,18 +62,36 @@ class NetworkTools{
 			return 0;
 		}
 		int TCPConnect(const char* addr, int port){
+			sh=socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+			if (sh == INVALID_SOCKET)
+				return 1;
 
+			i_tmp=SetAddr(addr, port);
+			if (i_tmp)
+				return i_tmp;
 
+			i_tmp=connect(sh, (struct sockaddr*)&client, sizeof(struct sockaddr_in));
+			if (i_tmp)
+				return i_tmp;
+
+			ch=sh;
 			return 0;
 		}
 		void TCPSend(const char* data, unsigned int size=0){
-
+			if (size=0)size=strlen(data);
+			send(ch, data, size, 0);
 
 			return;
 		}
-		void TCPReceive(char* dest, unsigned int size=0){
+		void TCPSend(MemoryBuffer data, unsigned int size=0){
+			if (size=0)size=data.size;
+			send(ch, data.data, size, 0);
 
-
+			return;
+		}
+		void TCPReceive(MemoryBuffer dest, unsigned int size=0){
+			if(size=0)size=dest.size;
+			recv(ch, dest.data, size, 0);
 			return;
 		}
 

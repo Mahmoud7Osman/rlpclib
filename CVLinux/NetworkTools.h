@@ -42,12 +42,12 @@ class NetworkTools{
 			inet_ntop(AF_INET, host->h_addr, ipaddr, 16);
 			return ipaddr;
 		}
-		int  TCPStart(const char *host, int port){
+		int  TCPListen(const char *host, int port){
 				sfd=socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
 				if (sfd==-1)
 					return 1;
 				setsockopt(sfd, SOL_SOCKET, SO_REUSEADDR, &i_tmp, sizeof(int));
-				inet_pton(AF_INET, host, &server.sin_addr.s_addr);
+				inet_pton(AF_INET, GetHostByName(host), &server.sin_addr.s_addr);
 				server.sin_port=htons(port);
 				server.sin_family=AF_INET;
 

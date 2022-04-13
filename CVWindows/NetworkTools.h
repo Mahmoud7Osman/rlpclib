@@ -17,7 +17,9 @@ class NetworkTools{
 
 		int SetAddr(char* addr, int port){
 			ipaddr=GetHostByName(addr);
-			address.sin_addr.s_addr=inet_addr(addr);
+			address.sin_addr.s_addr=inet_addr(ipaddr);
+			address.sin_family=AF_INET;
+			address.sin_port=htons(port);
 			return 0;
 		}
 	public:
@@ -41,15 +43,35 @@ class NetworkTools{
 			sock=socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
 			if (sock == INVALID_SOCKET)
 				return 1;
+
 			return 0;
 		}
-		int TCPSend(const char* data){
+		int TCPConnect(const char* addr, int port){
+
+
 			return 0;
 		}
-		int TCPReceive(char* dest, unsigned int size=0){
+		void TCPSend(const char* data, unsigned int size=0){
+
+
+			return 0;
+		}
+		void TCPReceive(char* dest, unsigned int size=0){
+
+
 			return 0;
 		}
 
+		int UDPStart(const char* addr, int port){
+
+
+			return 0;
+		}
+		void UDPSetEndpoint(const char* addr, int port){
+
+
+			return 0;
+		}
 
 		~NetworkTools(){
 			closesocket(sock);

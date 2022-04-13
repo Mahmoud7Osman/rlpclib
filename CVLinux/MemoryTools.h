@@ -22,6 +22,10 @@ class MemoryTools{
 			if (!size)size=dst.size;
 			memcpy(dst.data, src, size);
 		}
+		void CopyData(MemoryBuffer src, MemoryBuffer dst, size_t size=0){
+			if (!size)size=dst.size;
+			memcpy(dst.data, src.data, size);
+		}
 		void ZeroOut(MemoryBuffer trg){
 			memset(trg.data, 0x00, trg.size);
 		}

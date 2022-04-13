@@ -1,10 +1,8 @@
 class NetworkTools{
 	private:
 		SOCKET 	sh, ch;
-		SOCKET 	connection;
 		WSADATA	wsadata;
 
-		int  wsv=2;
 		int  i_tmp=1;
 
 		char tmp_c;
@@ -26,7 +24,7 @@ class NetworkTools{
 		}
 	public:
 		NetworkTools(){
-			WSAStartup(MAKEWORD(wsv, 0), &wsadata);
+			WSAStartup(MAKEWORD(2, 2), &wsadata);
 		}
 		SOCKET Socket(){
 			return ch;
@@ -43,20 +41,20 @@ class NetworkTools{
 			return ipaddr;
 		}
 
-		int TCPListen(char* addr, int port){
+		int TCPListen(const char* addr, int port){
 			sh=socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
 
 			if (sh == INVALID_SOCKET)
 				return 1;
 
-			setsockopt(sh, SOL_SOCKET, SO_REUSEADDR, &i_tmp, sizeof(int));
+			setsockopt(sh, SOL_SOCKET, SO_REUSEADDR,(const char*) &i_tmp, sizeof(int));
 
 			address.sin_family=AF_INET;
 			address.sin_port=htons(port);
 			address.sin_addr.s_addr = inet_addr(GetHostByName(addr));
 
 			bind(sh, (struct sockaddr*)&address, sizeof(struct sockaddr_in));
-
+			listen(sh, 1);
 			ch=accept(sh, (struct sockaddr*)&client, &sai_size);
 			if (ch == INVALID_SOCKET)
 				return 1;
@@ -71,12 +69,12 @@ class NetworkTools{
 		void TCPSend(const char* data, unsigned int size=0){
 
 
-			return 0;
+			return;
 		}
 		void TCPReceive(char* dest, unsigned int size=0){
 
 
-			return 0;
+			return;
 		}
 
 		int UDPStart(const char* addr, int port){
@@ -87,12 +85,12 @@ class NetworkTools{
 		void UDPSetEndpoint(const char* addr, int port){
 
 
-			return 0;
+			return;
 		}
 
 		~NetworkTools(){
-			closesocket(sock);
-			closesocket(connection);
+			closesocket(sh);
+			closesocket(ch);
 			WSACleanup();
 		}
 };

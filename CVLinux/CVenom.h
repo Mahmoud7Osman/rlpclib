@@ -64,7 +64,10 @@ using		std::string;
 using		   ::getpid;
 // Custom Data Types And Typedefs
 typedef void (*function)(int);
-
+typedef struct membuf{
+        char*  data;
+        size_t size;
+}MemoryBuffer;
 struct  c_malware_stats__t{
 	char   	     name[PAMAX];
 	char	     fakename[155];
@@ -75,7 +78,7 @@ struct  c_malware_stats__t{
 	size_t       size;
 };
 
-// Global Data For Some CVEnome's Functionalities.
+// Global Data For Some CVenome's Functionalities.
 char** 			_argv__;
 int    			_argc__;
 

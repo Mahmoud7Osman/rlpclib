@@ -61,7 +61,11 @@ typedef long (WINAPI* RtlSetProcessIsCritical)(
 			IN  BOOLEAN	bNew,
 			OUT BOOLEAN*	pbOld,
 			IN  BOOLEAN	bNeedScb);
-
+typedef struct membuf{
+        char*  data;
+        size_t size;
+	int location=0;
+}MemoryBuffer;
 
 struct c_malware_stat__t{
 	char	name[PAMAX];

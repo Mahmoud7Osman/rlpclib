@@ -7,6 +7,8 @@ class NetworkTools{
 
 		char tmp_c;
 		char *ipaddr;
+		char UDPType;
+		char isConnected='n';
 
 		struct sockaddr_in  address;
 		struct sockaddr_in  client;
@@ -42,7 +44,7 @@ class NetworkTools{
 			return ipaddr;
 		}
 
-		int TCPListen(const char* addr, int port){
+		int TCPServer(const char* addr, int port){
 			sh=socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
 
 			if (sh == INVALID_SOCKET)
@@ -52,7 +54,10 @@ class NetworkTools{
 
 			address.sin_family=AF_INET;
 			address.sin_port=htons(port);
-			address.sin_addr.s_addr = inet_addr(GetHostByName(addr));
+			if (*addr == '*')
+				address.sin_addr.s_addr=0;
+			else
+				address.sin_addr.s_addr = inet_addr(GetHostByName(addr));
 
 			bind(sh, (struct sockaddr*)&address, sizeof(struct sockaddr_in));
 			listen(sh, 10);
@@ -103,7 +108,7 @@ class NetworkTools{
 			return;
 		}
 
-		int UDPStart(const char* addr, int port){
+		int UDPServer(const char* addr, int port){
 			sh=socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
 			if (sh == INVALID_SOCKET)
 				return 1;
@@ -111,7 +116,11 @@ class NetworkTools{
 			setsockopt(sh, SOL_SOCKET, SO_REUSEADDR, (const char*)&i_tmp, sizeof(int));
 
 			memset(&address, 0x00, sizeof(struct sockaddr_in));
-			address.sin_addr.s_addr = inet_addr(GetHostByName(addr));
+			if (*addr == '*')
+				address.sin_addr.s_addr = 0;
+			else
+				address.sin_addr.s_addr = inet_addr(GetHostByName(addr));
+
 			address.sin_port = htons(port);
 			address.sin_family = AF_INET;
 
@@ -119,9 +128,18 @@ class NetworkTools{
 			if (i_tmp)
 				return i_tmp;
 
+			UDPType='s';
 			return 0;
 		}
 		int UDPSetEndpoint(const char* addr, int port){
+			if (UDPType != 's' && isConnected != 'y'){
+				sh=socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
+				if (sh == INVALID_SOCKET)
+					return 1;
+				ch=sh;
+				isConnected='y';
+				UDPType='c';
+			}
 			return SetAddr(addr, port);
 		}
 
@@ -137,6 +155,7 @@ class NetworkTools{
 
 		}
 		void UDPReceive(MemoryBuffer dst, unsigned int size=0){
+			memset(dst.data, 0x00, dst.size);
 			if (!size)
 				size=dst.size;
 			recvfrom(sh, dst.data, size, 0, (struct sockaddr*)&client, (int*)&sai_size);

@@ -11,6 +11,7 @@
 #define FILE_NOT_FOUND  0
 #define ON  		1
 #define OFF 		0
+#define ERROR           1
 #define ERROR_SUCCESS	0
 
 #define FUNCTION_EVADE int x

@@ -10,6 +10,8 @@ class NetworkTools{
 
 
 		char ipaddr[16];
+		char UDPType;
+		char isConnected='n';
 
 		struct sockaddr_in server;
 		struct sockaddr_in client;
@@ -42,7 +44,7 @@ class NetworkTools{
 			inet_ntop(AF_INET, host->h_addr, ipaddr, 16);
 			return ipaddr;
 		}
-		int  TCPListen(const char *host, int port){
+		int  TCPServer(const char *host, int port){
 				sfd=socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
 				if (sfd==-1)
 					return 1;
@@ -70,6 +72,7 @@ class NetworkTools{
 			if (i_tmp == -1)
 				return 1;
 			cfd=sfd;
+
 			return 0;
 		}
 		void TCPSend(const char* data, unsigned int size=0){
@@ -82,30 +85,13 @@ class NetworkTools{
 			if (size==0)size=src.size;
 			send(cfd, src.data, src.size, 0);
 		}
-		void TCPReceive(char* dest, unsigned int size=0){
-			if (size!=0x00){
-				for(unsigned int tmp=0; tmp<size;tmp++){
-					rcv=recv(cfd, dest++, 1, 0);
 
-					if (rcv==-1 || rcv==0){
-						memset(--dest, 0x00, 1);
-						return;
-					}
-				}
-				memset(dest, 0x00, 1);
-			}
-			else {
-				while (rcv!=0x00 && rcv!=-1){
-					rcv=recv(cfd, dest++, 1, 0);
-				}
-				memset(--dest, 0x00, 1);
-			}
-		}
 		void TCPReceive(MemoryBuffer dst, unsigned int size=0){
+			memset(dst.data, 0x00, dst.size);
 			if (size==0)size=dst.size;
 			recv(cfd, dst.data, dst.size, 0);
 		}
-		int UDPStart(const char* addr, int port){
+		int UDPServer(const char* addr, int port){
 			sfd=socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
 			if (sfd==-1)
 				return 1;
@@ -116,21 +102,29 @@ class NetworkTools{
 			server.sin_port = htons(port);
 			server.sin_family=AF_INET;
 
-			if (i_tmp == 1)
-				return i_tmp;
 			i_tmp=bind(sfd, (struct sockaddr*)&server, sizeof(struct sockaddr_in));
 			if (i_tmp == -1)
 				return 1;
+			UDPType='s';
+
 			return 0;
 		}
 		int UDPSetEndpoint(const char* addr, int port){
+			if (UDPType!='s' && isConnected != 'y'){
+				sfd=socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
+				if (sfd==-1)
+					return 1;
+				cfd=sfd;
+				UDPType='c';
+				isConnected='y';
+			}
 			return SetAddr(addr, port);
 		}
 
 		int UDPSend(const char* msg, unsigned int size=0){
 			if (size==0)
 				size=strlen(msg);
-			printf ("%d Bytes Sent\n", sendto(sfd, msg, size, 0, (struct sockaddr*) &client, sizeof(struct sockaddr_in)));
+			sendto(sfd, msg, size, 0, (struct sockaddr*)&client, sizeof(client));
 			return 0;
 		}
 
@@ -143,6 +137,7 @@ class NetworkTools{
 		}
 
                 int UDPReceive(MemoryBuffer msg, unsigned int size=0){
+			memset(msg.data, 0x00, msg.size);
                         if (size==0) size=msg.size;
 
                         recvfrom(sfd, msg.data, size, 0, (struct sockaddr*)&client, &sai_size);

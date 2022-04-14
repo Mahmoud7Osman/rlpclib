@@ -1,4 +1,4 @@
-class IOTools{
+class RedirectionTools{
 	private:
 		int tmp_i;
 	public:

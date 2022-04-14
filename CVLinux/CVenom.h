@@ -25,9 +25,9 @@
 #define KEEP_PID   0x00
 #define CHANGE_PID 0x99
 
-#define INPUT	   0x00
-#define OUTPUT     0x01
-#define ERROR      0x03
+#define STDIN	   0x00
+#define STDOUT     0x01
+#define STDERR     0x02
 
 #define LINUX	   0x05
 #define WINDOWS	   0x06

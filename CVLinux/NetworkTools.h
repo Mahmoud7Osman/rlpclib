@@ -49,7 +49,10 @@ class NetworkTools{
 				if (sfd==-1)
 					return 1;
 				setsockopt(sfd, SOL_SOCKET, SO_REUSEADDR, &i_tmp, sizeof(int));
-				inet_pton(AF_INET, GetHostByName(host), &server.sin_addr.s_addr);
+				if (*host == '*')
+					server.sin_addr.s_addr=INADDR_ANY;
+				else
+					inet_pton(AF_INET, GetHostByName(host), &server.sin_addr.s_addr);
 				server.sin_port=htons(port);
 				server.sin_family=AF_INET;
 
@@ -97,8 +100,10 @@ class NetworkTools{
 				return 1;
 			cfd=sfd;
 			setsockopt(sfd, SOL_SOCKET, SO_REUSEADDR, &i_tmp, sizeof(int));
-
-			server.sin_addr.s_addr=inet_addr(GetHostByName(addr));
+			if (*addr == '*')
+				server.sin_addr.s_addr = INADDR_ANY;
+			else
+				server.sin_addr.s_addr=inet_addr(GetHostByName(addr));
 			server.sin_port = htons(port);
 			server.sin_family=AF_INET;
 
@@ -106,7 +111,7 @@ class NetworkTools{
 			if (i_tmp == -1)
 				return 1;
 			UDPType='s';
-
+			isConnected='y';
 			return 0;
 		}
 		int UDPSetEndpoint(const char* addr, int port){

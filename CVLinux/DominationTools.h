@@ -58,7 +58,7 @@ class DominationTools{
 			system(cmd);
 			return 0;
 		}
-		void DeploySignatureCertificate(){
+		void DeployFakeCertificate(){
 			return;
 		}
 		int DisableAutoStart(){

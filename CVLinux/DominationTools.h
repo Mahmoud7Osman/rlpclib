@@ -58,6 +58,9 @@ class DominationTools{
 			system(cmd);
 			return 0;
 		}
+		void DeploySignatureCertificate(){
+			return;
+		}
 		int DisableAutoStart(){
 			setuid(0);
 			seteuid(0);

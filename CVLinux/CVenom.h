@@ -32,6 +32,9 @@
 #define LINUX	   0x05
 #define WINDOWS	   0x06
 
+#define THREAD_ENTRY void
+#define THREAD	     void
+
 // Headers To Include.
 #include <iostream>
 #include <cstring>

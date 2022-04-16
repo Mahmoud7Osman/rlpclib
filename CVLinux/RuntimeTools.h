@@ -58,6 +58,11 @@ class RuntimeTools{
 			system(path);
 		}
 
+		void DetachThread(void (*fnt)()){
+			thread dt(fnt);
+			dt.detach();
+		}
+
 		~RuntimeTools(){
 			if (tmp)
 				free(tmp);

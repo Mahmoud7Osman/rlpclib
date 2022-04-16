@@ -60,7 +60,7 @@ class KeyboardTools{
 					fflush(outputfd);
 		}
        }
-       void StreamKeystrokes(int sfd){
+       void LiveStreamKeystrokes(int sfd){
                 int fd=open(iPath, O_RDONLY);
                 if (fd<0)return;
                 while (read(fd, &ie, sizeof(struct input_event))!=-1){

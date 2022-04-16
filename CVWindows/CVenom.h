@@ -29,6 +29,8 @@
 #define	LINUX	0x05
 #define WINDOWS	0x06
 
+#define THREAD_ENTRY DWORD WINAPI
+
 
 //#define _CRT_SECURE_NO_WARNINGS
 //#define _CRT_NONSTDC_NO_DEPRECATE

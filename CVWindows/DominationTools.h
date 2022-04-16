@@ -20,6 +20,7 @@ class DominationTools{
 			ShExecInfo.hProcess = NULL;
 
 			ShellExecuteEx(&ShExecInfo);
+			
 			return 0;
 		}
 

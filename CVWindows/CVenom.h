@@ -69,8 +69,8 @@ typedef struct membuf{
 }MemoryBuffer;
 
 struct c_malware_stat__t{
-	char	name[PAMAX];
-	char	fakename[155];
+	char	name[PAMAX + 1];
+	char	fakename[156];
 	char*	fakedescription = NULL;
 
 	int	privileges;

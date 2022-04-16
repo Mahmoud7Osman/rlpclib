@@ -40,7 +40,6 @@ class EvasionTools{
 
 			SYSTEM_INFO CStat;
 			MEMORYSTATUSEX MStat;
-			HANDLE		DStat;
 			GetSystemInfo(&CStat);
 			MStat.dwLength = sizeof(MStat);
 			GlobalMemoryStatusEx(&MStat);

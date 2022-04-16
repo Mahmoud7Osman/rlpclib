@@ -41,12 +41,12 @@ set $1 $3 $4 $5 $6 $7 $8 $9 &> /dev/null
 if [ "$target" == "windows" ] || [ "$target" == "win64" ];then
 	export compiler="x86_64-w64-mingw32-g++"
 	export striper="x86_64-w64-mingw32-strip"
-	export add_opts="-lpsapi.h"
+	export add_opts="-lpsapi"
 	CVPath="CVWindows"
 elif [ "$target" == "win32" ];then
 	export compiler="i686-w64-mingw32-g++"
 	export striper="i686-w64-mingw32-strip"
-	export add_opts="-lpsapi.h"
+	export add_opts="-lpsapi"
 	CVPath="CVWindows"
 elif [ "$target" == "linux" ];then
 	export compiler="g++"
@@ -68,6 +68,7 @@ for i in "$@" ; do
 		break
 	fi
 done
+
 
 
 # Malware Compilation Section (For Windows And Linux, Android And iOS Aren't Currently Supported)

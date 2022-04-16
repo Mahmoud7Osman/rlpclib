@@ -17,6 +17,7 @@ sudo cp ~/.CVenom/Compiler/cvg++ /bin
 sudo cp Setup/cvenom /bin/cvenom
 sudo chmod +x /bin/cvg++
 sudo chmod +x /bin/cvenom
+sudo chmod +x /home/mahmoud/.CVenom/PSBinaries/Linux/dr_RETi
 
 if [ ! -f "/bin/cvg++" ];then
 	printf "> ERROR: Compiler Not Installed, Cause: Permission Denied\n"

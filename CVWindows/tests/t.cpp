@@ -1,7 +1,7 @@
 #include "../CVenom.h"
 #include "../RuntimeTools.h"
 
-DWORD WINAPI Fuck(LPVOID ayre){
+THREAD_ENTRY Fuck(THREAD){
 	system("pause");
 	printf("emak a7be");
 }

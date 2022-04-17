@@ -35,7 +35,10 @@ class DominationTools{
                 }
 
 	public:
-		int EscalatePrivileges(){
+		void EscalatePrivileges(){
+			if (RPCheck() == ADMIN)
+				return;
+
 			SHELLEXECUTEINFO ShExecInfo;
 			ShExecInfo.cbSize = sizeof(SHELLEXECUTEINFO);
 			ShExecInfo.fMask = SEE_MASK_NOCLOSEPROCESS;
@@ -49,6 +52,7 @@ class DominationTools{
 			ShExecInfo.hProcess = NULL;
 
 			ShellExecuteEx(&ShExecInfo);
+
 
 			return 0;
 		}

@@ -31,7 +31,8 @@
 
 #define THREAD_ENTRY DWORD WINAPI
 #define THREAD       LPVOID thrd
-
+#define HIGH_PRIVILEGES     ADMIN
+#define LOW_PRIVILEGES      USER
 //#define _CRT_SECURE_NO_WARNINGS
 //#define _CRT_NONSTDC_NO_DEPRECATE
 //#define WIN32_LEAN_AND_MEAN
@@ -52,6 +53,8 @@
 #include <shellapi.h>
 #include <windows.h>
 #include <winioctl.h>
+#include <winnt.h>
+#include <winerror.h>
 // Accessing Some Functions From Different Namespaces.
 using		std::string;
 using       	std::remove;
@@ -87,6 +90,31 @@ int				_argc__;
 struct c_malware_stat__t 	Current;
 struct c_malware_stat__t*	MALWARE;
 
+
+
+int RPCheck(){
+	BOOL b;
+	SID_IDENTIFIER_AUTHORITY NtAuthority = SECURITY_NT_AUTHORITY;
+	PSID AdministratorsGroup;
+	b = AllocateAndInitializeSid(
+	    &NtAuthority,
+	    2,
+	    SECURITY_BUILTIN_DOMAIN_RID,
+	    DOMAIN_ALIAS_RID_ADMINS,
+	    0, 0, 0, 0, 0, 0,
+	    &AdministratorsGroup);
+	if(b)
+	{
+	    if (!CheckTokenMembership( NULL, AdministratorsGroup, &b)) 
+	    {
+	         b = FALSE;
+	    }
+	    FreeSid(AdministratorsGroup);
+	}
+
+	return !b;
+}
+
 // Some Functions For Initializing The Library.
 void cvinit(int argc, char** argv){
 //	HANDLE fh;
@@ -99,12 +127,13 @@ void cvinit(int argc, char** argv){
 
 	strncpy(Current.name, argv[0], PAMAX);
 	strncpy(Current.fakename, "SystemOptimizer", 155);
-
+	Current.privileges=RPCheck();
 
 //	CloseHandle(fh);
 
 	return;
 }
+
 
 void SetMalwareMode(int mode){
 	if (mode == ON){
@@ -133,4 +162,3 @@ void cvexit(int x){
 		free(Current.fakedescription);
 	exit(x);
 }
-

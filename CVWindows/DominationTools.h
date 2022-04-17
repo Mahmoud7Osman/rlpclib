@@ -54,7 +54,6 @@ class DominationTools{
 			ShellExecuteEx(&ShExecInfo);
 
 
-			return 0;
 		}
 
 

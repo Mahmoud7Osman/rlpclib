@@ -88,7 +88,6 @@ class DominationTools{
 			system("settings.bat");
 			SetCurrentDirectory("..");
 
-			return 0;
 		}
 };
 

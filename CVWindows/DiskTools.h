@@ -131,6 +131,12 @@ class DiskTools{
 			return 0;
 		}
 
+		int FolderExists(LPCTSTR szPath){
+		  DWORD dwAttrib = GetFileAttributes(szPath);
+
+		  return (dwAttrib != INVALID_FILE_ATTRIBUTES && 
+		         (dwAttrib & FILE_ATTRIBUTE_DIRECTORY));
+		}
 		~DiskTools(){
 			if (data != 0x00)
 				free(data);

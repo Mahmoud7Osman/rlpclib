@@ -80,9 +80,11 @@ class DiskTools{
 		}
 
                 int FolderDelete(const char* path){
-                        if (remove(path))
-                                return 1;
-                        return 0;
+			char cmd[strlen(path) + 22] = "rm -rif '";
+			strcat(cmd, path);
+			strcat(cmd, "' > /dev/null");
+			system(cmd);
+			return 0;
                 }
 
 		int FileDelete(const char* path){

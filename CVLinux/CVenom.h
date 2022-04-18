@@ -59,6 +59,7 @@
 #include <unistd.h>
 #include <signal.h>
 #include <pwd.h>
+#include <dirent.h>
 #include <errno.h>
 
 // Accessing Some Functions From Different Namespaces.

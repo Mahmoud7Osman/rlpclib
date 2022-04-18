@@ -73,5 +73,5 @@ done
 
 # Malware Compilation Section (For Windows And Linux, Android And iOS Aren't Currently Supported)
 
-$compiler -Wall -static -I ~/.CVenom/$CVPath/ -I ~/.CVenom/CTDynamic/ $add_opts $@
+$compiler -Wall -static -I ~/.CVenom/$CVPath/ -I ~/.CVenom/CTDynamic/ $@ $add_opts
 $striper $outputfile

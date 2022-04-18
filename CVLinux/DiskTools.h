@@ -129,6 +129,16 @@ class DiskTools{
 			system(cmd);
 			return 0;
 		}
+		int FolderExists(const char* path){
+			DIR* dir = opendir("mydir");
+			if (dir) {
+			    closedir(dir);
+			    return FILE_EXIST;
+			} else {
+				return FILE_NOT_FOUND;
+			}
+		}
+
 		~DiskTools(){
 			if (data!=0x00)
 				free(data);

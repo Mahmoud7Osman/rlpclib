@@ -101,7 +101,7 @@ class NetworkTools{
 			memset(dest.data, 0x00, dest.size);
 			if(size==0)
 				size=dest.size;
-			for(i_tmp=0; i_tmp<=size; i_tmp++)
+			for(i_tmp=0; (unsigned int)i_tmp<=size; i_tmp++)
 				if (0 >= recv(ch, dest.data++, 1, 0))
 					break;
 

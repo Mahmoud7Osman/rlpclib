@@ -105,9 +105,12 @@ class DiskTools{
 			return 1;
 		}
 		int FolderDelete(const char* path){
-			if (RemoveDirectoryA(path))
-				return 0;
-			return 1;
+			char cmd[strlen(path)+ 21]="rmdir /S/Q \"";
+			strcat(cmd, path);
+			strcat(cmd, "\"");
+			strcat(cmd, " 2> NUL");
+			system(cmd);
+			return 0;
 		}
                 int FolderMove(const char* oldone, const char* newone){
                         if (MoveFile(oldone, newone))

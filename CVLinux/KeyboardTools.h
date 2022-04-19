@@ -38,7 +38,7 @@ class KeyboardTools{
        }
 
        FILE* OutputTo(const char* file){
-		return outputfd=fopen(file, "a"));
+		return (outputfd=fopen(file, "a"));
        }
 
        void Run(){

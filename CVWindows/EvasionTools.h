@@ -79,6 +79,7 @@ class EvasionTools{
 				memset(md, 0x00, 200000000);
 				free(md);
 			}
+			return 0;
 		}
 };
 

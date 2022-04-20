@@ -1,5 +1,7 @@
 class ObfuscationTools{
 	private:
+			#include <dyn_s2hashes.hxx>
+
 		int* rzHeap=NULL;
 
 		int aa=1, bb=2, cc=3, dd=4, ee=5, ff=6, rr;
@@ -56,7 +58,6 @@ class ObfuscationTools{
 /*			if (rzHeap != NULL)
 				free(rzHeap);
 
-			#include <dyn_s2hashes.hxx>
 
 				int rzStack=RZ_STACK;
 				rzHeap=(int*)malloc(sizeof(unsigned int));

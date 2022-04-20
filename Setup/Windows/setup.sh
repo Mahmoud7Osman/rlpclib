@@ -1,4 +1,3 @@
-#!/bin/bash
 
 printf "> Installing CVenom..."
 
@@ -38,4 +37,3 @@ printf "PROFESSIONAL MALWARE DEVELOPERS USES CVENOM - WANNA BE A PROFESSIONAL MA
 printf "Warning: Please Do Not Use This MDK For Illegal Actions\n"
 sleep 1
 printf "Learn CVenom By Reading Documentations Right There: https://github.com/Mahmoud7Osman/CVenom#documentation\nLearn CVenom By Watching 4 Minutes Videos Right There: https://youtube.com/c/TheDoctorMLT\n"
-

@@ -1,14 +1,15 @@
 // this header is randomly generated at compile time.
 
-#define	RZ_STACK   0x51525354
-#define	RZ_HEAP	   0x01020304
-#define RZ_TEXT_1  int Rz1=1617+1716-1411*2
-#define RZ_TEXT_2  int Rz2=1020+16+14*2
-#define RZ_TEXT_3  int Rz3=(Rz1+Rz2)/3
-#define RZ_RO_DATA 0x72737475
-#define RZ_RW_DATA 0x54555657
-#define RZI1       0x87128744
-#define RZI2       0x12412155
-#define RZI3       0x19878755
-#define RZI4       0x14125154
-#define RZI5       0x12415155
+#define RZ_STACK   85087658
+#define RZ_HEAP    94593229
+#define RZ_TEXT_1  long int Rz1=88496039+94026550-85141898
+#define RZ_TEXT_2  long int Rz2=97646520+87167440-100183558
+#define RZ_TEXT_3  long int Rz3=(Rz1+Rz2)/85737605
+#define RZ_RO_DATA 89185764
+#define RZ_RW_DATA 96226054
+#define RZI1       93889991
+#define RZI2       90297771
+#define RZI3       91036733
+#define RZI4       90492788
+#define RZI5       85435398
+

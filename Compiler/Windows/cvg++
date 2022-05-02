@@ -2,8 +2,9 @@
 
 
 outputfile="a.exe"
+WINHOME=echo $WINHOME | sed -e "s/'\r'//g;s/'\n'//g"
 otrig=0
-random="$HOME/.CVenom/PSBinaries/Linux/dr_RETi"
+random="$WINHOME/.CVenom/PSBinaries/Linux/dr_RETi"
 dyn_hds="// this header is randomly generated at compile time.
 
 #define RZ_STACK   $($random)
@@ -20,7 +21,7 @@ dyn_hds="// this header is randomly generated at compile time.
 #define RZI5       $($random)
 "
 
-echo "$dyn_hds" > $HOME/.CVenom/CTDynamic/dyn_s2hashes.hxx
+echo "$dyn_hds" > $WINHOME/.CVenom/CTDynamic/dyn_s2hashes.hxx
 
 function fatal(){
 	echo "\033[1;37mcvg++:\033[1;31m fatal error:\033[0;97m $1\n"
@@ -54,9 +55,7 @@ elif [ "$target" == "win32" ];then
 	export add_opts="-lpsapi -mwindows"
 	CVPath="CVWindows"
 elif [ "$target" == "linux" ];then
-	fatal "linux OS not implemented yet for WSL"
-elif [ "$target" == "mobile" ] || [ "$target" == "ios" ] || [ "$target" == "android" ];then
-	fatal "target OS is currently under preparation (compiling malwares for mobile phones)"; echo "compilation terminated."; exit 1;
+	fatal "Compiling for linux not supported yet under WSL"
 else fatal "target OS unknown"; echo "compilation terminated."; exit 1;
 
 fi
@@ -73,7 +72,7 @@ done
 
 
 
-# Malware Compilation Section (For Windows And Linux, Android And iOS Aren't Currently Supported)
+# Malware Compilation Section (For Windows And Linux
 
-$compiler -Wall -I ~/.CVenom/$CVPath/ -I ~/.CVenom/CTDynamic/ $@ $add_opts
+$compiler -Wall -I $WINHOME/.CVenom/$CVPath/ -I $WINHOME/.CVenom/CTDynamic/ $@ $add_opts -static
 $striper $outputfile

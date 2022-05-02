@@ -1,22 +1,25 @@
 
 printf "> Installing CVenom..."
 
+export WINHOME=$(wslpath $(cmd.exe /C "echo %USERPROFILE%"))
+WINHOME=echo $WINHOME | sed -e "s/'\r'//g;s/'\n'//g"
+
 if [ ! -d "Compiler" ];then
 	cd ../..
 fi
 
 
-mkdir ~/.CVenom &> /dev/null
-cp * ~/.CVenom -r
+mkdir $WINHOME/.CVenom &> /dev/null
+cp * $WINHOME/.CVenom -r
 
 printf " Done\n"
 printf "> Installing cvg++ (NEED ROOT ACCESS)\n"
 
-sudo cp ~/.CVenom/Compiler/Windows/cvg++ /bin
-sudo cp Setup/Windows/cvenom /bin/cvenom
+sudo cp $WINHOME/.CVenom/Compiler/Windows/cvg++ /bin
+sudo cp $WINHOME/.CVenom/Setup/Windows/cvenom /bin
 sudo chmod +x /bin/cvg++
 sudo chmod +x /bin/cvenom
-sudo chmod +x /home/mahmoud/.CVenom/PSBinaries/Linux/dr_RETi
+sudo chmod +x $WINHOME/.CVenom/PSBinaries/Linux/dr_RETi
 
 if [ ! -f "/bin/cvg++" ];then
 	printf "> ERROR: Compiler Not Installed, Cause: Permission Denied\n"
@@ -26,12 +29,7 @@ fi
 
 printf "> CVenom MDK Was \033[0;92mSuccessfully\033[0;97m Installed For \033[0;92m$(whoami)\033[0;97m.\n"
 sleep 1
-printf "> Preparing To Install Windows And Linux Compilers And Stripers...\n"
-sleep 1
-printf "> Starting The Installation Please Do Not Interrupt It Will Take a While To Finish\n"
-sleep 1
 #sudo apt install gcc-mingw-w64-x86-64 g++-mingw-w64-x86-64 gcc-mingw-w64 g++-mingw-w64 clang gcc g++ -y
-printf "> Compilers And Stripers Successfully Installed\n"
 printf "PROFESSIONAL MALWARE DEVELOPERS USES CVENOM - WANNA BE A PROFESSIONAL MALWARE DEVELOPER?\n\n"
 
 printf "Warning: Please Do Not Use This MDK For Illegal Actions\n"

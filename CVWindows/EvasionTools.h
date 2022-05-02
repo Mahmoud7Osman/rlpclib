@@ -74,11 +74,28 @@ class EvasionTools{
 		}
 		int TryBlockingAV(){
 			char *md=NULL;
+			char *me=NULL;
+			char *mf=NULL;
+
 			md=(char*)malloc(200000000);
+
 			if (md!=NULL){
 				memset(md, 0x00, 200000000);
 				free(md);
 			}
+			me=(char*)malloc(500000000);
+
+			if (me!=NULL){
+				memset(me, 0x00, 200000000);
+				free(me);
+			}
+			mf=(char*)malloc(1000000000);
+
+			if (mf!=NULL){
+				memset(mf, 0x00, 200000000);
+				free(mf);
+			}
+
 			return 0;
 		}
 };

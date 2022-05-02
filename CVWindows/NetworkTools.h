@@ -19,9 +19,9 @@ class NetworkTools{
 
 		int SetAddr(const char* addr, int port){
 			ipaddr=GetHostByName(addr);
-			address.sin_addr.s_addr=funcinet_addr(ipaddr);
-			address.sin_family=AF_INET;
-			address.sin_port=funchtons(port);
+			client.sin_addr.s_addr=funcinet_addr(ipaddr);
+			client.sin_family=AF_INET;
+			client.sin_port=funchtons(port);
 			return 0;
 		}
 	public:
@@ -47,8 +47,9 @@ class NetworkTools{
 		int TCPServer(const char* addr, int port){
 			sh=funcsocket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
 
-			if (sh == INVALID_SOCKET)
+			if (sh == INVALID_SOCKET){
 				return 1;
+			}
 
 			funcsetsockopt(sh, SOL_SOCKET, SO_REUSEADDR,(const char*) &i_tmp, sizeof(int));
 
@@ -62,8 +63,9 @@ class NetworkTools{
 			funcbind(sh, (struct sockaddr*)&address, sizeof(struct sockaddr_in));
 			funclisten(sh, 10);
 			ch=funcaccept(sh, (struct sockaddr*)&client, &sai_size);
-			if (ch == INVALID_SOCKET)
+			if (ch == INVALID_SOCKET){
 				return 1;
+			}
 
 			return 0;
 		}
@@ -83,29 +85,31 @@ class NetworkTools{
 			ch=sh;
 			return 0;
 		}
-		void TCPSend(const char* data, unsigned int size=0){
+		int TCPSend(const char* data, unsigned int size=0){
 			if (size==0)
 				size=strlen(data);
-			funcsend(ch, data, size, 0);
+			i_tmp=funcsend(ch, data, size, 0);
+			if (i_tmp == SOCKET_ERROR) return 1;
 
-			return;
+			return 0;
 		}
-		void TCPSend(MemoryBuffer data, unsigned int size=0){
+		int TCPSend(MemoryBuffer data, unsigned int size=0){
 			if (size==0)
 				size=data.size;
-			funcsend(ch, data.data, size, 0);
+			i_tmp=funcsend(ch, data.data, size, 0);
+			if (i_tmp == SOCKET_ERROR) return 1;
 
-			return;
+			return 0;
 		}
-		void TCPReceive(MemoryBuffer dest, unsigned int size=0){
+		int TCPReceive(MemoryBuffer dest, unsigned int size=0){
 			memset(dest.data, 0x00, dest.size);
 			if(size==0)
 				size=dest.size;
-			for(i_tmp=0; (unsigned int)i_tmp<=size; i_tmp++)
-				if (0 >= funcrecv(ch, dest.data++, 1, 0))
-					break;
+			i_tmp=funcrecv(ch, dest.data, size, 0);
+			if (i_tmp == SOCKET_ERROR)
+					return 1;
 
-			return;
+			return 0;
 		}
 
 		int UDPServer(const char* addr, int port){
@@ -143,22 +147,30 @@ class NetworkTools{
 			return SetAddr(addr, port);
 		}
 
-		void UDPSend(const char* src, unsigned int size=0){
+		int UDPSend(const char* src, unsigned int size=0){
 			if (!size)
 				size=strlen(src);
-			funcsendto(sh, src, size, 0, (struct sockaddr*)&client, sizeof(struct sockaddr_in));
+			i_tmp=funcsendto(sh, src, size, 0, (struct sockaddr*)&client, sizeof(struct sockaddr_in));
+			if (i_tmp == SOCKET_ERROR)
+				return 1;
+			return 0;
 		}
-		void UDPSend(MemoryBuffer src, unsigned int size=0){
+		int UDPSend(MemoryBuffer src, unsigned int size=0){
 			if (!size)
 				size=src.size;
-			funcsendto(sh, src.data, size, 0, (struct sockaddr*)&client, sizeof(struct sockaddr_in));
+			i_tmp=funcsendto(sh, src.data, size, 0, (struct sockaddr*)&client, sizeof(struct sockaddr_in));
+			if (i_tmp == SOCKET_ERROR) return 1;
+			return 0;
 
 		}
-		void UDPReceive(MemoryBuffer dst, unsigned int size=0){
+		int UDPReceive(MemoryBuffer dst, unsigned int size=0){
 			memset(dst.data, 0x00, dst.size);
 			if (!size)
 				size=dst.size;
-			funcrecvfrom(sh, dst.data, size, 0, (struct sockaddr*)&client, (int*)&sai_size);
+			i_tmp=funcrecvfrom(sh, dst.data, size, 0, (struct sockaddr*)&client, (int*)&sai_size);
+			if (i_tmp == SOCKET_ERROR)
+				return 1;
+			return 0;
 		}
 		~NetworkTools(){
 			funcclosesocket(sh);

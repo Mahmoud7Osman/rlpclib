@@ -82,4 +82,3 @@ int main(MAlWARE_ENTRY){
          cvexit(MALWARE_EXIT);
          
 }</pre>
- 

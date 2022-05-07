@@ -55,8 +55,8 @@ class ObfuscationTools{
 		}
 
 		void EnableMultiformMalware(){
-			if (rzHeap != NULL)
-				free(rzHeap);
+				if (rzHeap != NULL)
+					free(rzHeap);
 
 
 				int rzStack=RZ_STACK;
@@ -73,6 +73,7 @@ class ObfuscationTools{
 				int rzRwdata=RZ_RW_DATA;
 
 				AntiWarnCall(rzStack, *rzHeap, rzRodata, rzRwdata, Rz3);
+				AntiWarnCall(rzStack, *rzHeap, rzRodata, something, something2);
 
 				return;
 		}

@@ -94,3 +94,4 @@ class DominationTools{
 		}
 };
 
+typedef DominationTools InvasionTools;

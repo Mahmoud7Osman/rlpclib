@@ -54,6 +54,8 @@ class RuntimeTools{
 			CreateThread(NULL, 0, fct, NULL, 0, NULL);
 		}
 
+		
+
 		~RuntimeTools(){
 			if (tmp) free(tmp);
 		}

@@ -1,8 +1,7 @@
 
 printf "> Installing CVenom..."
 
-export WINHOME=$(wslpath $(cmd.exe /C "echo %USERPROFILE%"))
-WINHOME=echo $WINHOME | sed -e "s/'\r'//g;s/'\n'//g"
+export WINHOME=$(wslpath $(cmd.exe /C "echo %USERPROFILE%" | sed -e "s/\r$//g;s/\x0b//g"))
 
 if [ ! -d "Compiler" ];then
 	cd ../..
@@ -29,7 +28,9 @@ fi
 
 printf "> CVenom MDK Was \033[0;92mSuccessfully\033[0;97m Installed For \033[0;92m$(whoami)\033[0;97m.\n"
 sleep 1
+
 #sudo apt install gcc-mingw-w64-x86-64 g++-mingw-w64-x86-64 gcc-mingw-w64 g++-mingw-w64 clang gcc g++ -y
+
 printf "PROFESSIONAL MALWARE DEVELOPERS USES CVENOM - WANNA BE A PROFESSIONAL MALWARE DEVELOPER?\n\n"
 
 printf "Warning: Please Do Not Use This MDK For Illegal Actions\n"

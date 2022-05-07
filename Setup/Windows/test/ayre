@@ -1,0 +1,6 @@
+te.cpp:1:10: fatal error: CVenom.h: No such file or directory
+    1 | #include <CVenom.h>
+      |          ^~~~~~~~~~
+compilation terminated.
+g++64.exe -Wall -I /mnt/c/Users/mo374/.CVenom/CVWindows/ -I /mnt/c/Users/mo374/.CVenom/CTDynamic/ te.cpp -lpsapi -mwindows -static
+strip.exe: 'a.exe': No such file

@@ -179,7 +179,7 @@ int RPCheck(){
 
 // Some Functions For Initializing The Library.
 void Show(int d){
-	printf("Value: %d\n");
+	printf("Value: %d\n", d);
 }
 void cvinit(int argc, char** argv){
 //	HANDLE fh;

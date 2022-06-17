@@ -1,5 +1,12 @@
 # CVenom
 <pre>
+Some Critical Updates To The CVenom Framework Due To The Lack Of Collaborators (No Team):
+         - Development Terminated For Linux Malware Development Libraries
+           + CVenom Focuses Now Only On Windows Malware Development
+         - Killing The Development Of The Programming Language "Xonory"
+           + CVenom is now a Framework That Provides You A Header-Only Libraries With Some Tools Important For Malware Development
+</pre>
+<pre>
 Where The Simplicity Become Dangerous ...
          A True Cross-Platform Malware Development Kit
 </pre>

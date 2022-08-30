@@ -1,6 +1,6 @@
 # CVenom
-# This Project is Killed Due to the illegal Usage, We Just Noticed Some Reports From Different Businesses And Companies About Malware & Virus Attacks
-# Unfortunately, Due To Harmful Usage, I Announce the cessation of development of this project
+# This Project is Killed Due to illegal Usage, We Just Noticed Some Reports From Different Businesses And Companies About Malware & Virus Attacks
+# Unfortunately, And Due To Harmful Usage, As The Founder Of this Project And The Owner Of This Account (Mahmoud Osman), I Announce the cessation of development of this project and any other project related to Malicious Software Development, Hacking Tools And Techniques Due To Illegal Actions Caused By Some Users.
 
 <pre>
 Where The Simplicity Become Dangerous ...

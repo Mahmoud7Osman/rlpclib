@@ -1,87 +1,12 @@
-# CVenom
-# This Project is Killed Due to illegal Usage, We Just Noticed Some Reports From Different Businesses And Companies About Malware & Virus Attacks
-# Unfortunately, And Due To Harmful Usage, As The Founder Of this Project And The Owner Of This Account (Mahmoud Osman), I Announce the cessation of development of this project and any other project related to Malicious Software Development, Hacking Tools And Techniques Due To Illegal Actions Caused By Some Users.
+# CVenom (Version 2.0 - Remastered)
+<h3>CVenom, Malicious Codeblocks Central For Malware Developers</h3>
 
-<pre>
-Where The Simplicity Become Dangerous ...
-         A True Cross-Platform Malware Development Kit
-</pre>
-<ul>
-         <li><a href="/Setup/README.md">Installation</a></li>
-         <li><a href="#documentation">Documentation</a></li>
-         <li><a href="https://www.youtube.com/c/TheDoctorMLT">Learn CVenom By Watching 4 Minutes Videos</a></li>
-         <li><a href="https://t.me/MahmoudOsman0">Wanna Collaborate To CVenom ?</a></li>
-</ul>
-<h3>Check Out The <a href="https://github.com/Mahmoud7Osman/Xonory">Xonory Programming Language</a> A Programming Language Designed For Malware Development, Built Using CVenom</h3>
-<p>C/C++ Are Absolutely The Best Languages To Develop Malwares, Advanced, And Undetectable, Hardware I/O Access, As You Know, C/C++ Codes, API Calls, Library Calls, System Calls Differ Between Linux And Windows, So, <strong>That's Why We Created CVenom</strong></p>
+<h2>About a Year Ago, I Started Developing CVenom As a Malware Development Framework To Automate And Facilate Native Malware Development, Automating Things Such as Bypassing, Crashing And Confusing Antiviruses, Escalating Privileges And Gaining More Access, Injecting Startup Config Files Such as MS Windows Registry For Windows Systems And /etc/rcX.d For Linux, Deleting Logs, Accessing Hardwares Such As Keyboard To Create Keyloggers, USB Ports to Check, Infect Or Self-Spread USB Devices, Hard Disks To Initiate a Ransomeware Attack, Connecting To The Attacker Securely, Self-Destroy Capability, Compilation-Based Multiform Malware And So On......</h2>
+<h2>But Unfortunately And Due To Legal Issues, I Killed CVenom And Everything Related to it (It Was Version 1.3 The Last Time I Added Some Evasion Functions To Calculate The Risk Of Detection).</h2>
 
-<h3>Cross-Platform OOP Based Malware Development</h3>
-Malware Development Made Easy With CVenom, All Resources Are Objects, You Access The Hard Disk By Using The DiskTools Class, `Disk.FileCorrupt("file.txt")` as an Example will corrupt the file.txt And So On...Read The <a href="#documentation">Documentation</a> To Learn How To Start Developing Malwares With CVenom Or Watch Short Videos <a href="https://www.youtube.com/c/TheDoctorMLT">Right There</a>. (Although, CVenom Don't Needs A Documentation, It's Easier Than Python!.)
-
-<h1>Requirements</h1>
-<p>Those Are The Only Requirements To Have Before You Start Learning/Using CVenom</p>
-<ul>
-         <li>Intermediate Skills In C++</li>
-         <li>Some Knowledge About Hacking</li>
-</ul>
-<h1 id="documentation">CVenom's Official Documentation</h1>
-<p>When Malware Development Become Available For Everyone, <em><b>No System Is Secure With The Existence Of CVenom</b></em></p>
-<ul>
-         <li><a href="#smip">Malware Initialization And Compilation</a></li>
-         <li><a href="#current">Malware Information Data Structure</a></li>
-         <li><a href="#disktoolsapi">DiskTools API</a></li>
-         <li><a href="#evasiontoolsapi">EvasionTools API</a></li>
-         <li><a href="#networktoolsapi">NetworkTools API</a></li>
-         <li><a href="#uitoolsapi">UITools API</a></li>
-         <li><a href="#redirectiontoolsapi">RedirectionTools API</a></li>
-         <li><a href="#dominationtoolsapi">DominationTools API</a></li>
-         <li><a href="#systemtoolsapi">SystemTools API</a></li>
-         <li><a href="#keyboardtoolsapi">KeyboardTools API</a></li>
-         <li><a href="#runtimetoolsapi">RuntimeTools API</a></li>
-         <li><a href="#usbtoolsapi">USBTools API</a></li>
-         <li><a href="#infectiontoolsapi">InfectionTools API</a></li>
-</ul>
-<h1 id="smip">Initializing And Compiling A Malware</h1>
-
-<pre>#include &ltCVenom.h&gt
-
-int main(MALWARE_ENTRY){
-
-    cvinit(MALWARE_INIT);  // Initialize Malware Data.
-         
-         
-    cvexit(MALWARE_EXIT);  // Free Malware Data Then Exit.
-
-}</pre>
-<p>This Is How You Initialize A Malware For Further Malware Development</p>
-<p><strong>Info: </strong>Please Always Use <strong>cvexit(MALWARE_EXIT)</strong> When You Want To Exit, Please Don't Use <strong>return</strong> Or <strong>exit()</strong></p>
-<h3>Compiling Malware</h3>
-<p>Using CVenom's Compiler <strong>cvg++</strong> To Compile Malwares, This Compiler Will Automate Malware Cross-Compilation For You With Binary Strip And The Like </p>
-<h5>Compiling Malware For Linux</h5>
-<pre>$ cvg++ malware.cpp target=linux</pre>
-<h5>Compiling Malware For Windows</h5>
-<pre>$ cvg++ malware.cpp target=windows</pre>
-<h1 id="current">Getting/Setting Malware Information</h1>
-<p>Informations Like Malware Path, Size, Privileges, Fake Service And Fake Description About The Malware.</p>
-<ul>
-         <li><a href="#ctsize">Getting Malware File Size</a></li>
-         <li><a href="#ctpath">Getting Malware File Path</a></li>
-         <li><a href="#ctpriv">Getting Malware Current Privileges</a></li>
-         <li><a href="#ctserv">Getting And Setting Malware Fake Service Name</a></li>
-         <li><a href="#ctdesc">Getting And Setting Malware Fake Description</a></li>
-</ul>
-<h2 id="ctsize">Getting Malware File Size</h2>
-<p>Using The <strong>Current.size</strong> or <strong>MALWARE->size</strong></p>
-
-<pre>#include &ltCVenom.h&gt
-
-int main(MAlWARE_ENTRY){
-
-         cvinit(MALWARE_INIT);
-         
-         printf("%d\n", Current.size);    // Print The Current Malware File Size.
-         printf("%d\n", MALWARE->size);   // Print The Current Malware File Size Also.
-         
-         cvexit(MALWARE_EXIT);
-         
-}</pre>
+<h2>And That's Why I Did That:</h2>
+<ol>
+  <li>I Remember That Day When I Developed a Virus Using My Framework CVenom (Named NMP Which Stands For No More PC, It Simply Spread itself in Connected Storage Devices And Infect Windows' Registry To Restart The Computer Everytime it Starts, in other words, A DOS Attack) To Spread it on Windows Machines, By Mistake, I Sent The Virus To My Uncle, And He is A Bank Employee, He Ran The EXE File, And His Windows PC Became Useless, It's Now My Turn To Fix His Machine, But What Happened is Unrealistic, I Can't Stop The Virus, I Can't Even Delete it From An External Live Booted Linux, The Disk Cannot Be Mounted As Read-Write, And That's After 3-4 Hours Of Locating the virus, it took me 2 days to delete the virus from his PC, 2 Days Of Working And I Am The Developer of The Virus!...., But There are 0 Antiviruses on VirusTotal Which Detected This Virus, Zero!</li>
+  <li>I Developed A Keylogger, Named CRAN, I Remember I Realased 2 Versions, One For Windows And The Other For Linux, The Keylogger Works Offline And Online, Save And Encrypt Keystrokes Offline , Stream Encrypted Keystrokes Online (Live Keypresses), Move The Executable From HDD To RAM And Vise Versa When The User is Initiating a Shutdown, I Also Created A Web-Based Interface For Attackers To Control Their Victims, With An Excellent Evasion Functionnality Which Checks if There's A Plugged Storage Device That Contains This File "/cran.selfdestroy" As An Offline Hardware-Based Self-Destroy Signal, I Installed This Keylogger Legally on my Friend's PC, And Told him To Keep It And I Will Send a Self-Destroy Signal After 2 Days, And It Worked I Was Watching A Live Stream Of Keystrokes For 2 Days, Connecting and Disconnecting, Receiving Offline Encrypted Keystrokes, I Asked Myself If I Did That Illegally What Will Happen? I Don't Know But Zero Antivirus on Virus Total Flagged This Malware As Dangerous, It's a Bit Scary Right!?</li>
+  <li>Every Malware I Developed Using CVenom,Is Being Detected By 0 Antiviruses On VirusTotal, Including Microsoft Defender For Windows, AVs And YARA For Linux, etc,....</li>
+</ol>

@@ -16,15 +16,25 @@ struct bridge_t{
 	socklen_t addrlen; // Address Length
 };
 
+void **pstore; // Array Of Heap Allocated Buffers
+int16_t size;
+
 
 struct bridge_t* init_bridge(char*, int, char*, int); // Creating The RLPC Bridge
 char *function_call(struct bridge_t*, char*, char*); // Initiating a Function Call
 char *fcall_receiver(struct bridge_t*); // Receiving A Function Call
 void fcall_return(struct bridge_t*, void*, int32_t); // Returning a Function Call Returned Value To The Caller
+void pstore_add(void*); // Adding Heap Allocated Addresses To `pstore` To Free it Later
 void close_bridge(struct bridge_t*); // Closing The Bridge
+
 
 struct bridge_t* init_bridge(char* ip, int port, char* eip, int eport){
 	struct bridge_t* bridge = (struct bridge_t*)malloc(sizeof(struct bridge_t));
+
+	size = 1;
+	pstore = (void*) malloc(sizeof(void*));
+
+	*pstore = bridge;
 	
 	bridge->sfd = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
 	if (bridge->sfd < 0)
@@ -54,15 +64,21 @@ char* function_call(struct bridge_t* bridge, char* fname, char* args){
 	int32_t buffer_size,
 	        fname_size = strlen(fname),
 	        args_size = strlen(args);
-
+	char* buffer;
+	
 	sendto(bridge->sfd, &fname_size, sizeof(int32_t), 0, (struct sockaddr*)&bridge->client, sizeof(struct sockaddr));
 	sendto(bridge->sfd, fname, fname_size, 0, (struct sockaddr*)&bridge->client, sizeof(struct sockaddr));
 	sendto(bridge->sfd, &args_size, sizeof(int32_t), 0, (struct sockaddr*)&bridge->client, sizeof(struct sockaddr));
 	sendto(bridge->sfd, args, args_size, 0, (struct sockaddr*)&bridge->client, sizeof(struct sockaddr));
-    recvfrom(bridge->sfd, &buffer_size, sizeof(int32_t), 0, (struct sockaddr*)&bridge->client, &bridge->addrlen);
+	recvfrom(bridge->sfd, &buffer_size, sizeof(int32_t), 0, (struct sockaddr*)&bridge->client, &bridge->addrlen);
 
-	char* buffer = (char*) malloc(buffer_size);
+	
 
+	if (buffer_size > MAX_ALLOC)
+		buffer_size = MAX_ALLOC;
+
+	buffer = (char*) malloc(buffer_size);
+	
 	recvfrom(bridge->sfd, buffer, buffer_size, 0, (struct sockaddr*)&bridge->client, &bridge->addrlen);
 
 	return buffer;
@@ -85,15 +101,30 @@ char* fcall_receiver(struct bridge_t* bridge){
 
 	strcat(fcall, fname);
 	strcat(fcall, args);
+	
+	free(fname);
+	free(args);
+	
 	return fcall;
 }
 void fcall_return(struct bridge_t *bridge, void* buffer, int32_t size){
 	sendto(bridge->sfd, &size, sizeof(int32_t), 0, (struct sockaddr*)&bridge->client, sizeof(struct sockaddr));
 	sendto(bridge->sfd, buffer, size, 0, (struct sockaddr*)&bridge->client, sizeof(struct sockaddr));
 }
+
+void pstore_add(void* ptr){
+	pstore = realloc(pstore, ++size*sizeof(void*));
+	*(pstore+size) = ptr;
+}
+
 void close_bridge(struct bridge_t* bridge){
 	if (bridge == NULL) return;
+	
+	for (int ptr=1; ptr!=size;ptr++){
+		free(pstore+size);
+	}
 
 	close(bridge->sfd);
+	free(pstore);
 	free(bridge);
 }

@@ -16,7 +16,7 @@ struct bridge_t{
 	socklen_t addrlen; // Address Length
 };
 
-void **pstore; // Array Of Heap Allocated Buffers
+void **pstore; // Array Of Heap Allocated Buffer Addresses
 int16_t size;
 
 
@@ -32,7 +32,7 @@ struct bridge_t* init_bridge(char* ip, int port, char* eip, int eport){
 	struct bridge_t* bridge = (struct bridge_t*)malloc(sizeof(struct bridge_t));
 
 	size = 1;
-	pstore = (void*) malloc(sizeof(void*));
+	pstore = (void**) malloc(sizeof(void*));
 
 	*pstore = bridge;
 	
@@ -81,6 +81,8 @@ char* function_call(struct bridge_t* bridge, char* fname, char* args){
 	
 	recvfrom(bridge->sfd, buffer, buffer_size, 0, (struct sockaddr*)&bridge->client, &bridge->addrlen);
 
+	pstore_add(buffer);
+
 	return buffer;
 }
 
@@ -104,7 +106,8 @@ char* fcall_receiver(struct bridge_t* bridge){
 	
 	free(fname);
 	free(args);
-	
+
+	pstore_add(fcall);
 	return fcall;
 }
 void fcall_return(struct bridge_t *bridge, void* buffer, int32_t size){
@@ -113,18 +116,17 @@ void fcall_return(struct bridge_t *bridge, void* buffer, int32_t size){
 }
 
 void pstore_add(void* ptr){
-	pstore = realloc(pstore, ++size*sizeof(void*));
+	pstore = (void**) realloc(pstore, ++size*sizeof(void*));
 	*(pstore+size) = ptr;
 }
 
 void close_bridge(struct bridge_t* bridge){
 	if (bridge == NULL) return;
 	
-	for (int ptr=1; ptr!=size;ptr++){
-		free(pstore+size);
+	close(bridge->sfd);
+	for (int16_t ptr=0; ptr<size; ptr++){
+		free(*(pstore+ptr));
 	}
 
-	close(bridge->sfd);
 	free(pstore);
-	free(bridge);
 }

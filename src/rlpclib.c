@@ -17,7 +17,7 @@ struct bridge_t{
 };
 
 void **pstore; // Array Of Heap Allocated Buffer Addresses
-int16_t size;
+size_t size;
 
 
 struct bridge_t* init_bridge(char*, int, char*, int); // Creating The RLPC Bridge
@@ -99,10 +99,10 @@ char* fcall_receiver(struct bridge_t* bridge){
 	recvfrom(bridge->sfd, args, args_size, 0, (struct sockaddr*)&bridge->client, &bridge->addrlen);
 
 	fcall = (char*) malloc(fname_size + args_size + 1);
-	memset(fcall, 0x00, fname_size + args_size + 1);
+	memset(fcall, 0x00, fname_size + args_size);
 
-	strcat(fcall, fname);
-	strcat(fcall, args);
+	strncat(fcall, fname, fname_size);
+	strncat(fcall, args, args_size);
 	
 	free(fname);
 	free(args);
@@ -110,6 +110,7 @@ char* fcall_receiver(struct bridge_t* bridge){
 	pstore_add(fcall);
 	return fcall;
 }
+
 void fcall_return(struct bridge_t *bridge, void* buffer, int32_t size){
 	sendto(bridge->sfd, &size, sizeof(int32_t), 0, (struct sockaddr*)&bridge->client, sizeof(struct sockaddr));
 	sendto(bridge->sfd, buffer, size, 0, (struct sockaddr*)&bridge->client, sizeof(struct sockaddr));
@@ -117,14 +118,14 @@ void fcall_return(struct bridge_t *bridge, void* buffer, int32_t size){
 
 void pstore_add(void* ptr){
 	pstore = (void**) realloc(pstore, ++size*sizeof(void*));
-	*(pstore+size) = ptr;
+	*(pstore+size-1) = ptr;
 }
 
 void close_bridge(struct bridge_t* bridge){
 	if (bridge == NULL) return;
 	
 	close(bridge->sfd);
-	for (int16_t ptr=0; ptr<size; ptr++){
+	for (size_t ptr=0; ptr<size; ptr++){
 		free(*(pstore+ptr));
 	}
 
